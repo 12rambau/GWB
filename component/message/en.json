@@ -13,5 +13,13 @@
     },
     "requirement": {
         "_4": "Provide a byte images. Reafect the classes into the 4 following classes : background, foreground, special background 1 and special background 2. the remaining bands will be considered as missing data."
+    },
+    "bin": {
+        "file_exist": "the file {} is already existing, no new bin map have been created",
+        "running": "The bin map is being processed",
+        "finished": "the bin map is ready to be used",
+        "no_file": "Please provide a file to be reclassified",
+        "no_classes": "you didn't provided any class",
+        "overlap": "At least one value have been used in multiple classes"
     }
 }
