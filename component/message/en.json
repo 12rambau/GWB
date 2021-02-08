@@ -9,7 +9,11 @@
     },
     "acc": {
         "title":  "Accounting of image objects and area classes",
-        "description": "This module will conduct the Accounting analysis. Accounting will label and calculate the area of all foreground objects (coded with 2 byte). The result are spatially explicit maps and tabular summary statistics. Details on the methodology can be found in the [Accounting product sheet](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Objects-Accounting.pdf)."
+        "description": "This module will conduct the Accounting analysis. Accounting will label and calculate the area of all foreground objects (coded with 2 byte). The result are spatially explicit maps and tabular summary statistics. Details on the methodology can be found in the [Accounting product sheet](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Objects-Accounting.pdf).",
+        "connectivity": "Foreground connectivity",
+        "res": "spatial pixel resolution (meters)",
+        "thresholds": "Add your area thresholds (up to 5) area thresholds (pixel)",
+        "options": "Output options"
     },
     "requirement": {
         "_4": "Provide a byte images. Reafect the classes into the 4 following classes : background, foreground, special background 1 and special background 2. the remaining bands will be considered as missing data."

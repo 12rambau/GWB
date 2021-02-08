@@ -8,7 +8,7 @@ class FourBytes(sw.Tile):
     
     def __init__(self, io):
         
-        #gather the io 
+        # gather the io 
         self.io = io
         
         # create the widgets
@@ -46,6 +46,8 @@ class FourBytes(sw.Tile):
             btn = btn
         
         )
+        
+        # bind js event
         btn.on_event('click', self._on_click)
         self.file.observe(self._on_change, 'v_model')
         
