@@ -14,9 +14,9 @@ def get_result_dir(process):
     
     return result_dir
     
-def get_tmp_dir(process):
+def get_tmp_dir():
     """get or create the tmp dir corresponding to each process"""
-    tmp_dir = get_result_dir(process).joinpath('tmp')
+    tmp_dir = Path('~', 'gwb_results', 'tmp').expanduser()
     tmp_dir.mkdir(exist_ok = True)
     
     return tmp_dir

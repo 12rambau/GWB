@@ -1,3 +1,5 @@
+import json
+
 from .gwb_io import GWBIo
 from component  import parameter as cp
 
@@ -22,24 +24,39 @@ class AccIo(GWBIo):
         
         super().__init__(
             tile_id = 'acc_tile',
-            process = 'acc',
-            byte_list = [
-                self.background,
-                self.foreground,
-                self.spe_background_1,
-                self.spe_background_2,
-            ]
+            process = 'acc'
         )
-        
+    
     def update_byte_list(self):
         """manually update the byte_list"""
         
-        self.byte_list = [
+        byte_list = [
             self.background,
             self.foreground,
             self.spe_background_1,
             self.spe_background_2,
         ]
         
-        return self
+        return super().update_byte_list(byte_list)
+    
+    def update_params_list(self):
+        """manually update the params list"""
         
+        params_list = [
+                self.connectivity,
+                self.res,
+                self.join_attr('thresholds'),
+                self.option,
+            ]
+        
+        return super().update_params_list(params_list)
+    
+    def get_params_list(self):
+        """get the params list for naming purposes (_ and no spaces)"""
+        
+        self.update_params_list()
+        
+        params = self.params_list
+        params[2] = self.join_attr('thresholds', '_')
+        
+        return super().get_params_list(params)

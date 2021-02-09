@@ -1,9 +1,12 @@
+import json
+
 from sepal_ui import sepalwidgets as sw 
 import ipyvuetify as v
 
 from component.message import cm
 from component import parameter as cp
 from component import widget as cw
+from component import scripts as cs
 
 class accc_process(sw.Tile):
 
@@ -53,3 +56,42 @@ class accc_process(sw.Tile):
             output = self.output,
             btn = btn
         )
+        
+        # link js behaviours
+        btn.on_event('click', self._on_click)
+        
+    def _on_click(self, widget, event, data):
+        
+        # silence the btn
+        widget.toggle_loading()
+        
+        # check inputs 
+        if not self.output.check_input(self.io.connectivity, cm.acc.no_connex): return widget.toggle_loading()
+        if not self.output.check_input(self.io.res, cm.acc.no_res): return widget.toggle_loading()
+        if not self.output.check_input(len(json.loads(self.io.thresholds)) or None, cm.acc.no_thres): return widget.toggle_loading()
+        if not self.output.check_input(self.io.option, cm.acc.no_options): return widget.toggle_loading()
+        if not self.output.check_input(self.io.bin_map, cm.bin.no_bin): return widget.toggle_loading()
+        
+        try:
+            
+            # update the params list 
+            self.io.update_params_list()
+        
+            # compute acc process 
+            txt, tif, csv = cs.run_gwb_process(
+                self.io.process, 
+                self.io.bin_map, 
+                self.io.params_list, 
+                self.io.get_params_list, 
+                self.output
+            )
+            
+            # add the files to the download links
+            
+        except Exception as e:
+            self.output.add_live_msg(str(e), 'error')
+            
+        # release the btn 
+        widget.toggle_loading()
+        
+        return
