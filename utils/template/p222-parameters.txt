@@ -1,0 +1,26 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; GTB_P222 parameter file: 
+;;    ***  do NOT delete header lines starting with ";;" ***
+;;
+;; P2 or P22: Foreground Density [%] or Foreground Contagion [%]
+;; input image requirements: 1b-background, 2b-foreground, optional: 0b-missing
+;;
+;; P222 will provide a color-coded image showing [0,100]% for either
+;; Foreground Density or Foreground Contagion, masked by the Foreground cover 
+;;
+;; Please specify entries at lines 23-25 ONLY using the following options:
+;; line 23: 1-Density   or  2-Contagion
+;; line 24: kdim: square window size [pixels], uneven in [3, 5, ..., 501]
+;;     obs_scale [hectare] = (pixres * kdim)^2 / 10000
+;; line 25: high-precision: 1 (default) or 0
+;;    (1-float precision & more disk space, 0-rounded byte)
+;;
+;; an example parameter file for Density and using a 27x27 window:
+;; 1
+;; 27
+;; 1
+****************************************************************************
+1
+27
+1
+****************************************************************************

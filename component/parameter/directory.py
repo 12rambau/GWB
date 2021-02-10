@@ -21,5 +21,7 @@ def get_tmp_dir():
     
     return tmp_dir
 
+template_dir = Path(__file__).parent.parent.joinpath('utils', 'template')
+
 
 

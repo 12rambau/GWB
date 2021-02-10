@@ -1,0 +1,27 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; GTB_ACCOUNTING parameter file: 
+;;    ***  do NOT delete header lines starting with ";;" ***
+;;
+;; ACC: Accounting of image objects and patch area size classes
+;;  input image requirements: 1b-background, 2b-foreground, optional: 0b-missing
+;;
+;; Please specify entries at lines 23-26 ONLY using the following options:
+;;
+;; line 23: Foreground connectivity: 8 default) or 4 
+;; line 24: spatial pixel resolution in meters: 
+;; line 25: up to 5 area thresholds [unit: pixels] in increasing order
+;;          and separated by a single space.
+;; line 26: output option:   default (stats + image of viewport) OR 
+;;          detailed (stats + images of ID, area, viewport)
+;;
+;; an example parameter file with default output would look like this:
+;; 8
+;; 25
+;; 200 2000 20000 100000 200000
+;; default
+****************************************************************************
+8
+25
+200 2000 20000 100000 200000
+default
+****************************************************************************

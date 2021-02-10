@@ -1,0 +1,19 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; GTB_DIST parameter file: 
+;;    ***  do NOT delete header lines starting with ";;" ***
+;;
+;; DIST: Euclidean Distance + Hypsometric Curve
+;; input image requirements: 1b-background, 2b-foreground, optional: 0b-missing
+;;
+;; Please specify entries at lines 17-18 ONLY using the following options:
+;;
+;; line 17: Foreground connectivity: 8 (default) or 4 
+;; line 18: 1-Eucl.Distance only   or  2- Eucl.Distance + Hysometric Curve
+;;
+;; an example parameter file with default settings would look like this:
+;; 8
+;; 2
+****************************************************************************
+8
+2
+****************************************************************************

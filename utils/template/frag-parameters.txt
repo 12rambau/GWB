@@ -1,0 +1,37 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; GTB_FRAG parameter file: 
+;;    ***  do NOT delete header lines starting with ";;" ***
+;;
+;; FAD = fragmentation analysis at up to 10 user-selected observation scales
+;; 
+;; FAD: per-pixel density, color-coded into 6 fragmentation classes
+;; FAD-APP2: average per-patch density, color-coded into 2 classes
+;; FAD-APP5: average per-patch density, color-coded into 5 classes
+;; 
+;; input image requirements: 1b-background, 2b-foreground, optional: 
+;;    0b-missing, 3b-special background, 4b-non-fragmenting background
+;;
+;; FAD will provide up to 10 images and summary statistics.
+;;
+;; Please specify entries at lines 32-36 ONLY using the following options:
+;; line 32: FAD  or  FAD-APP2  or  FAD-APP5
+;; line 33: Foreground connectivity: 8 (default) or 4 
+;; line 34: pixel resolution [meters]
+;; line 35: up to 10 window sizes [unit: pixels] in increasing order
+;;          and separated by a single space.
+;; line 36: high-precision: 1 (default) or 0
+;;    (1-float precision & more disk space, 0-rounded byte)
+;;
+;; an example parameter file doing FAD-APP5 and using 8-connected foreground:
+;; FAD-APP5
+;; 8
+;; 7 9 11 15 21 33 45 55 77 99
+;; 100
+;; 1
+****************************************************************************
+FAD-APP2
+8
+100
+17 11 7
+1
+****************************************************************************
