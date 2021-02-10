@@ -2,10 +2,12 @@ import shutil
 import subprocess
 from pathlib import Path
 
+import ipyvuetify as v
+
 from component.message import cm
 from component import parameter as cp
 
-def run_gwb_process(process, raster, params_list, title, output):
+def run_gwb_process(process, raster, params_list, title, output, offset):
     """
     run all the processes of the GWB suit according to the io
     The input and output folder will be created on the fly and deleted right afterward
@@ -42,7 +44,10 @@ def run_gwb_process(process, raster, params_list, title, output):
     # create the input file
     parameter_file = in_dir.joinpath(f'{process}-parameters.txt')
     with parameter_file.open('w') as f:
-        f.writelines([str(p) + '\n' for p in params_list])
+        offset_lines = ['\n' for i in range(offset-1)]
+        params_lines = [str(p) + '\n' for p in params_list]
+        finish_lines = ['\n']
+        f.writelines(offset_lines + params_lines +finish_lines)
             
     # create the command 
     command = [
@@ -70,33 +75,30 @@ def run_gwb_process(process, raster, params_list, title, output):
             output.append_msg(line)
             
     # file in the output directory 
-    out_txt = out_dir.joinpath(f'{raster.stem}_{process}', f'{raster.stem}.txt')
-    out_tif = out_dir.joinpath(f'{raster.stem}_{process}', f'{raster.stem}.tif')
-    out_csv = out_dir.joinpath(f'{raster.stem}_{process}', f'{raster.stem}.csv')
+    out_txt = out_dir.joinpath(f'{raster.stem}_{process}', f'{raster.stem}_{process}.txt')
+    out_tif = out_dir.joinpath(f'{raster.stem}_{process}', f'{raster.stem}_{process}.tif')
+    out_csv = out_dir.joinpath(f'{raster.stem}_{process}', f'{raster.stem}_{process}.csv')
     out_log = out_dir.joinpath(f'{process}.log')
+    
+    # if log is not there, the comutation didn't even started 
+    # I let the display in its current state and change the color of the output to red
+    if not out_log.is_file():
+        output.type = 'error'
+        return ("#", "#", "#")
+    
+    # if the log file is the only file then it has crashed
     
     # read the log 
     with open(out_log) as f:
         log = f.read()
-    
-    # check if the process ended
-    if not out_tif.is_file():
-        raise Exception(log)
         
     # copy the files in the result directory 
     shutil.copy(out_txt, txt_final)
     shutil.copy(out_tif, tif_final)
     shutil.copy(out_csv, csv_final)
     
-    # remove the tmp dir and all its content 
-    #[f.unlink() for f in in_dir.glob('*.*')]
-    #[f.unlink() for f in out_dir.glob('*.*')]
-    #in_dir.rmdir()
-    #out_dir.rmdir()
-    #tmp_dir.rmdir()
-    
     # display the final log 
-    output.add_live_msg(log, 'success')
+    output.add_live_msg(v.Html(tag='pre', class_='success--text d-inline', children=[log]), 'success')
     
     return (txt_final, tif_final, csv_final)
         

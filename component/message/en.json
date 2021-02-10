@@ -3,7 +3,7 @@
         "title": "gwb",
         "footer": "The sky is the limit \u00a9 {}",
         "drawer_item": {
-            "aoi": "AOI selection",
+            "acc": "ACC",
             "about": "About"
         }
     },

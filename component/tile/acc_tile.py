@@ -1,4 +1,5 @@
 import json
+import shutil
 
 from sepal_ui import sepalwidgets as sw 
 import ipyvuetify as v
@@ -79,18 +80,23 @@ class accc_process(sw.Tile):
         
             # compute acc process 
             txt, tif, csv = cs.run_gwb_process(
-                self.io.process, 
-                self.io.bin_map, 
-                self.io.params_list, 
-                self.io.get_params_list, 
-                self.output
+                process = self.io.process, 
+                raster = self.io.bin_map, 
+                params_list = self.io.params_list, 
+                title = self.io.get_params_list(), 
+                output = self.output,
+                offset = self.io.offset
             )
             
             # add the files to the download links
             
         except Exception as e:
             self.output.add_live_msg(str(e), 'error')
-            
+        
+        # remove the tmp directory 
+        # whatever the result
+        shutil.rmtree(cp.get_tmp_dir())
+        
         # release the btn 
         widget.toggle_loading()
         

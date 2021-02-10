@@ -24,7 +24,8 @@ class AccIo(GWBIo):
         
         super().__init__(
             tile_id = 'acc_tile',
-            process = 'acc'
+            process = 'acc',
+            offset = 23
         )
     
     def update_byte_list(self):

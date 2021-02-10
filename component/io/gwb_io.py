@@ -6,11 +6,12 @@ class GWBIo():
     The process will be launched thanks to this object parameters 
     """
 
-    def __init__(self, tile_id = 'tile', process = 'gwb', byte_list = [], params_list=[], bin_map=None):
+    def __init__(self, tile_id = 'tile', process = 'gwb', byte_list = [], params_list=[], bin_map=None, offset=0):
     
         # to make sure that each tile of each process have 1 name 
         self.tile_id = tile_id
         self.process = process
+        self.offset = offset
     
         # if applicable 
         # the list of the bytes values 
