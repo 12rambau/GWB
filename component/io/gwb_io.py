@@ -1,17 +1,19 @@
 import json 
 
+from component import parameter as cp
+
 class GWBIo():
     """
     Mother class of all the other io. 
     The process will be launched thanks to this object parameters 
     """
 
-    def __init__(self, tile_id = 'tile', process = 'gwb', byte_list = [], params_list=[], bin_map=None, offset=0):
+    def __init__(self, process = 'gwb', byte_list = [], params_list=[], bin_map=None):
     
         # to make sure that each tile of each process have 1 name 
-        self.tile_id = tile_id
+        self.tile_id = cp.gwb[process]['tile_id']
         self.process = process
-        self.offset = offset
+        self.offset = cp.gwb[process]['offset']
     
         # if applicable 
         # the list of the bytes values 

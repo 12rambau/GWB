@@ -22,11 +22,7 @@ class AccIo(GWBIo):
         self.thresholds = "[]"
         self.option = cp.options[0]['value']
         
-        super().__init__(
-            tile_id = 'acc_tile',
-            process = 'acc',
-            offset = 23
-        )
+        super().__init__(process = 'acc')
     
     def update_byte_list(self):
         """manually update the byte_list"""
