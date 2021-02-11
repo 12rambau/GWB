@@ -4,7 +4,8 @@
         "footer": "The sky is the limit \u00a9 {}",
         "drawer_item": {
             "acc": "ACC",
-            "about": "About"
+            "about": "About",
+            "licence": "licence"
         },
         "licence": {
             "title": "User licence",
