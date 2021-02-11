@@ -1,6 +1,9 @@
 from pathlib import Path
 
-# add all the directory that will be used in the app.
+##########################
+##     directories      ##
+##########################
+
 def get_result_dir(process):
     """get the result dir for each process"""
     
@@ -21,7 +24,24 @@ def get_tmp_dir():
     
     return tmp_dir
 
-template_dir = Path(__file__).parent.parent.joinpath('utils', 'template')
+def get_licence_dir():
+    licence_dir = Path('~', '.gwb').expanduser()
+    licence_dir.mkdir(exist_ok = True)
+    
+    return licence_dir
+
+utils_dir = Path(__file__).parent.parent.parent.joinpath('utils')
+template_dir = utils_dir.joinpath('template')
+
+#####################
+##      files      ##
+#####################
+
+eula_txt = utils_dir.joinpath('EULA.txt')
+eula_md = utils_dir.joinpath('EULA.md')
+
+
+
 
 
 
