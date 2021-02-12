@@ -5,3 +5,4 @@
 from .acc_tile import *
 from .dist_tile import *
 from .convert_tile import *
+from .fad_tile import *

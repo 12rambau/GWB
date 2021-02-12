@@ -9,7 +9,7 @@ from component import parameter as cp
 from component import widget as cw
 from component import scripts as cs
 
-class acc_process(sw.Tile):
+class AccTile(sw.Tile):
 
     def __init__(self, io):
         
@@ -43,7 +43,7 @@ class acc_process(sw.Tile):
             .bind(options, self.io, 'options')
         
         # create the btn 
-        btn = sw.Btn('Start acc process')
+        btn = sw.Btn(cm.process.btn.format(io.process))
         
         super().__init__(
             self.io.tile_id,

@@ -5,6 +5,7 @@
         "drawer_item": {
             "acc": "ACC",
             "dist": "DIST",
+            "fad": "FAD",
             "about": "About",
             "licence": "licence"
         },
@@ -28,6 +29,12 @@
     "dist": {
         "title": "Euclidean Distance",
         "description": "This module will conduct the Euclidean Distance analysis. Each pixel will show the shortest distance to the foreground (coded with 2 byte) boundary. Pixels inside a foreground object have a positive distance value while background pixels have a negative distance value. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the [Distance](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Distance-Euclidean.pdf) product sheet."
+    },
+    "fad": {
+        "title": "Fragmentation",
+        "description": "This module will conduct the fragmentation analysis at five fixed observation scales. Because forest fragmentation is scale-dependent, fragmentation is reported at five observation scales, which allows different observers to make their own choice about scales and threshold of concern. The change of fragmentation across different observation scales provides additional interesting information. Fragmentation is measured by determining the Forest Area Density (FAD) within a shifting, local neighborhood. It can be measured at pixel or patch level. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the [Fragmentation](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf) product sheet.",
+        "prescision": "Computation prescision",
+        "no_prescision": "Please set the prescision"
     },
     "requirement": {
         "_4": "Provide a byte images. Reafect the classes into the 4 following classes : background, foreground, special background 1 and special background 2. the remaining bands will be considered as missing data.",

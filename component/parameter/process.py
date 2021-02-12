@@ -14,3 +14,17 @@ dist_options = [
     {'text': 'Euclidian distance only', 'value': 1},
     {'text': 'Euclidian distance + Hysometric Curve', 'value': 2}
 ]
+
+###################
+##      fad      ##
+###################
+fad_options = [
+    {'text': 'per-pixel density, color-coded into 6 fragmentation classes', 'value': 'FAD'},
+    {'text': 'average per-patch density, color-coded into 2 classes', 'value': 'FAD-APP2'},
+    {'text': 'average per-patch density, color-coded into 5 classes', 'value': 'FAD-APP5'}
+]
+
+prescision = [
+    {'text': "float precision (require more disk space)", 'value': 1},
+    {'text': 'rounded byte', 'value': 0}
+]
