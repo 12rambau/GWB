@@ -3,7 +3,7 @@ import json
 from .gwb_io import GWBIo
 from component  import parameter as cp
 
-class AccIo(GWBIo):
+class DistIo(GWBIo):
     
     def __init__(self):
         
@@ -13,25 +13,19 @@ class AccIo(GWBIo):
         # all the bytes values 
         self.background = []
         self.foreground = []
-        self.spe_background_1 = []
-        self.spe_background_2 = []
         
         # the process 
         self.connectivity = cp.connectivity[0]
-        self.res = None
-        self.thresholds = "[]"
-        self.options = cp.acc_options[0]['value']
+        self.options = cp.dist_options[0]['value']
         
-        super().__init__(process = 'acc')
+        super().__init__(process = 'dist')
     
     def update_byte_list(self):
         """manually update the byte_list"""
         
         byte_list = [
             self.background,
-            self.foreground,
-            self.spe_background_1,
-            self.spe_background_2,
+            self.foreground
         ]
         
         return super().update_byte_list(byte_list)
@@ -40,11 +34,9 @@ class AccIo(GWBIo):
         """manually update the params list"""
         
         params_list = [
-                self.connectivity,
-                self.res,
-                self.join_attr('thresholds'),
-                self.options,
-            ]
+            self.connectivity,
+            self.options
+        ]
         
         return super().update_params_list(params_list)
     
@@ -54,6 +46,5 @@ class AccIo(GWBIo):
         self.update_params_list()
         
         params = self.params_list
-        params[2] = self.join_attr('thresholds', '_')
         
         return super().get_params_list(params)

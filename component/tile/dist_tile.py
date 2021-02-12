@@ -9,7 +9,7 @@ from component import parameter as cp
 from component import widget as cw
 from component import scripts as cs
 
-class acc_process(sw.Tile):
+class dist_process(sw.Tile):
 
     def __init__(self, io):
         
@@ -22,36 +22,26 @@ class acc_process(sw.Tile):
             items = cp.connectivity,
             v_model = cp.connectivity[0]
         )
-        res = v.TextField(
-            label = cm.acc.res,
-            type= 'number',
-            v_model = None
-        )
-        thresholds = cw.Thresholds(label = cm.acc.thresholds)
         options = v.Select(
             label = cm.acc.options,
-            items= cp.acc_options,
-            v_model = cp.acc_options[0]['value']
+            items= cp.dist_options,
+            v_model = cp.dist_options[0]['value']
         )
         
         
         # bind to the io
         self.output = sw.Alert() \
             .bind(connectivity, self.io, 'connectivity') \
-            .bind(res, self.io, 'res') \
-            .bind(thresholds.save, self.io, 'thresholds') \
             .bind(options, self.io, 'options')
         
         # create the btn 
-        btn = sw.Btn('Start acc process')
+        btn = sw.Btn(cm.process.btn.format(io.process))
         
         super().__init__(
             self.io.tile_id,
             "Run Process",
             inputs = [
                 connectivity,
-                res,
-                thresholds,
                 options
             ],
             output = self.output,
@@ -68,30 +58,28 @@ class acc_process(sw.Tile):
         
         # check inputs 
         if not self.output.check_input(self.io.connectivity, cm.acc.no_connex): return widget.toggle_loading()
-        if not self.output.check_input(self.io.res, cm.acc.no_res): return widget.toggle_loading()
-        if not self.output.check_input(len(json.loads(self.io.thresholds)) or None, cm.acc.no_thres): return widget.toggle_loading()
         if not self.output.check_input(self.io.options, cm.acc.no_options): return widget.toggle_loading()
         if not self.output.check_input(self.io.bin_map, cm.bin.no_bin): return widget.toggle_loading()
         
-        try:
+        #try:
             
-            # update the params list 
-            self.io.update_params_list()
-        
-            # compute acc process 
-            files = cs.run_gwb_process(
-                process = self.io.process, 
-                raster = self.io.bin_map, 
-                params_list = self.io.params_list, 
-                title = self.io.get_params_list(), 
-                output = self.output,
-                offset = self.io.offset
-            )
+        # update the params list 
+        self.io.update_params_list()
+    
+        # compute acc process 
+        files = cs.run_gwb_process(
+            process = self.io.process, 
+            raster = self.io.bin_map, 
+            params_list = self.io.params_list, 
+            title = self.io.get_params_list(), 
+            output = self.output,
+            offset = self.io.offset
+        )
             
-            # add the files to the download links
+        # add the files to the download links
             
-        except Exception as e:
-            self.output.add_live_msg(str(e), 'error')
+        #except Exception as e:
+        #    self.output.add_live_msg(str(e), 'error')
         
         # remove the tmp directory 
         # whatever the result

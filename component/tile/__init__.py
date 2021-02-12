@@ -3,4 +3,5 @@
 
 # if you use a module import all the functions here to only have 1 call to make
 from .acc_tile import *
+from .dist_tile import *
 from .convert_tile import *

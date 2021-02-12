@@ -21,15 +21,11 @@ def run_gwb_process(process, raster, params_list, title, output, offset):
         (pathlib.Path) : the path to the final .image
         (pathlib.Path) : the path to the final .csv
     """
-    # create the output names 
-    txt_final = cp.get_result_dir(process).joinpath(f'{process}_{raster.stem}_{title}.txt')
-    tif_final = cp.get_result_dir(process).joinpath(f'{process}_{raster.stem}_{title}.tif')
-    csv_final = cp.get_result_dir(process).joinpath(f'{process}_{raster.stem}_{title}.csv')
-    
+     
     # stop if already exist 
-    if txt_final.is_file() and tif_final.is_file() and csv.is_file():
-        output.add_live_msg(cm.gwb.file_exist.format(process.upper(), raster.stem, title), 'warning')
-        return (txt_final, tif_final, csv_final)
+    #if all([f.is_file() for f in files]):
+    #    output.add_live_msg(cm.gwb.file_exist.format(process.upper(), raster.stem, title), 'warning')
+    #    return files
     
     # create the tmp directories 
     tmp_dir = cp.get_tmp_dir()
@@ -56,8 +52,6 @@ def run_gwb_process(process, raster, params_list, title, output, offset):
         f'-o={out_dir}'
     ]
     
-    print(' '.join(command))
-    
     # set the argument of the process
     kwargs = {
         'args' : command,
@@ -74,17 +68,15 @@ def run_gwb_process(process, raster, params_list, title, output, offset):
         for line in p.stdout:
             output.append_msg(line)
             
-    # file in the output directory 
-    out_txt = out_dir.joinpath(f'{raster.stem}_{process}', f'{raster.stem}_{process}.txt')
-    out_tif = out_dir.joinpath(f'{raster.stem}_{process}', f'{raster.stem}_{process}.tif')
-    out_csv = out_dir.joinpath(f'{raster.stem}_{process}', f'{raster.stem}_{process}.csv')
+    # file in the output directory
+    out_files = out_dir.joinpath(f'{raster.stem}_{process}').glob('*.*')
     out_log = out_dir.joinpath(f'{process}.log')
     
     # if log is not there, the comutation didn't even started 
     # I let the display in its current state and change the color of the output to red
     if not out_log.is_file():
         output.type = 'error'
-        return ("#", "#", "#")
+        return []
     
     # if the log file is the only file then it has crashed
     
@@ -93,14 +85,15 @@ def run_gwb_process(process, raster, params_list, title, output, offset):
         log = f.read()
         
     # copy the files in the result directory 
-    shutil.copy(out_txt, txt_final)
-    shutil.copy(out_tif, tif_final)
-    shutil.copy(out_csv, csv_final)
-    
+    files = []
+    for f in out_files:
+        final_f = shutil.copy(f, cp.get_result_dir(process))
+        files.append(Path(final_f))
+        
     # display the final log 
     output.add_live_msg(v.Html(tag='pre', class_='success--text d-inline', children=[log]), 'success')
     
-    return (txt_final, tif_final, csv_final)
+    return files
         
     
     

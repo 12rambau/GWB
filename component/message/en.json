@@ -4,6 +4,7 @@
         "footer": "The sky is the limit \u00a9 {}",
         "drawer_item": {
             "acc": "ACC",
+            "dist": "DIST",
             "about": "About",
             "licence": "licence"
         },
@@ -24,8 +25,13 @@
         "no_thres": "Please provide at least one thresholds",
         "no_options": "Please select an option"
     },
+    "dist": {
+        "title": "Euclidean Distance",
+        "description": "This module will conduct the Euclidean Distance analysis. Each pixel will show the shortest distance to the foreground (coded with 2 byte) boundary. Pixels inside a foreground object have a positive distance value while background pixels have a negative distance value. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the [Distance](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Distance-Euclidean.pdf) product sheet."
+    },
     "requirement": {
-        "_4": "Provide a byte images. Reafect the classes into the 4 following classes : background, foreground, special background 1 and special background 2. the remaining bands will be considered as missing data."
+        "_4": "Provide a byte images. Reafect the classes into the 4 following classes : background, foreground, special background 1 and special background 2. the remaining bands will be considered as missing data.",
+        "_2": "Provide a byte images. Reafect the classes into the 2 following classes : background, foreground. the remaining bands will be considered as missing data."
     },
     "bin": {
         "file_exist": "the file {} is already existing, no new bin map have been created",
@@ -39,5 +45,8 @@
     "gwb": {
         "start": "Starting the {} process",
         "file_exist": "The process {} have already been launched on {} with the following parameters : {}"
+    },
+    "process": {
+        "btn": "start the {} process"
     }
 }
