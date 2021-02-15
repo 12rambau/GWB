@@ -8,6 +8,7 @@
             "fad": "FAD",
             "frag": "FRAG",
             "lm": "LM",
+            "mspa": "MSPA",
             "about": "About",
             "licence": "licence"
         },
@@ -50,9 +51,19 @@
         "kdim": "square window size (pixels)",
         "no_kdim": "Please provide a square window size"
     },
+    "mspa": {
+        "title": "Morphological Spatial Pattern Analysis",
+        "description": "This module will conduct the Morphological Spatial Pattern Analysis. MSPA analyses shape and connectivity and conducts a segmentation of foreground patches in up to 25 feature classes. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the [Morphology](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Pattern-Morphology.pdf) product sheet.",
+        "edge_width": "edge width (pixels)",
+        "transition": "transition",
+        "int_ext": "int ext",
+        "no_edge_width": "Please provide a positive edge width"
+
+    },
     "requirement": {
         "_4": "Provide a byte images. Reafect the classes into the 4 following classes : background, foreground, special background 1 and special background 2. the remaining bands will be considered as missing data.",
-        "_2": "Provide a byte images. Reafect the classes into the 2 following classes : background, foreground. the remaining bands will be considered as missing data."
+        "_2": "Provide a byte images. Reafect the classes into the 2 following classes : background, foreground. the remaining bands will be considered as missing data.",
+        "_3": "Provide a byte images. Reafect the classes into the 3 dominant land cover classes. the remaining bands will be considered as missing data."
     },
     "bin": {
         "file_exist": "the file {} is already existing, no new bin map have been created",

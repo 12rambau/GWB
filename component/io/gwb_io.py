@@ -62,7 +62,7 @@ class GWBIo():
     
     def update_params_list(self, list_):
         
-        self.params_list = list_
+        self.params_list = [str(e) for e in list_]
         
         return self
     

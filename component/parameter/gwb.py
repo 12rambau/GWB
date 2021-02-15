@@ -3,5 +3,6 @@ gwb = {
     'dist': {'tile_id': 'dist_tile', 'offset': 17},
     'fad': {'tile_id': 'fad_tile', 'offset': 28},
     'frag': {'tile_id': 'frag_tile', 'offset': 32},
-    'lm': {'tile_id': 'lm_tile', 'offset': 14}
+    'lm': {'tile_id': 'lm_tile', 'offset': 14},
+    'mspa': {'tile_id': 'mspa_tile', 'offset': 23}
 }

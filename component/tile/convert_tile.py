@@ -215,7 +215,7 @@ class ThreeBytes(sw.Tile):
         self.lc_2 = v.Select(label = 'Dominant land cover 2 (Natural)', items = None, v_model = None, chips = True, multiple = True)
         self.lc_3 = v.Select(label = 'Dominant land cover 3 (developped)', items = None, v_model = None, chips = True, multiple = True)
         
-        requirements = sw.Markdown(cm.requirement._4)
+        requirements = sw.Markdown(cm.requirement._3)
 
         # bind it to the io
         self.output = sw.Alert() \
