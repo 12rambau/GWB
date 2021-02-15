@@ -10,6 +10,7 @@
             "lm": "LM",
             "mspa": "MSPA",
             "p222": "P222",
+            "parc": "PARC",
             "about": "About",
             "licence": "licence"
         },
@@ -66,10 +67,15 @@
         "description": "This module will conduct the density (P2) or contagion (P22) analysis of foreground objects at a user-selected observation scale (Riitters et al. (2000)). The result are spatially explicit maps and tabular summary statistics. The classification is determined by measurements of forest amount (P2) and connectivity (P22) within the neighborhood that is centered on a subject forest pixel. P2 is the probability that a pixel in the neighborhood is forest, and P22 is the probability that a pixel next to a forest pixel is also forest.",
         "algo": "algorithm"
     },
+    "parc": {
+        "title": "Parcellation",
+        "description": "This module will conduct the parcellation analysis. This module provides a statistical summary file (txt/csv- format) with details for each unique class found in the image as well as the full image content: class value, total number of objects, total area, degree of parcellation. Details on the methodology and input/output options can be found in the [Parcellation](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Objects-Parcellation.pdf) product sheet."
+    },
     "requirement": {
         "_4": "Provide a byte images. Reafect the classes into the 4 following classes : background, foreground, special background 1 and special background 2. the remaining bands will be considered as missing data.",
         "_2": "Provide a byte images. Reafect the classes into the 2 following classes : background, foreground. the remaining bands will be considered as missing data.",
-        "_3": "Provide a byte images. Reafect the classes into the 3 dominant land cover classes. the remaining bands will be considered as missing data."
+        "_3": "Provide a byte images. Reafect the classes into the 3 dominant land cover classes. the remaining bands will be considered as missing data.",
+        "_0": "select a classified tiff image. The image must contain at least 2 different classes. 0 will be considered as missing data."
     },
     "bin": {
         "file_exist": "the file {} is already existing, no new bin map have been created",

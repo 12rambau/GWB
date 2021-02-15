@@ -57,12 +57,15 @@ def set_byte_map(class_list, raster, process, output):
         out_meta.update(compress = 'lzw', dtype = np.uint8)
         raw_data = src.read()
         
-        data = np.zeros_like(raw_data)
-        for index, class_ in enumerate(class_list):
-            for val in class_:
+        if class_list == []:
+            data = raw_data
+        else:
+            data = np.zeros_like(raw_data)
+            for index, class_ in enumerate(class_list):
+                for val in class_:
                     data = data + (raw_data == val) * (index + 1)
                 
-        data = data.astype(out_meta['dtype'])
+            data = data.astype(out_meta['dtype'])
                 
         with rio.open(bin_map, 'w', **out_meta) as dst:
             dst.write(data)

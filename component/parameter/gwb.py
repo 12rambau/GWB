@@ -5,5 +5,6 @@ gwb = {
     'frag': {'tile_id': 'frag_tile', 'offset': 32},
     'lm': {'tile_id': 'lm_tile', 'offset': 14},
     'mspa': {'tile_id': 'mspa_tile', 'offset': 23},
-    'p222': {'tile_id': 'p222_tile', 'offset': 23}
+    'p222': {'tile_id': 'p222_tile', 'offset': 23},
+    'parc': {'tile_id': 'parc_tile', 'offset': 17}
 }
