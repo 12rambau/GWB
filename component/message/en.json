@@ -9,6 +9,7 @@
             "frag": "FRAG",
             "lm": "LM",
             "mspa": "MSPA",
+            "p222": "P222",
             "about": "About",
             "licence": "licence"
         },
@@ -59,6 +60,11 @@
         "int_ext": "int ext",
         "no_edge_width": "Please provide a positive edge width"
 
+    },
+    "p222": {
+        "title": "Density (P2) or Contagion (P22)",
+        "description": "This module will conduct the density (P2) or contagion (P22) analysis of foreground objects at a user-selected observation scale (Riitters et al. (2000)). The result are spatially explicit maps and tabular summary statistics. The classification is determined by measurements of forest amount (P2) and connectivity (P22) within the neighborhood that is centered on a subject forest pixel. P2 is the probability that a pixel in the neighborhood is forest, and P22 is the probability that a pixel next to a forest pixel is also forest.",
+        "algo": "algorithm"
     },
     "requirement": {
         "_4": "Provide a byte images. Reafect the classes into the 4 following classes : background, foreground, special background 1 and special background 2. the remaining bands will be considered as missing data.",

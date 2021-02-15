@@ -9,3 +9,4 @@ from .fad_tile import *
 from .frag_tile import *
 from .lm_tile import *
 from .mspa_tile import *
+from .p222_tile import *

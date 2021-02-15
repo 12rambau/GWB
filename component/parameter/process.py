@@ -28,3 +28,11 @@ prescision = [
     {'text': "float precision (require more disk space)", 'value': 1},
     {'text': 'rounded byte', 'value': 0}
 ]
+
+####################
+##      p222      ##
+####################
+algo = [
+    {'text': 'P2: Foreground Density (%)', 'value': 1},
+    {'text': 'P22: Foreground Contagion (%)', 'value': 2}
+]
