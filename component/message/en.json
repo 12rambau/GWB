@@ -83,6 +83,10 @@
         "nb_classes": "number of pattern classes",
         "no_class": "Please prove a positive number of pattern classes"
     },
+    "rec": {
+        "title": "Recoding",
+        "description": "This module will conduct recoding of categorical land cover classes."
+    },
     "requirement": {
         "_4": "Provide a byte images. Reafect the classes into the 4 following classes : background, foreground, special background 1 and special background 2. the remaining bands will be considered as missing data.",
         "_2": "Provide a byte images. Reafect the classes into the 2 following classes : background, foreground. the remaining bands will be considered as missing data.",

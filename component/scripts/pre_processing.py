@@ -76,12 +76,15 @@ def set_byte_map(class_list, raster, process, output):
 
 def unique(raster):
     
-    raster = Path(raster)
+    features = []
     
-    with rio.open(raster) as src:
+    if raster:
+        raster = Path(raster)
         
-        data = src.read(1)
-        count = np.bincount(data.flatten())
-        features = np.where(count!=0)[0]
+        with rio.open(raster) as src:
+            data = src.read(1)
+            count = np.bincount(data.flatten())
+            features = np.where(count!=0)[0]
+            features = features.tolist()
         
-    return features.tolist()
+    return features

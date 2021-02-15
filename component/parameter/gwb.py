@@ -8,5 +8,6 @@ gwb = {
     'p222': {'tile_id': 'p222_tile', 'offset': 23},
     'parc': {'tile_id': 'parc_tile', 'offset': 17},
     'rss': {'tile_id': 'rss_tile', 'offset': 14},
-    'spa': {'tile_id': 'spa_tile', 'offset': 18}
+    'spa': {'tile_id': 'spa_tile', 'offset': 18},
+    'rec': {'tile_id': 'rec_tile', 'offset': 20}
 }

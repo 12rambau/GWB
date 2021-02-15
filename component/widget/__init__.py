@@ -5,3 +5,4 @@
 from .thresholds import Thresholds
 from .licence_dialog import LicenceDialog
 from .windows import Windows
+from .rec_table import RecTable
