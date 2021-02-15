@@ -11,8 +11,6 @@ from component.message import cm
 def is_overlap(class_list):
     """check if the lists overlaps"""
     
-    print(class_list)
-    
     overlap = False
     
     for a, b in combinations(class_list, 2):

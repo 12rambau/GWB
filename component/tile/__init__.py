@@ -7,3 +7,4 @@ from .dist_tile import *
 from .convert_tile import *
 from .fad_tile import *
 from .frag_tile import *
+from .lm_tile import *

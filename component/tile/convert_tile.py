@@ -202,3 +202,101 @@ class TwoBytes(sw.Tile):
         return
         
         
+class ThreeBytes(sw.Tile):
+    
+    def __init__(self, io):
+        
+        # gather the io 
+        self.io = io
+        
+        # create the widgets
+        self.file = sw.FileInput(['.tif', '.tiff'])
+        self.lc_1 = v.Select(label = 'Dominant land cover 1 (Agriculture)', items = None, v_model = None, chips = True, multiple = True)
+        self.lc_2 = v.Select(label = 'Dominant land cover 2 (Natural)', items = None, v_model = None, chips = True, multiple = True)
+        self.lc_3 = v.Select(label = 'Dominant land cover 3 (developped)', items = None, v_model = None, chips = True, multiple = True)
+        
+        requirements = sw.Markdown(cm.requirement._4)
+
+        # bind it to the io
+        self.output = sw.Alert() \
+            .bind(self.file, self.io, 'file') \
+            .bind(self.lc_1, self.io, 'lc_1') \
+            .bind(self.lc_2, self.io, 'lc_2') \
+            .bind(self.lc_3, self.io, 'lc_3')
+        
+        # create the btn 
+        btn = sw.Btn("Convert the image classes")
+        
+        super().__init__(
+            self.io.tile_id,
+            "Select map classes",
+            inputs = [
+                requirements,
+                self.file,
+                self.lc_1,
+                self.lc_2,
+                self.lc_3
+            ],
+            output = self.output,
+            btn = btn
+        
+        )
+        
+        # bind js event
+        btn.on_event('click', self._on_click)
+        self.file.observe(self._on_change, 'v_model')
+        
+    def _on_click(self, widget, event, data):
+            
+        # silence the btn 
+        widget.toggle_loading()
+            
+        # check variables
+        if not self.output.check_input(self.io.file, cm.bin.no_file): return widget.toggle_loading()
+        if not self.output.check_input(len(self.io.lc_1), cm.bin.no_classes): return widget.toggle_loading()
+            
+        # compute the bin map
+        try:
+        
+            # update byte list 
+            self.io.update_byte_list()
+        
+            # create a bin map 
+            bin_map = cs.set_byte_map(
+                self.io.byte_list, 
+                self.io.file, 
+                self.io.process, 
+                self.output
+            )
+            
+            self.io.set_bin_map(bin_map)
+            
+            # add the bin map to the download btn
+            
+        except Exception as e:
+            self.output.add_live_msg(str(e), 'error')
+                
+            
+        # release the btn 
+        widget.toggle_loading()
+            
+        return 
+    
+    def _on_change(self, change):
+        """update the list according to the file selection"""
+        
+        # empty all select
+        self.lc_1.v_model = None
+        self.lc_2.model = None
+        self.lc_3.model = None 
+                
+        # get all unique values from the image
+        features = cs.unique(change['new'])
+        
+        # add the new list as items 
+        self.lc_1.items = features
+        self.lc_2.items = features
+        self.lc_3.items = features
+        
+        return
+        

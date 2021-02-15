@@ -2,5 +2,6 @@ gwb = {
     'acc': {'tile_id': 'acc_tile', 'offset': 23},
     'dist': {'tile_id': 'dist_tile', 'offset': 17},
     'fad': {'tile_id': 'fad_tile', 'offset': 28},
-    'frag': {'tile_id': 'frag_tile', 'offset': 32}
+    'frag': {'tile_id': 'frag_tile', 'offset': 32},
+    'lm': {'tile_id': 'lm_tile', 'offset': 14}
 }
