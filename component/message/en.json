@@ -6,6 +6,7 @@
             "acc": "ACC",
             "dist": "DIST",
             "fad": "FAD",
+            "frag": "FRAG",
             "about": "About",
             "licence": "licence"
         },
@@ -35,6 +36,12 @@
         "description": "This module will conduct the fragmentation analysis at five fixed observation scales. Because forest fragmentation is scale-dependent, fragmentation is reported at five observation scales, which allows different observers to make their own choice about scales and threshold of concern. The change of fragmentation across different observation scales provides additional interesting information. Fragmentation is measured by determining the Forest Area Density (FAD) within a shifting, local neighborhood. It can be measured at pixel or patch level. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the [Fragmentation](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf) product sheet.",
         "prescision": "Computation prescision",
         "no_prescision": "Please set the prescision"
+    },
+    "frag": {
+        "title": "fragmentation",
+        "description": "This module will conduct the fragmentation analysis at a user-selected observation scale. This module and its option are similar to GWB_FAD but allow the user to specify a single (or multiple) specific observation scale. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the [Fragmentation](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf) product sheet.",
+        "windows": "Window sizes",
+        "no_windows": "Please provide at least 1 window size"
     },
     "requirement": {
         "_4": "Provide a byte images. Reafect the classes into the 4 following classes : background, foreground, special background 1 and special background 2. the remaining bands will be considered as missing data.",

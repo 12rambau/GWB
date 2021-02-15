@@ -4,3 +4,4 @@
 # if you use a module import all the functions here to only have 1 call to make
 from .thresholds import Thresholds
 from .licence_dialog import LicenceDialog
+from .windows import Windows
