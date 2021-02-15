@@ -12,3 +12,4 @@ from .mspa_tile import *
 from .p222_tile import *
 from .parc_tile import *
 from .rss_tile import *
+from .spa_tile import *

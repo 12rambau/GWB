@@ -36,3 +36,13 @@ algo = [
     {'text': 'P2: Foreground Density (%)', 'value': 1},
     {'text': 'P22: Foreground Contagion (%)', 'value': 2}
 ]
+
+###################
+##      spa      ##
+###################
+spa_options = [
+    {'text': 'SLF, Coherent', 'value': 2},
+    {'text': 'Core, Core-Openings, Margin', 'value': 3},
+    {'text': 'Core, Core-Openings, Edge, Perforation, Margin', 'value': 5},
+    {'text': 'Core, Core-Openings, Edge, Perforation, Islet, Margin', 'value': 6}
+]

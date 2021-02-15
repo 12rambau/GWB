@@ -12,6 +12,7 @@
             "p222": "P222",
             "parc": "PARC",
             "rss": "RSS",
+            "spa": "SPA",
             "about": "About",
             "licence": "licence"
         },
@@ -75,6 +76,12 @@
     "rss": {
         "title": "Restoration Status Summary",
         "description": "This module will conduct the Restoration Status Summary analysis. It will calculate key attributes of the current network status, composed of foreground (forest) patches and it provides the normalized degree of network coherence. The result are tabular summary statistics. Details on the methodology and input/output options can be found in the [Restoration Planner](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-RestorationPlanner.pdf) product sheet."
+    },
+    "spa": {
+        "title": "Simplified Pattern Analysis",
+        "description": "This module will conduct the Simplified Pattern Analysis. SPA analyses shape and conducts a segmentation of foreground patches into 2, 3, 5, or 6 feature classes. The result are spatially explicit maps and tabular summary statistics. GWB_SPA is a simpler version of GWB_MSPA. Details on the methodology and input/output options can be found in the [Morphology](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Pattern-Morphology.pdf) product sheet.",
+        "nb_classes": "number of pattern classes",
+        "no_class": "Please prove a positive number of pattern classes"
     },
     "requirement": {
         "_4": "Provide a byte images. Reafect the classes into the 4 following classes : background, foreground, special background 1 and special background 2. the remaining bands will be considered as missing data.",
