@@ -87,12 +87,13 @@
         "title": "Recoding",
         "description": "This module will conduct recoding of categorical land cover classes."
     },
-    "requirement": {
-        "_4": "Provide a byte images. Reafect the classes into the 4 following classes : background, foreground, special background 1 and special background 2. the remaining bands will be considered as missing data.",
-        "_2": "Provide a byte images. Reafect the classes into the 2 following classes : background, foreground. the remaining bands will be considered as missing data.",
-        "_3": "Provide a byte images. Reafect the classes into the 3 dominant land cover classes. the remaining bands will be considered as missing data.",
-        "_0": "select a classified tiff image. The image must contain at least 2 different classes. 0 will be considered as missing data."
-    },
+    "requirement": [
+        "select a classified tiff image. The image must contain at least 2 different classes. 0 will be considered as missing data.",
+        "",
+        "Provide a byte images. Reafect the classes into the 2 following classes : background, foreground. the remaining bands will be considered as missing data.",
+        "Provide a byte images. Reafect the classes into the 3 dominant land cover classes. the remaining bands will be considered as missing data.",
+        "Provide a byte images. Reafect the classes into the 4 following classes : background, foreground, special background 1 and special background 2. the remaining bands will be considered as missing data."
+    ],
     "bin": {
         "file_exist": "the file {} is already existing, no new bin map have been created",
         "running": "The bin map is being processed",

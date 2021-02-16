@@ -27,7 +27,7 @@ class SpaTile(GwbTile):
             .bind(options, io, 'options')
         
         super().__init__(
-            io = io
+            io = io,
             inputs = [options],
             output = self.output,
         )
