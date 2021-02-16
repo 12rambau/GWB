@@ -4,3 +4,14 @@
 ## About  
   
 GWB is a subset of the desktop software package GuidosToolbox (GTB) designed as a module application for the SEPAL plateform.  
+
+## Contribute
+
+to install the project on your SEPAL account
+```
+$ git clone https://github.com/12rambau/gfc_wrapper_python.git
+```
+
+Then you can run the `ui.ipynb` notebook.
+If you used Jupyter notebook, clik on the `voila` button.  
+If you used jupyterLab, click on the `render voila preview` button (circular shape with an orange quarter).
