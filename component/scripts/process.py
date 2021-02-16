@@ -64,8 +64,14 @@ def run_gwb_process(process, raster, params_list, title, output, offset):
             output.append_msg(line)
             
     # file in the output directory
-    out_files = next(out_dir.glob(f'{raster.stem}_{cp.gwb[process]["folder"]}*/')).glob('*.*') 
-    out_log = list(out_dir.glob(f'*.log'))
+    folder = cp.gwb[process]["folder"]
+    if folder == '':
+        out_log = list(out_dir.glob(f'*.log'))
+        out_files = [f for f in out_dir.glob("*.*") if not f.stem == '.log']
+    else:
+        out_log = list(out_dir.glob(f'*.log'))
+        out_files = next(out_dir.glob(f'{raster.stem}_{folder}*/')).glob('*.*') 
+    
     
     # if log is not there, the comutation didn't even started 
     # I let the display in its current state and change the color of the output to red
