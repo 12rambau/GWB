@@ -21,11 +21,6 @@ def run_gwb_process(process, raster, params_list, title, output, offset):
         (pathlib.Path) : the path to the final .image
         (pathlib.Path) : the path to the final .csv
     """
-     
-    # stop if already exist 
-    #if all([f.is_file() for f in files]):
-    #    output.add_live_msg(cm.gwb.file_exist.format(process.upper(), raster.stem, title), 'warning')
-    #    return files
     
     # create the tmp directories 
     tmp_dir = cp.get_tmp_dir()
@@ -69,19 +64,19 @@ def run_gwb_process(process, raster, params_list, title, output, offset):
             output.append_msg(line)
             
     # file in the output directory
-    out_files = out_dir.joinpath(f'{raster.stem}_{process}').glob('*.*')
-    out_log = out_dir.joinpath(f'{process}.log')
+    out_files = next(out_dir.glob(f'{raster.stem}_{cp.gwb[process]["folder"]}*/')).glob('*.*') 
+    out_log = list(out_dir.glob(f'*.log'))
     
     # if log is not there, the comutation didn't even started 
     # I let the display in its current state and change the color of the output to red
-    if not out_log.is_file():
+    if len(out_log) == 0:
         output.type = 'error'
         return []
     
     # if the log file is the only file then it has crashed
     
     # read the log 
-    with open(out_log) as f:
+    with open(out_log[0]) as f:
         log = f.read()
         
     # copy the files in the result directory 
