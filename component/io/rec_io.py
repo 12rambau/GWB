@@ -21,9 +21,7 @@ class RecIo(GWBIo):
     def update_byte_list(self):
         """manually update the byte_list"""
         
-        byte_list = []
-        
-        return super().update_byte_list(byte_list)
+        return super().update_byte_list([])
     
     def update_params_list(self):
         """manually update the params list"""
@@ -31,16 +29,11 @@ class RecIo(GWBIo):
         # uncode the recode.json string
         recode = json.loads(self.recode_json)
         
-        # create the param list
-        params_list = [f'{recode[str(i)]} {i}' for i in range (256)]
-        
-        return super().update_params_list(params_list)
+        return super().update_params_list([f'{recode[str(i)]} {i}' for i in range (256)])
     
     def get_params_list(self):
         """get the params list for naming purposes (_ and no spaces)"""
         
         self.update_params_list()
         
-        params = []
-        
-        return super().get_params_list(params)
+        return super().get_params_list([])

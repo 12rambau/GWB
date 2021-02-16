@@ -27,26 +27,22 @@ class AccIo(GWBIo):
     def update_byte_list(self):
         """manually update the byte_list"""
         
-        byte_list = [
+        return super().update_byte_list([
             self.background,
             self.foreground,
             self.spe_background_1,
             self.spe_background_2,
-        ]
-        
-        return super().update_byte_list(byte_list)
+        ])
     
     def update_params_list(self):
-        """manually update the params list"""
+        """manually update the params list""" 
         
-        params_list = [
+        return super().update_params_list([
                 self.connectivity,
                 self.res,
                 self.join_attr('thresholds'),
                 self.options,
-            ]
-        
-        return super().update_params_list(params_list)
+            ])
     
     def get_params_list(self):
         """get the params list for naming purposes (_ and no spaces)"""

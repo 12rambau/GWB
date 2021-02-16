@@ -1,13 +1,13 @@
 gwb = {
-    'acc': {'tile_id': 'acc_tile', 'offset': 23},
-    'dist': {'tile_id': 'dist_tile', 'offset': 17},
-    'fad': {'tile_id': 'fad_tile', 'offset': 28},
-    'frag': {'tile_id': 'frag_tile', 'offset': 32},
-    'lm': {'tile_id': 'lm_tile', 'offset': 14},
-    'mspa': {'tile_id': 'mspa_tile', 'offset': 23},
-    'p222': {'tile_id': 'p222_tile', 'offset': 23},
-    'parc': {'tile_id': 'parc_tile', 'offset': 17},
-    'rss': {'tile_id': 'rss_tile', 'offset': 14},
-    'spa': {'tile_id': 'spa_tile', 'offset': 18},
-    'rec': {'tile_id': 'rec_tile', 'offset': 20}
+    'acc':  {'offset': 23},
+    'dist': {'offset': 17},
+    'fad':  {'offset': 28},
+    'frag': {'offset': 32},
+    'lm':   {'offset': 14},
+    'mspa': {'offset': 23},
+    'p222': {'offset': 23},
+    'parc': {'offset': 17},
+    'rss':  {'offset': 14},
+    'spa':  {'offset': 18},
+    'rec':  {'offset': 20}
 }

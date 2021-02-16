@@ -11,7 +11,7 @@ class GWBIo():
     def __init__(self, process = 'gwb', byte_list = [], params_list=[], bin_map=None):
     
         # to make sure that each tile of each process have 1 name 
-        self.tile_id = cp.gwb[process]['tile_id']
+        self.tile_id = f'{process}_tile'
         self.process = process
         self.offset = cp.gwb[process]['offset']
     

@@ -32,7 +32,8 @@ def set_byte_map(class_list, raster, process, output):
     reclassify a map using the provided class list
     
     Args: 
-        class_list (list(list(int))): each list of the root list represent a byte value starting at 1. each nested list is the value of the class that need to be included into each byte value.
+        class_list (list(list(int))): each list of the root list represent a byte value starting at 1. 
+            each nested list is the value of the class that need to be included into each byte value.
         raster (pathlib.Path): the path to the original image
     """
     # check that the inputs are all separated
@@ -75,6 +76,7 @@ def set_byte_map(class_list, raster, process, output):
     return bin_map
 
 def unique(raster):
+    """Retreive all the existing feature in the byte file"""
     
     features = []
     

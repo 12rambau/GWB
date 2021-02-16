@@ -21,30 +21,22 @@ class LmIo(GWBIo):
         super().__init__(process = 'lm')
     
     def update_byte_list(self):
-        """manually update the byte_list"""
+        """manually update the byte_list""" 
         
-        byte_list = [
+        return super().update_byte_list([
             self.lc_1,
             self.lc_2,
             self.lc_3
-        ]
-        
-        return super().update_byte_list(byte_list)
+        ])
     
     def update_params_list(self):
         """manually update the params list"""
         
-        params_list = [
-                self.kdim
-            ]
-        
-        return super().update_params_list(params_list)
+        return super().update_params_list([self.kdim])
     
     def get_params_list(self):
         """get the params list for naming purposes (_ and no spaces)"""
         
         self.update_params_list()
         
-        params = self.params_list
-        
-        return super().get_params_list(params)
+        return super().get_params_list(self.params_list)

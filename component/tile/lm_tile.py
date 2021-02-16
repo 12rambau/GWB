@@ -9,12 +9,11 @@ from component import parameter as cp
 from component import widget as cw
 from component import scripts as cs
 
-class LmTile(sw.Tile):
+from .gwb_tile import GwbTile
 
-    def __init__(self, io):
-        
-        # gather io 
-        self.io = io 
+class LmTile(GwbTile):
+
+    def __init__(self, io): 
         
         # create the widgets
         kdim = v.TextField(
@@ -26,23 +25,13 @@ class LmTile(sw.Tile):
         
         # bind to the io
         self.output = sw.Alert() \
-            .bind(kdim, self.io, 'kdim')
-        
-        # create the btn 
-        btn = sw.Btn(cm.process.btn.format(io.process))
+            .bind(kdim, io, 'kdim')
         
         super().__init__(
-            self.io.tile_id,
-            "Run Process",
-            inputs = [
-                kdim
-            ],
-            output = self.output,
-            btn = btn
+            io = io,
+            inputs = [kdim],
+            output = self.output
         )
-        
-        # link js behaviours
-        btn.on_event('click', self._on_click)
         
     def _on_click(self, widget, event, data):
         
@@ -52,31 +41,6 @@ class LmTile(sw.Tile):
         # check inputs 
         if not self.output.check_input(self.io.kdim, cm.lm.no_kdim): return widget.toggle_loading()
         
-        try:
-            
-            # update the params list 
-            self.io.update_params_list()
-        
-            # compute acc process 
-            files = cs.run_gwb_process(
-                process = self.io.process, 
-                raster = self.io.bin_map, 
-                params_list = self.io.params_list, 
-                title = self.io.get_params_list(), 
-                output = self.output,
-                offset = self.io.offset
-            )
-            
-            # add the files to the download links
-            
-        except Exception as e:
-            self.output.add_live_msg(str(e), 'error')
-        
-        # remove the tmp directory 
-        # whatever the result
-        shutil.rmtree(cp.get_tmp_dir())
-        
-        # release the btn 
-        widget.toggle_loading()
+        super()._on_click(widget, event, data)
         
         return
