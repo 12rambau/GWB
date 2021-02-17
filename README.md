@@ -9,7 +9,7 @@ GWB is a subset of the desktop software package GuidosToolbox (GTB) designed as 
 
 to install the project on your SEPAL account
 ```
-$ git clone https://github.com/12rambau/gfc_wrapper_python.git
+$ git clone https://github.com/12rambau/gwb.git
 ```
 
 Then you can run the `ui.ipynb` notebook.
