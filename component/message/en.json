@@ -14,7 +14,7 @@
             "rss": "RSS",
             "spa": "SPA",
             "about": "About",
-            "licence": "licence"
+            "licence": "Licence"
         },
         "licence": {
             "title": "User licence",
@@ -22,7 +22,7 @@
         }
     },
     "acc": {
-        "title":  "Accounting of image objects and area classes",
+        "title":  "ACC: Accounting of image objects and area classes",
         "description": "This module will conduct the Accounting analysis. Accounting will label and calculate the area of all foreground objects (coded with 2 byte). The result are spatially explicit maps and tabular summary statistics. Details on the methodology can be found in the [Accounting product sheet](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Objects-Accounting.pdf).",
         "connectivity": "Foreground connectivity",
         "res": "spatial pixel resolution (meters)",
@@ -34,29 +34,29 @@
         "no_options": "Please select an option"
     },
     "dist": {
-        "title": "Euclidean Distance",
+        "title": "DIST: Euclidean Distance",
         "description": "This module will conduct the Euclidean Distance analysis. Each pixel will show the shortest distance to the foreground (coded with 2 byte) boundary. Pixels inside a foreground object have a positive distance value while background pixels have a negative distance value. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the [Distance](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Distance-Euclidean.pdf) product sheet."
     },
     "fad": {
-        "title": "Fragmentation",
+        "title": "FAD: Fragmentation",
         "description": "This module will conduct the fragmentation analysis at five fixed observation scales. Because forest fragmentation is scale-dependent, fragmentation is reported at five observation scales, which allows different observers to make their own choice about scales and threshold of concern. The change of fragmentation across different observation scales provides additional interesting information. Fragmentation is measured by determining the Forest Area Density (FAD) within a shifting, local neighborhood. It can be measured at pixel or patch level. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the [Fragmentation](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf) product sheet.",
         "prescision": "Computation prescision",
         "no_prescision": "Please set the prescision"
     },
     "frag": {
-        "title": "fragmentation",
+        "title": "FRAG: fragmentation",
         "description": "This module will conduct the fragmentation analysis at a user-selected observation scale. This module and its option are similar to GWB_FAD but allow the user to specify a single (or multiple) specific observation scale. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the [Fragmentation](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf) product sheet.",
         "windows": "Window sizes",
         "no_windows": "Please provide at least 1 window size"
     },
     "lm": {
-        "title": "Landscape Mosaic",
+        "title": "LM: Landscape Mosaic",
         "description": "This module will conduct the Landscape Mosaic analysis at a user-selected observation scale. The Landscape Mosaic measures land cover heterogeneity, or human influence, in a tri-polar classification of a location accounting for the relative contributions of the three land cover types Agriculture, Natural, Developed in the area surrounding that location. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the [Landscape Mosaic](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Pattern-LM.pdf) product sheet.",
         "kdim": "square window size (pixels)",
         "no_kdim": "Please provide a square window size"
     },
     "mspa": {
-        "title": "Morphological Spatial Pattern Analysis",
+        "title": "MSPA: Morphological Spatial Pattern Analysis",
         "description": "This module will conduct the Morphological Spatial Pattern Analysis. MSPA analyses shape and connectivity and conducts a segmentation of foreground patches in up to 25 feature classes. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the [Morphology](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Pattern-Morphology.pdf) product sheet.",
         "edge_width": "edge width (pixels)",
         "transition": "transition",
@@ -65,34 +65,34 @@
 
     },
     "p222": {
-        "title": "Density (P2) or Contagion (P22)",
+        "title": "P222: Density (P2) or Contagion (P22)",
         "description": "This module will conduct the density (P2) or contagion (P22) analysis of foreground objects at a user-selected observation scale (Riitters et al. (2000)). The result are spatially explicit maps and tabular summary statistics. The classification is determined by measurements of forest amount (P2) and connectivity (P22) within the neighborhood that is centered on a subject forest pixel. P2 is the probability that a pixel in the neighborhood is forest, and P22 is the probability that a pixel next to a forest pixel is also forest.",
         "algo": "algorithm"
     },
     "parc": {
-        "title": "Parcellation",
+        "title": "PARC: Parcellation",
         "description": "This module will conduct the parcellation analysis. This module provides a statistical summary file (txt/csv- format) with details for each unique class found in the image as well as the full image content: class value, total number of objects, total area, degree of parcellation. Details on the methodology and input/output options can be found in the [Parcellation](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Objects-Parcellation.pdf) product sheet."
     },
     "rss": {
-        "title": "Restoration Status Summary",
+        "title": "RSS: Restoration Status Summary",
         "description": "This module will conduct the Restoration Status Summary analysis. It will calculate key attributes of the current network status, composed of foreground (forest) patches and it provides the normalized degree of network coherence. The result are tabular summary statistics. Details on the methodology and input/output options can be found in the [Restoration Planner](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-RestorationPlanner.pdf) product sheet."
     },
     "spa": {
-        "title": "Simplified Pattern Analysis",
+        "title": "SPA: Simplified Pattern Analysis",
         "description": "This module will conduct the Simplified Pattern Analysis. SPA analyses shape and conducts a segmentation of foreground patches into 2, 3, 5, or 6 feature classes. The result are spatially explicit maps and tabular summary statistics. GWB_SPA is a simpler version of GWB_MSPA. Details on the methodology and input/output options can be found in the [Morphology](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Pattern-Morphology.pdf) product sheet.",
         "nb_classes": "number of pattern classes",
         "no_class": "Please prove a positive number of pattern classes"
     },
     "rec": {
-        "title": "Recoding",
+        "title": "REC: Recoding",
         "description": "This module will conduct recoding of categorical land cover classes."
     },
     "requirement": [
         "select a classified tiff image. The image must contain at least 2 different classes. 0 will be considered as missing data.",
         "",
-        "Provide a byte images. Reafect the classes into the 2 following classes : background, foreground. the remaining bands will be considered as missing data.",
-        "Provide a byte images. Reafect the classes into the 3 dominant land cover classes. the remaining bands will be considered as missing data.",
-        "Provide a byte images. Reafect the classes into the 4 following classes : background, foreground, special background 1 and special background 2. the remaining bands will be considered as missing data."
+        "Provide a byte image. Recode the classes into the following 2 classes : background, foreground. All remaining classes will be considered as missing data.",
+        "Provide a byte images. Recode the classes into the 3 dominant land cover classes. All remaining classes will be considered as missing data.",
+        "Provide a byte images. Recode the classes into the 4 following classes : background, foreground, special background 1 and special background 2. All remaining classes will be considered as missing data."
     ],
     "bin": {
         "file_exist": "the file {} is already existing, no new bin map have been created",

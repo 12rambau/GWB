@@ -82,7 +82,7 @@ The Joint Research Centre of the European Commission has developed a software to
 European Commission, Joint Research Centre  
 Intellectual Property and Technology Transfer Unit  
 To the attention of the Head of Unit:  
-[JRC-TT-CONTRACTS@ec.europa.eu](JRC-TT-CONTRACTS@ec.europa.eu)  
+[JRC-TT-CONTRACTS@ec.europa.eu](mailto:JRC-TT-CONTRACTS@ec.europa.eu)  
                                                                
 
 **For technical questions**  
@@ -90,7 +90,7 @@ European Commission, Joint Research
 Centre Directorate D - Sustainable Resources  
 Via E. Fermi 2749 – TP 261, I-21027 Ispra (VA), Italy  
 To the attention of Peter Vogt:  
-[peter.vogt@ec.europa.eu](peter.vogt@ec.europa.eu)  
+[peter.vogt@ec.europa.eu](mailto:peter.vogt@ec.europa.eu)  
 
 <br>
 

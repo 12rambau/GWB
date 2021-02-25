@@ -23,6 +23,7 @@ class MspaTile(GwbTile):
         )
         edge_width = v.Slider(
             label = cm.mspa.edge_width,
+            min = 1,
             max = 30,
             v_model = 1
         )
