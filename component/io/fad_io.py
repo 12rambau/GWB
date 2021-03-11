@@ -18,7 +18,7 @@ class FadIo(GWBIo):
         
         # the process 
         self.connectivity = cp.connectivity[0]
-        self.prescision = None
+        self.prescision = cp.prescision[0]['value']
         self.options = cp.fad_options[0]['value']
         
         super().__init__(process = 'fad')

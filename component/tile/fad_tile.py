@@ -24,7 +24,7 @@ class FadTile(GwbTile):
         prescision = v.Select(
             label = cm.fad.prescision,
             items = cp.prescision,
-            v_model = None
+            v_model = cp.prescision[0]['value']
         )
         options = v.Select(
             label = cm.acc.options,
