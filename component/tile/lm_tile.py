@@ -17,6 +17,7 @@ class LmTile(GwbTile):
         
         # create the widgets
         kdim = v.TextField(
+            class_ = "mb-2",
             label = cm.lm.kdim,
             type= 'number',
             v_model = None,
