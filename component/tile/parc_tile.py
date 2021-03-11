@@ -19,7 +19,7 @@ class ParcTile(GwbTile):
         connectivity = v.Select(
             label = cm.acc.connectivity,
             items = cp.connectivity,
-            v_model = cp.connectivity[0]
+            v_model = cp.connectivity[0]['value']
         )        
         
         # bind to the io

@@ -17,7 +17,7 @@ class FragIo(GWBIo):
         self.spe_background_2 = []
         
         # the process 
-        self.connectivity = cp.connectivity[0]
+        self.connectivity = cp.connectivity[0]['value']
         self.res = None
         self.window_size = "[]"
         self.prescision = cp.prescision[0]['value']

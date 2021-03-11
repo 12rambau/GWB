@@ -17,7 +17,7 @@ class FadIo(GWBIo):
         self.spe_background_2 = []
         
         # the process 
-        self.connectivity = cp.connectivity[0]
+        self.connectivity = cp.connectivity[0]['value']
         self.prescision = cp.prescision[0]['value']
         self.options = cp.fad_options[0]['value']
         

@@ -1,7 +1,11 @@
 ###################
 ##      acc      ##
 ###################
-connectivity = [8, 4]
+connectivity = [
+    {'text': '8 (default)', 'value': 8},
+    {'text': '4', 'value': 4}
+]
+
 acc_options = [
     {'value':'default', 'text': "stats + image of viewport" },
     {'value':'detailed', 'text': 'stats + images of ID, area, viewport'}

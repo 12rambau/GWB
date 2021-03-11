@@ -15,7 +15,7 @@ class RssIo(GWBIo):
         self.foreground = []
         
         # the process 
-        self.connectivity = cp.connectivity[0]
+        self.connectivity = cp.connectivity[0]['value']
         
         super().__init__(process = 'rss')
     

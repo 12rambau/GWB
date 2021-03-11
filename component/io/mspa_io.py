@@ -15,7 +15,7 @@ class MspaIo(GWBIo):
         self.foreground = []
         
         # the process 
-        self.connectivity = cp.connectivity[0]
+        self.connectivity = cp.connectivity[0]['value']
         self.edge_width = 1
         self.transition = 1
         self.int_ext = 1

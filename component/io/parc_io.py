@@ -11,7 +11,7 @@ class ParcIo(GWBIo):
         self.file = None
         
         # the process 
-        self.connectivity = cp.connectivity[0]
+        self.connectivity = cp.connectivity[0]['value']
         self.res = None
         self.thresholds = "[]"
         self.options = cp.acc_options[0]['value']

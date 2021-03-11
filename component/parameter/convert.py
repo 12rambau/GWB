@@ -43,12 +43,12 @@ convert = {
         'label': [
             'background',
             'foreground',
-            'spe_background_1'
+            'special background'
         ],
         'io': [
             'background',
             'foreground',
-            'spe_background_1'
+            'spe_background'
         ]
     }
 }
