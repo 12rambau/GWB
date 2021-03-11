@@ -21,12 +21,12 @@ class ConvertByte(sw.Tile):
             v_model = None, 
             chips = True, 
             multiple = True
-        ) for i in range(nb_class)]
+        ) for i in range(len(cp.convert[nb_class]['label']))]
         requirements = sw.Markdown(cm.requirement[nb_class])
         
         # bind it to the io 
         self.output = sw.Alert().bind(self.file, self.io, 'file')
-        for i in range(nb_class):
+        for i in range(len(cp.convert[nb_class]['label'])):
             self.output.bind(self.classes[i], self.io, cp.convert[nb_class]['io'][i])
         
         # create the btn

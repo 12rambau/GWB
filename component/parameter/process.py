@@ -33,8 +33,14 @@ prescision = [
 ##      p222      ##
 ####################
 algo = [
-    {'text': 'P2: Foreground Density (%)', 'value': 1},
-    {'text': 'P22: Foreground Contagion (%)', 'value': 2}
+    {'text': 'FG-Density (FG-masked and normalised)', 'value': 1},
+    {'text': 'FG-Contagion (FG-masked and normalised)', 'value': 2},
+    {'text': 'FG-Adjacency (FG-masked and normalised)', 'value': 3},
+    {'text': 'FG-Density (original spatcon output)', 'value': 11},
+    {'text': 'FG-Contagion (original spatcon output)', 'value': 12},
+    {'text': 'FG-Adjacency (original spatcon output)', 'value': 13},
+    {'text': 'FG-Shannon (original spatcon output)', 'value': 14},
+    {'text': 'FG-SumD (original spatcon output)', 'value': 15}
 ]
 
 ###################

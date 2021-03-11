@@ -1,4 +1,8 @@
 convert = {
+    0: {
+        'label': [],
+        'io': []
+    },
     4: {
         'label': [
             'background',
@@ -35,4 +39,16 @@ convert = {
             'lc_3'
         ]
     },
+    5: { # there is no 5 class based module, it's just that the p223 module make too many different things and is not build on the same structure as the others
+        'label': [
+            'background',
+            'foreground',
+            'spe_background_1'
+        ],
+        'io': [
+            'background',
+            'foreground',
+            'spe_background_1'
+        ]
+    }
 }

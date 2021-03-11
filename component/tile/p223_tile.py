@@ -11,13 +11,13 @@ from component import scripts as cs
 
 from .gwb_tile import GwbTile
 
-class P222Tile(GwbTile):
+class P223Tile(GwbTile):
 
     def __init__(self, io):
         
         # create the widgets
         algorithm = v.Select(
-            label = cm.p222.algo,
+            label = cm.p223.algo,
             items = cp.algo,
             v_model = cp.algo[0]['value']
         )

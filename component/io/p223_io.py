@@ -3,7 +3,7 @@ import json
 from .gwb_io import GWBIo
 from component  import parameter as cp
 
-class P222Io(GWBIo):
+class P223Io(GWBIo):
     
     def __init__(self):
         
@@ -19,7 +19,7 @@ class P222Io(GWBIo):
         self.kdim = None
         self.prescision = cp.prescision[0]['value']
         
-        super().__init__(process = 'p222')
+        super().__init__(process = 'p223')
     
     def update_byte_list(self):
         """manually update the byte_list""" 

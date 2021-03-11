@@ -9,7 +9,7 @@
             "frag": "FRAG",
             "lm": "LM",
             "mspa": "MSPA",
-            "p222": "P222",
+            "p223": "p223",
             "parc": "PARC",
             "rss": "RSS",
             "spa": "SPA",
@@ -67,8 +67,8 @@
         "no_edge_width": "Please provide a positive edge width"
 
     },
-    "p222": {
-        "title": "P222: Density (P2) or Contagion (P22)",
+    "p223": {
+        "title": "p223: Density (P2), Contagion (P22) or or FG-Adjacency (P23)",
         "description": "This module will conduct the density (P2) or contagion (P22) analysis of foreground objects at a user-selected observation scale (Riitters et al. (2000)). The result are spatially explicit maps and tabular summary statistics. The classification is determined by measurements of forest amount (P2) and connectivity (P22) within the neighborhood that is centered on a subject forest pixel. P2 is the probability that a pixel in the neighborhood is forest, and P22 is the probability that a pixel next to a forest pixel is also forest.",
         "algo": "algorithm"
     },
@@ -95,7 +95,8 @@
         "",
         "Provide a byte image. Recode the classes into the following 2 classes : background (nonforest), foreground (forest). All remaining classes will be considered as missing data.",
         "Provide a byte images. Recode the classes into the 3 dominant land cover classes. All remaining classes will be considered as missing data.",
-        "Provide a byte images. Recode the classes into the 4 following classes : background (nonforest), foreground (forest), special background 1 (e.g. water) and special background 2. All remaining classes will be considered as missing data."
+        "Provide a byte images. Recode the classes into the 4 following classes : background (nonforest), foreground (forest), special background 1 (e.g. water) and special background 2. All remaining classes will be considered as missing data.",
+        "Provide a byte images. Recode the classes into the 3 following classes : background (nonforest), foreground (forest), special background 1 (for P23 only). All remaining classes will be considered as missing data."
     ],
     "bin": {
         "btn": "Convert the image classes",
