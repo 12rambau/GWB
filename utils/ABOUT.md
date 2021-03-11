@@ -1,4 +1,4 @@
-The GuidosToolbox Workbench (GWB) is a subset of the desktop software package GuidosToolbox (GTB) designed as a module application for Linux servers, for example the SEPAL platform.  
+The GuidosToolbox Workbench (GWB) is a subset of the desktop software package GuidosToolbox ([GTB](https://forest.jrc.ec.europa.eu/en/activities/lpa/gtb/)) designed as a modular application for Linux servers
   
 GWB source code can be downloaded from the [GWB homepage](https://forest.jrc.ec.europa.eu/en/activities/lpa/gwb/)
 
