@@ -24,7 +24,8 @@ class AccTile(GwbTile):
         res = v.TextField(
             label = cm.acc.res,
             type= 'number',
-            v_model = None
+            v_model = None,
+            hint = cm.acc.res_hint
         )
         thresholds = cw.Thresholds(label = cm.acc.thresholds)
         options = v.Select(
@@ -33,7 +34,6 @@ class AccTile(GwbTile):
             v_model = cp.acc_options[0]['value']
         )
         
-        
         # bind to the io
         self.output = sw.Alert() \
             .bind(connectivity, io, 'connectivity') \
@@ -41,7 +41,8 @@ class AccTile(GwbTile):
             .bind(thresholds.save, io, 'thresholds') \
             .bind(options, io, 'options')
         
-        
+        # extra js behaviour 
+        res.on_event('focusout', self._on_focus_out)
         
         super().__init__(
             io = io, 
@@ -69,3 +70,29 @@ class AccTile(GwbTile):
         super()._on_click(widget, event, data)
         
         return
+    
+    def _on_focus_out(self, widget, event, data):
+        
+        # clear error 
+        widget.error_messages = None
+        
+        # get out if v_model is none
+        if not widget.v_model:
+            return self
+        
+        valid = True
+        try:
+            
+            value = int(widget.v_model)
+            
+            if value < 0:
+                valid = False
+                
+        except ValueError:
+            valid = False 
+            
+        if not valid:
+            widget.v_model = None
+            widget.error_messages = [cm.acc.res_hint]
+            
+        return self

@@ -30,11 +30,11 @@ class ConvertByte(sw.Tile):
             self.output.bind(self.classes[i], self.io, cp.convert[nb_class]['io'][i])
         
         # create the btn
-        btn = sw.Btn("Convert the imag classes")
+        btn = sw.Btn(cm.bin.btn)
         
         super().__init__(
             self.io.tile_id,
-            "Select map classes",
+            cm.bin.title,
             inputs = [requirements, self.file] + self.classes,
             output = self.output,
             btn = btn

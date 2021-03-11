@@ -24,6 +24,7 @@ class P222Tile(GwbTile):
         kdim = v.TextField(
             label = cm.lm.kdim,
             type= 'number',
+            hint=cm.frag.invalid_window,
             v_model = None
         )
         prescision = v.Select(
@@ -37,6 +38,9 @@ class P222Tile(GwbTile):
             .bind(algorithm, io, 'algorithm') \
             .bind(kdim, io, 'kdim') \
             .bind(prescision, io, 'prescision')
+        
+        # create extra js behaviour 
+        kdim.on_event('focusout', self._on_focusout)
         
         super().__init__(
             io = io,
@@ -60,3 +64,19 @@ class P222Tile(GwbTile):
         super()._on_click(widget, event, data)
         
         return
+    
+    def _on_focusout(self, widget, event, data):
+        
+        # clear the error message 
+        widget.error_messages = None
+        
+        # check if an input exist 
+        if not widget.v_model:
+            return self
+        
+        # test the value over the limits 
+        if not cs.is_valid_window(widget.v_model): 
+            widget.v_model = False
+            widget.error_messages = [cm.frag.invalid_window]
+            
+        return self

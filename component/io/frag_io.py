@@ -20,7 +20,7 @@ class FragIo(GWBIo):
         self.connectivity = cp.connectivity[0]
         self.res = None
         self.window_size = "[]"
-        self.prescision = None
+        self.prescision = cp.prescision[0]['value']
         self.options = cp.fad_options[0]['value']
         
         super().__init__(process = 'frag')

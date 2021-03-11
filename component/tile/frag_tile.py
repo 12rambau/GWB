@@ -24,7 +24,8 @@ class FragTile(GwbTile):
         res = v.TextField(
             label = cm.acc.res,
             type= 'number',
-            v_model = None
+            v_model = None,
+            hint = cm.acc.res_hint
         )
         windows = cw.Windows(label = cm.frag.windows)
         options = v.Select(
@@ -36,7 +37,7 @@ class FragTile(GwbTile):
         prescision = v.Select(
             label = cm.fad.prescision,
             items = cp.prescision,
-            v_model = None
+            v_model = cp.prescision[0]['value']
         )
         
         
@@ -47,6 +48,9 @@ class FragTile(GwbTile):
             .bind(windows.save, io, 'window_size') \
             .bind(options, io, 'options') \
             .bind(prescision, io, 'prescision')
+        
+        # extra js behaviour 
+        res.on_event('focusout', self._on_focus_out)
         
         super().__init__(
             io = io,
@@ -76,3 +80,29 @@ class FragTile(GwbTile):
         super()._on_click(widget, event, data)
         
         return
+    
+    def _on_focus_out(self, widget, event, data):
+        
+        # clear error 
+        widget.error_messages = None
+        
+        # get out if v_model is none
+        if not widget.v_model:
+            return self
+        
+        valid = True
+        try:
+            
+            value = int(widget.v_model)
+            
+            if value < 0:
+                valid = False
+                
+        except ValueError:
+            valid = False 
+            
+        if not valid:
+            widget.v_model = None
+            widget.error_messages = [cm.acc.res_hint]
+            
+        return self
