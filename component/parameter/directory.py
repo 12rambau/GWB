@@ -11,7 +11,7 @@ module_dir = Path('~','module_results').expanduser()
 module_dir.mkdir(exist_ok=True)
 
 # create the general result dir
-result_dir = module_dir.joinpath('gwb_results')
+result_dir = module_dir.joinpath('gwb')
 result_dir.mkdir(exist_ok = True)
 
 def get_result_dir(process):
