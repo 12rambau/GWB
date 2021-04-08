@@ -65,13 +65,7 @@ def run_gwb_process(process, raster, params_list, title, output, offset):
             
     # file in the output directory
     folder = cp.gwb[process]["folder"]
-    if folder == '':
-        out_log = list(out_dir.glob(f'*.log'))
-        out_files = [f for f in out_dir.glob("*.*") if not f.stem == '.log']
-    else:
-        out_log = list(out_dir.glob(f'*.log'))
-        out_files = next(out_dir.glob(f'{raster.stem}_{folder}*/')).glob('*.*') 
-    
+    out_log = list(out_dir.glob(f'*.log'))        
     
     # if log is not there, the comutation didn't even started 
     # I let the display in its current state and change the color of the output to red
@@ -79,12 +73,21 @@ def run_gwb_process(process, raster, params_list, title, output, offset):
         output.type = 'error'
         return []
     
-    # if the log file is the only file then it has crashed
-    
     # read the log 
     with open(out_log[0]) as f:
         log = f.read()
+        output.add_live_msg(v.Html(tag='pre', class_='info--text d-inline', children=[log]))
         
+    # if the log file is the only file then it has crashed
+    try:
+        if folder == '':
+            out_files = [f for f in out_dir.glob("*.*") if not f.stem == '.log']
+        else:
+            out_files = next(out_dir.glob(f'{raster.stem}_{folder}*/')).glob('*.*') 
+    except:
+        output.add_live_msg(v.Html(tag='pre', class_='error--text d-inline', children=[log]), 'error')
+        return []
+    
     # copy the files in the result directory 
     files = []
     for f in out_files:

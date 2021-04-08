@@ -47,8 +47,6 @@ class GwbTile(sw.Tile):
                 offset = self.io.offset
             )
             
-            # add the files to the download links
-            
         except Exception as e:
             self.output.add_live_msg(str(e), 'error')
         
