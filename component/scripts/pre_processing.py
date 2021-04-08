@@ -62,10 +62,21 @@ def set_byte_map(class_list, raster, process, output):
             data = raw_data
         else:
             data = np.zeros_like(raw_data, dtype = np.uint8)
+            total_class = sum([len(c) for c in class_list]) 
+            c = 0
+            output.update_progress(0)
             for index, class_ in enumerate(class_list):
+                
+                bool_data = np.zeros_like(raw_data, dtype = np.bool_)
                 for val in class_:
-                    data_value = ((raw_data == val) * (index + 1)).astype(np.uint8)
+                    bool_data = bool_data + (raw_data == val)
+                    
+                    data_value = (bool_data * (index + 1)).astype(np.uint8)
                     data = data + data_value
+                    
+                    # display the advancement
+                    c += 1
+                    output.update_progress(c/total_class)
                 
             data = data.astype(out_meta['dtype'])
                 
