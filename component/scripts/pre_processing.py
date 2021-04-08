@@ -71,12 +71,14 @@ def set_byte_map(class_list, raster, process, output):
                 for val in class_:
                     bool_data = bool_data + (raw_data == val)
                     
-                    data_value = (bool_data * (index + 1)).astype(np.uint8)
-                    data = data + data_value
-                    
                     # display the advancement
                     c += 1
                     output.update_progress(c/total_class)
+                    
+                data_value = (bool_data * (index + 1)).astype(np.uint8)
+                data = data + data_value
+                    
+                    
                 
             data = data.astype(out_meta['dtype'])
                 
