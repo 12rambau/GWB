@@ -61,10 +61,11 @@ def set_byte_map(class_list, raster, process, output):
         if class_list == []:
             data = raw_data
         else:
-            data = np.zeros_like(raw_data)
+            data = np.zeros_like(raw_data, dtype = np.uint8)
             for index, class_ in enumerate(class_list):
                 for val in class_:
-                    data = data + (raw_data == val) * (index + 1)
+                    data_value = ((raw_data == val) * (index + 1)).astype(np.uint8)
+                    data = data + data_value
                 
             data = data.astype(out_meta['dtype'])
                 
@@ -82,11 +83,16 @@ def unique(raster):
     
     if raster:
         raster = Path(raster)
+    else: 
+        raise Exception("no raster given")
         
-        with rio.open(raster) as src:
-            data = src.read(1)
-            count = np.bincount(data.flatten())
-            features = np.where(count!=0)[0]
-            features = features.tolist()
+    with rio.open(raster) as src:
+
+        data = src.read(1)
+        count = np.bincount(data.flatten())
+        del data
+
+        features = np.where(count!=0)[0]
+        features = features.tolist()
         
     return features

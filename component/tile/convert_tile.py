@@ -54,25 +54,25 @@ class ConvertByte(sw.Tile):
         #if not self.output.check_input(len(self.io.foreground), cm.bin.no_classes): return widget.toggle_loading()
             
         # compute the bin map
-        try:
+        #try:
         
-            # update byte list 
-            self.io.update_byte_list()
+        # update byte list 
+        self.io.update_byte_list()
         
-            # create a bin map 
-            bin_map = cs.set_byte_map(
-                self.io.byte_list, 
-                self.io.file, 
-                self.io.process, 
-                self.output
-            )
+        # create a bin map 
+        bin_map = cs.set_byte_map(
+            self.io.byte_list, 
+            self.io.file, 
+            self.io.process, 
+            self.output
+        )
             
-            self.io.set_bin_map(bin_map)
+        self.io.set_bin_map(bin_map)
             
-            # add the bin map to the download btn
+        # add the bin map to the download btn
             
-        except Exception as e:
-            self.output.add_live_msg(str(e), 'error')
+        #except Exception as e:
+        #    self.output.add_live_msg(str(e), 'error')
                 
             
         # release the btn 
