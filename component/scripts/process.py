@@ -98,6 +98,18 @@ def run_gwb_process(process, raster, params_list, title, output, offset):
     output.add_live_msg(v.Html(tag='pre', class_='success--text d-inline', children=[log]), 'success')
     
     return files
+
+def download_test(output):
+    
+    #retreive the files from backup dir 
+    files = [f for f in cp.backup_dir.glob('*.tif')]
+    for f in files:
+        shutil.copy(f, cp.down_dir)
+        
+    output.add_live_msg(cm.bin.default.msg.format(files[0].name, files[1].name), "success")
+        
+    return
+    
         
     
     

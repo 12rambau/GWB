@@ -14,6 +14,7 @@ class ConvertByte(sw.Tile):
         self.io = io
         
         # create the widgets 
+        self.down_test = sw.Btn(cm.bin.default.btn, icon="mdi-cloud-download-outline", small=True, outlined=True, class_="ma-5")
         self.file = sw.FileInput(['.tif', '.tiff'])
         self.classes = [v.Select(
             label = cp.convert[nb_class]['label'][i], 
@@ -38,7 +39,7 @@ class ConvertByte(sw.Tile):
         super().__init__(
             self.io.tile_id,
             cm.bin.title,
-            inputs = [requirements, self.file] + self.classes,
+            inputs = [self.down_test, v.Divider(), requirements, self.file] + self.classes,
             output = self.output,
             btn = btn
         )
@@ -46,6 +47,7 @@ class ConvertByte(sw.Tile):
         # bind js event
         btn.on_event('click', self._on_click)
         self.file.observe(self._on_change, 'v_model')
+        self.down_test.on_event('click', self._on_download)
         
     def _on_click(self, widget, event, data):
             
@@ -96,5 +98,15 @@ class ConvertByte(sw.Tile):
         # add the new list as items 
         for i in range(nb_class):
             self.classes[i].items = features
+        
+        return self
+    
+    def _on_download(self, widget, event, data):
+        
+        widget.toggle_loading()
+        
+        cs.download_test(self.output)
+        
+        widget.toggle_loading()
         
         return self
