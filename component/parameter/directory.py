@@ -39,6 +39,8 @@ def get_licence_dir():
 
 utils_dir = Path(__file__).parent.parent.parent.joinpath('utils')
 template_dir = utils_dir.joinpath('template')
+backup_dir = utils_dir/'backup'
+down_dir = Path('~', 'downloads').expanduser()
 
 #####################
 ##      files      ##

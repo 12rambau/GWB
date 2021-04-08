@@ -29,7 +29,7 @@ class GwbTile(sw.Tile):
         
     def _on_click(self, widget, event, data):
         
-        # the btn will be sience in the tiles
+        # the btn will be silence in the tiles
         # widget.toggle_loading()
         
         try:
