@@ -75,8 +75,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :align: left
-        :scale: 60
+        :width: 20%
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
     
@@ -128,7 +127,7 @@ This set the foreground connectivity of your analysis:
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
     :alt: connectivity image
-    :scale: 50
+    :width: 50%
     
 spatial pixel resolution
 ########################
@@ -189,8 +188,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :align: left
-        :scale: 60
+        :width: 20%
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
     
@@ -238,7 +236,7 @@ This set the foreground connectivity of your analysis:
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
     :alt: connectivity image
-    :scale: 50
+    :width: 50%
 
 Options
 #######
@@ -269,6 +267,8 @@ The final files can be retreived in :code:`module_results/gwb/dist/` folder. it 
 
     If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
     
+Here is the result of the computation using the default parameters on the :code:`example.tif` file.
+    
 .. image:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_dist_hmc.png
     :width: 49%
 
@@ -289,8 +289,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :align: left
-        :scale: 60
+        :width: 20%
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
     
@@ -341,7 +340,7 @@ This set the foreground connectivity of your analysis:
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
     :alt: connectivity image
-    :scale: 50
+    :width: 50%
     
 Computation prescision
 ######################
@@ -379,6 +378,8 @@ The final files can be retreived in :code:`module_results/gwb/fad/` folder. it s
 
     If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
     
+Here is the result of the computation using the default parameters on the :code:`example.tif` file.
+    
 .. image:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_fad_barplot.png
     :width: 49%
 
@@ -399,8 +400,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :align: left
-        :scale: 60
+        :width: 20%
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
@@ -458,7 +458,7 @@ This set the foreground connectivity of your analysis:
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
     :alt: connectivity image
-    :scale: 50
+    :width: 50%
     
 spatial pixel resolution
 ########################
@@ -499,6 +499,8 @@ The final files can be retreived in :code:`module_results/gwb/frag/` folder. it 
 
     If the rectangle become red, read attentively the instruction of the logs. Usually the instance your using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
     
+Here is the result of the computation using the default parameters on the :code:`example.tif` file.
+    
 .. figure:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_fad-app2_23.tif
     :width: 50%
 
@@ -516,8 +518,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :align: left
-        :scale: 60
+        :width: 20%
     
     Once the file is downloaded follow the normal process using the :code:`downloads/clc3classes.tif` file (3 classes).
     
@@ -591,6 +592,8 @@ The final files can be retreived in :code:`module_results/gwb/lm/` folder. it sh
 
     If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
     
+Here is the result of the computation using the default parameters on the :code:`clc3classes.tif` file.
+    
 .. image:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/lm103class_legend.png
     :width: 49%
 
@@ -611,8 +614,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :align: left
-        :scale: 60
+        :width: 20%
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
@@ -662,7 +664,7 @@ This set the foreground connectivity of your analysis:
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
     :alt: connectivity image
-    :scale: 50
+    :width: 50%
     
 Edge width
 ##########
@@ -697,6 +699,8 @@ The final files can be retreived in :code:`module_results/gwb/mspa/` folder. it 
 
     If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
     
+Here is the result of the computation using the default parameters on the :code:`example.tif` file.
+    
 .. image:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/mspalegend.gif
     :width: 49%
 
@@ -717,8 +721,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :align: left
-        :scale: 60
+        :width: 20%
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
@@ -765,11 +768,12 @@ Window size
 Set the square window size (in pixels) It should be an odd number in [3, 5, ...501].
 with :math:`kdim` beeing the window size you can calculate it from the observation scale using the following formula: 
 
-..math::
+.. math::
 
     obs_scale = (pixres * kdim)^2 / 10000
     
 with 
+
 - :math:`obs_scale` in hectare
 - :math:`pixres` in meters
 - :math:`kdim` in pixels
@@ -825,7 +829,9 @@ The final files can be retreived in :code:`module_results/gwb/p223/` folder. it 
 .. danger::
 
     If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
-    
+
+Here is the result of the computation using the default parameters on the :code:`example.tif` file.
+
 .. figure:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_p2_27.tif
     :width: 50%
 
@@ -844,8 +850,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :align: left
-        :scale: 60
+        :width: 20%
     
     Once the file is downloaded follow the normal process using the :code:`downloads/clc3classes.tif` file (3 classes).
     
@@ -881,7 +886,7 @@ This set the foreground connectivity of your analysis:
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
     :alt: connectivity image
-    :scale: 50
+    :width: 50%
 
 run analysis
 """"""""""""
@@ -901,6 +906,8 @@ The final files can be retreived in :code:`module_results/gwb/parc/` folder. it 
 .. danger::
 
     If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
+
+Here is the result of the computation using the default parameters on the :code:`clc3classes.tif` file.
 
 .. csv-table::
     :header: Class, Value, Count, Area[pixels], APS, AWAPS, AWAPS/data, DIVISION, PARC[%]
@@ -924,8 +931,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :align: left
-        :scale: 60
+        :width: 20%
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
@@ -972,7 +978,7 @@ This set the foreground connectivity of your analysis:
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
     :alt: connectivity image
-    :scale: 50
+    :width: 50%
 
 run analysis
 """"""""""""
@@ -991,7 +997,9 @@ The final files can be retreived in :code:`module_results/gwb/rss/` folder. it s
 .. danger::
 
     If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
-    
+
+Here is the result of the computation using the default parameters on the :code:`example.tif` file.
+
 .. csv-table::
     :header: FNAME, AREA, RAC[%], NR_OBJ, LARG_OBJ, APS, CNOA, ECA, COH[%]
     
@@ -1011,8 +1019,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :align: left
-        :scale: 60
+        :width: 20%
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
@@ -1077,6 +1084,8 @@ The final files can be retreived in :code:`module_results/gwb/spa/` folder. it s
 .. danger::
 
     If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
+
+Here is the result of the computation using the default parameters on the :code:`example.tif` file.
 
 .. figure:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_spa2.tif
     :width: 50%
