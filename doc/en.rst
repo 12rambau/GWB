@@ -75,7 +75,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :width: 45%
+        
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
     
@@ -188,7 +188,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :width: 45%
+        
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
     
@@ -289,7 +289,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :width: 45%
+        
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
     
@@ -400,7 +400,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :width: 45%
+        
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
@@ -518,7 +518,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :width: 45%
+        
     
     Once the file is downloaded follow the normal process using the :code:`downloads/clc3classes.tif` file (3 classes).
     
@@ -614,7 +614,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :width: 45%
+        
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
@@ -721,7 +721,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :width: 45%
+        
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
@@ -850,7 +850,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :width: 45%
+        
     
     Once the file is downloaded follow the normal process using the :code:`downloads/clc3classes.tif` file (3 classes).
     
@@ -931,7 +931,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :width: 45%
+        
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
@@ -1019,7 +1019,7 @@ Set up image
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
-        :width: 45%
+        
     
     Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
