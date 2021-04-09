@@ -6,7 +6,7 @@ This document provides usage instructions for the image analysis module **GWB** 
 Introduction
 ------------
 
-the GuidosToolbox (`GTB <https://forest.jrc.ec.europa.eu/en/activities/lpa/gtb/>`_) was developed as a graphical user interface to morphological spatial pattern analysis of raster data (`Soille and Vogt 2009 <https://doi.org/10.1016/j.patrec.2008.10.015>`_). The GTB has since been enhanced with numerous modules for analysis of landscape objects, patterns, and networks, and specialized modules for assessing fragmentation and restoration (`Vogt and Riitters 2017 <<https://doi.org/10.1080/22797254.2017.1330650>`_). The GTB has gained global acceptance as a free, intuitive, interactive, and generic stand-alone image analysis platform on several popular operating systems. Here we implemented the most popular GTB modules inside the SEPAL platform as a Jupyter dashboard using the `GWB CLI tool <https://docs.sepal.io/en/latest/cli/gwb.html>`_. 
+the GuidosToolbox (`GTB <https://forest.jrc.ec.europa.eu/en/activities/lpa/gtb/>`_) was developed as a graphical user interface to morphological spatial pattern analysis of raster data (`Soille and Vogt 2009 <https://doi.org/10.1016/j.patrec.2008.10.015>`_). The GTB has since been enhanced with numerous modules for analysis of landscape objects, patterns, and networks, and specialized modules for assessing fragmentation and restoration (`Vogt and Riitters 2017 <https://doi.org/10.1080/22797254.2017.1330650>`_). The GTB has gained global acceptance as a free, intuitive, interactive, and generic stand-alone image analysis platform on several popular operating systems. Here we implemented the most popular GTB modules inside the SEPAL platform as a Jupyter dashboard using the `GWB CLI tool <https://docs.sepal.io/en/latest/cli/gwb.html>`_. 
 
 Presentation
 ^^^^^^^^^^^^
@@ -25,7 +25,7 @@ The application should launch itself in the About section, allowing to select th
     .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/licence.png
         :alt: licence
         
-    This licence needs to be accepted to use the **GWB** tools. It is reminded in the section :code:`Licence`of the app. 
+    This licence needs to be accepted to use the **GWB** tools. It is reminded in the section :code:`Licence` of the app. 
     If you don't want to accept this Licence, just close the app tab.
 
 General structure
@@ -78,7 +78,7 @@ Set up image
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif`file (2 classes)
+    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
     
 The first step requires you to reclassify your image. using the reclassifying panel, select your image in your sepal folder
 
@@ -186,7 +186,7 @@ Set up image
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif`file (2 classes)
+    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
     
 The first step requires you to reclassify your image. using the reclassifying panel, select your image in your sepal folder
 
@@ -280,7 +280,7 @@ Set up image
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif`file (2 classes)
+    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
     
 The first step requires you to reclassify your image. using the reclassifying panel, select your image in your sepal folder
 
@@ -385,7 +385,7 @@ Set up image
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif`file (2 classes)
+    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
     
 The first step requires you to reclassify your image. using the reclassifying panel, select your image in your sepal folder
 
@@ -496,7 +496,7 @@ Set up image
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/clc3classes.tif`file (3 classes)
+    Once the file is downloaded follow the normal process using the :code:`downloads/clc3classes.tif` file (3 classes)
     
 The first step requires you to reclassify your image. using the reclassifying panel, select your image in your sepal folder
 
@@ -585,7 +585,7 @@ Set up image
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif`file (2 classes)
+    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
     
 The first step requires you to reclassify your image. using the reclassifying panel, select your image in your sepal folder
 
@@ -690,7 +690,7 @@ Set up image
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif`file (2 classes)
+    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
     
 The first step requires you to reclassify your image. using the reclassifying panel, select your image in your sepal folder
 
@@ -759,7 +759,7 @@ Missing values are coded as 0 (rounded byte), or -0.01 (float precision). For al
 
 For FG-Contagion and FG-Adjacency output only, missing also indicates the input window contained no foreground pixels (there was no information about foreground edge).
 
-For all output types, :math:`rounded byte = (float precision * 254) + `
+For all output types, :math:`rounded byte = (float precision * 254) + 1`
     
 You'll find the options displayed with the following names in the dropdown:
 - FG-Density   (FG-masked and normalised)
@@ -807,7 +807,7 @@ Set up image
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/clc3classes.tif`file (3 classes)
+    Once the file is downloaded follow the normal process using the :code:`downloads/clc3classes.tif` file (3 classes)
     
 The first step requires you to select your image in your sepal folder. The image need to be a categorical tif raster.
 
@@ -881,7 +881,7 @@ Set up image
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif`file (2 classes)
+    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
     
 The first step requires you to reclassify your image. using the reclassifying panel, select your image in your sepal folder
 
@@ -942,7 +942,7 @@ The final files can be retreived in :code:`module_results/gwb/rss/` folder. it s
 
     If the rectangle become red, read attentively the instruction of the logs. usually the instance your using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
     
-.. table-csv::
+.. csv-table::
     :header: FNAME, AREA, RAC[%], NR_OBJ, LARG_OBJ, APS, CNOA, ECA, COH[%]
     
     example_bin_map.tif,428490.00,42.860572,2850,214811,150.34737,311712,221292.76,51.644789
@@ -962,7 +962,7 @@ Set up image
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
         :alt: download tes dataset
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif`file (2 classes)
+    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
     
 The first step requires you to reclassify your image. using the reclassifying panel, select your image in your sepal folder
 
