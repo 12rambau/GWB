@@ -13,8 +13,12 @@ class ConvertByte(sw.Tile):
         # gather the io 
         self.io = io
         
-        # create the widgets 
+        # create the download layout 
         self.down_test = sw.Btn(cm.bin.default.btn, icon="mdi-cloud-download-outline", small=True, outlined=True, class_="ma-5")
+        tooltip = sw.Tooltip(widget=self.down_test, tooltip=cm.bin.default.tooltip)
+        
+        # create the widgets 
+        
         self.file = sw.FileInput(['.tif', '.tiff'])
         self.classes = [v.Select(
             label = cp.convert[nb_class]['label'][i], 
@@ -39,7 +43,7 @@ class ConvertByte(sw.Tile):
         super().__init__(
             self.io.tile_id,
             cm.bin.title,
-            inputs = [self.down_test, v.Divider(), requirements, self.file] + self.classes,
+            inputs = [tooltip, v.Divider(), requirements, self.file] + self.classes,
             output = self.output,
             btn = btn
         )

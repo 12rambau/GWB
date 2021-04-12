@@ -7,8 +7,8 @@ convert = {
         'label': [
             'background',
             'foreground',
-            'special background 1',
-            'special background 2'
+            'special background 1 (optional)',
+            'special background 2 (optional)'
         ],
         'io': [
             'background',
@@ -31,7 +31,7 @@ convert = {
         'label': [
             'Dominant land cover 1 (Agriculture)',
             'Dominant land cover 2 (Natural)',
-            'Dominant land cover 3 (developped)'
+            'Dominant land cover 3 (Developed)'
         ],
         'io': [
             'lc_1',
