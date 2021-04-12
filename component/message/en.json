@@ -41,7 +41,7 @@
     "fad": {
         "title": "FAD: Forest Area Density",
         "description": "This module will conduct the fragmentation analysis at five fixed observation scales. Because forest fragmentation is scale-dependent, fragmentation is reported at five observation scales, which allows different observers to make their own choice about scales and threshold of concern. The change of fragmentation across different observation scales provides additional interesting information. Fragmentation is measured by determining the Forest Area Density (FAD) within a shifting, local neighborhood. It can be measured at pixel or patch level. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the (mac: right+click or windows: cmd+click to open in new tab) [Fragmentation](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf) product sheet.",
-        "prescision": "Computation prescision",
+        "prescision": "Computation precision",
         "no_prescision": "Please set the prescision"
     },
     "frag": {
@@ -63,7 +63,7 @@
         "description": "This module will conduct the Morphological Spatial Pattern Analysis. MSPA analyses shape and connectivity and conducts a segmentation of foreground patches in up to 25 feature classes. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the (mac: right+click or windows: cmd+click to open in new tab) [Morphology](https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Pattern-Morphology.pdf) product sheet.",
         "edge_width": "edge width (pixels)",
         "transition": "transition",
-        "int_ext": "int ext",
+        "int_ext": "intext",
         "no_edge_width": "Please provide a positive edge width"
 
     },
@@ -91,16 +91,16 @@
         "description": "This module will recode categorical land cover classes."
     },
     "requirement": [
-        "select a classified tiff image. The image must contain at least 2 different classes. 0 will be considered as missing data.",
+        "Provide a byte-formatted input image. The image must contain at least 2 different classes. 0 will be considered as missing data.",
         "",
-        "Provide a byte image. Recode the classes into the following 2 classes : background (nonforest), foreground (forest). All remaining classes will be considered as missing data.",
-        "Provide a byte images. Recode the classes into the 3 dominant land cover classes. All remaining classes will be considered as missing data.",
-        "Provide a byte images. Recode the classes into the 4 following classes : background (nonforest), foreground (forest), special background 1 (e.g. water) and special background 2. All remaining classes will be considered as missing data.",
-        "Provide a byte images. Recode the classes into the 3 following classes : background (nonforest), foreground (forest), special background 1 (for P23 only). All remaining classes will be considered as missing data."
+        "Provide a byte-formatted input image. Recode the classes into the following 2 classes : background (nonforest), foreground (forest). All remaining classes will be considered as missing data.",
+        "Provide a byte-formatted input image. Recode the classes into the 3 dominant land cover classes. All remaining classes will be considered as missing data.",
+        "Provide a byte-formatted input image. Recode the classes into the following 4 classes: background (nonforest), foreground (forest), special background 1 (optional, e.g. water) and special background 2 (optional). All remaining classes will be considered as missing data.",
+        "Provide a byte-formatted input image. Recode the classes into the 3 following classes : background (nonforest), foreground (forest), special background 1 (for P23 only). All remaining classes will be considered as missing data."
     ],
     "bin": {
-        "btn": "Convert the image classes",
-        "title": "Select map classes",
+        "btn": "Convert the input image classes",
+        "title": "Select input map classes",
         "file_exist": "the file {} already exists, no new bin maps have been created",
         "running": "The bin map is being processed",
         "finished": "the bin map is ready to be used",
@@ -110,7 +110,8 @@
         "no_bin": "Please provide a bin map using the first process tile",
         "default": {
             "btn": "Download test dataset",
-            "msg": "the test files {} and {} have been added to the download folder"
+            "msg": "the test files \"{}\" and \"{}\" have been added to the \"downloads\" folder",
+            "tooltip": "Click the button above to download the test files \"clc3class.tif\" and \"example.tif\" into the folder \"downloads\""
         }
     },
     "gwb": {

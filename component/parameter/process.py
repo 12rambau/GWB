@@ -7,7 +7,7 @@ connectivity = [
 ]
 
 acc_options = [
-    {'value':'default', 'text': "stats + image of viewport" },
+    {'value':'default', 'text': "stats + image of viewport (default)" },
     {'value':'detailed', 'text': 'stats + images of ID, area, viewport'}
 ]
 
@@ -15,7 +15,7 @@ acc_options = [
 ##      dist      ##
 ####################
 dist_options = [
-    {'text': 'Euclidian distance only', 'value': 1},
+    {'text': 'Euclidian distance only (default)', 'value': 1},
     {'text': 'Euclidian distance + Hysometric Curve', 'value': 2}
 ]
 
@@ -29,7 +29,7 @@ fad_options = [
 ]
 
 prescision = [
-    {'text': "float precision (require more disk space)", 'value': 1},
+    {'text': "float precision (default, require more disk space)", 'value': 1},
     {'text': 'rounded byte', 'value': 0}
 ]
 
@@ -51,8 +51,8 @@ algo = [
 ##      spa      ##
 ###################
 spa_options = [
-    {'text': 'Small & linear features (SLF), Coherent', 'value': 2},
-    {'text': 'Core, Core-Openings, Margin', 'value': 3},
-    {'text': 'Core, Core-Openings, Edge, Perforation, Margin', 'value': 5},
-    {'text': 'Core, Core-Openings, Edge, Perforation, Islet, Margin', 'value': 6}
+    {'text': '2: Small & linear features (SLF), Coherent', 'value': 2},
+    {'text': '3: Core, Core-Openings, Margin', 'value': 3},
+    {'text': '5: Core, Core-Openings, Edge, Perforation, Margin', 'value': 5},
+    {'text': '6: Core, Core-Openings, Edge, Perforation, Islet, Margin', 'value': 6}
 ]
