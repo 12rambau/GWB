@@ -1,17 +1,17 @@
-Guidos Workbench
-================
+GuidosToolbox Workbench
+=======================
 
 This document provides usage instructions for the image analysis module **GWB** (`GuidosToolbox Workbench <https://forest.jrc.ec.europa.eu/en/activities/lpa/gwb/>`_), here implemented as a Jupyter dashboard on SEPAL. 
 
 Introduction
 ------------
 
-In 2008, the GuidosToolbox (`GTB <https://forest.jrc.ec.europa.eu/en/activities/lpa/gtb/>`_) was developed as a graphical user interface (GUI) to Morphological Spatial Pattern Analysis (`MSPA <https://forest.jrc.ec.europa.eu/en/activities/lpa/mspa/>`_) of raster data (`Soille and Vogt 2009 <https://doi.org/10.1016/j.patrec.2008.10.015>`_). The GTB has since been enhanced with numerous modules for analysis of landscape objects, patterns, and networks, and specialized modules for assessing fragmentation and restoration (`Vogt and Riitters 2017 <https://doi.org/10.1080/22797254.2017.1330650>`_). The GTB has gained global acceptance as a free, intuitive, interactive, and generic stand-alone image analysis platform on several popular operating systems. The GuidosToolbox Workbench (`GWB <https://forest.jrc.ec.europa.eu/en/activities/lpa/gwb/>`_) provides the most popular GTB modules as a set of command-line applications for 64bit Linux systems. In the following, we describe the implementation of GWB on the SEPAL platform as a Jupyter dashboard based on the `GWB CLI tool <https://docs.sepal.io/en/latest/cli/gwb.html>`_. 
+In 2008, the GuidosToolbox (`GTB <https://forest.jrc.ec.europa.eu/en/activities/lpa/gtb/>`_, `Vogt and Riitters 2017 <https://doi.org/10.1080/22797254.2017.1330650>`_) was developed as a graphical user interface (GUI) to Morphological Spatial Pattern Analysis (`MSPA <https://forest.jrc.ec.europa.eu/en/activities/lpa/mspa/>`_) of raster data (`Soille and Vogt 2009 <https://doi.org/10.1016/j.patrec.2008.10.015>`_). The GTB has since been enhanced with numerous modules for analysis of landscape objects, patterns, and networks, and specialized modules for assessing fragmentation and restoration. The GuidosToolbox Workbench (`GWB <https://forest.jrc.ec.europa.eu/en/activities/lpa/gwb/>`_) provides the most popular GTB modules as a set of command-line applications for 64bit Linux systems. In the following, we describe the implementation of GWB on the SEPAL platform as a Jupyter dashboard based on the `GWB CLI tool <https://docs.sepal.io/en/latest/cli/gwb.html>`_. 
 
 Presentation
 ^^^^^^^^^^^^
 
-To launch the app please follow the `SEPAL registration steps <https://docs.sepal.io/en/latest/setup/register.html>`_ and then move to the SEPAL Apps dashboard (purple wrench icon on the left side panel).
+To launch the app please follow the `SEPAL registration steps <https://docs.sepal.io/en/latest/setup/register.html>`_ and then move to the SEPAL Apps dashboard (purple wrench icon on the left side panel), search for and click on GWB ANALYSIS.
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/dashboard.png
     :alt: SEPAL dashboard 
@@ -20,7 +20,7 @@ The application should launch itself in the About section, allowing to select th
 
 .. note::
     
-    If this is the first time you use the app, you will actually face the following popup:
+    If this is the first time you use the app, you will actually see the following popup:
     
     .. image:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/licence.png
         :alt: licence
@@ -33,11 +33,11 @@ General structure
 
 The application is strucured as followed: 
 
-On the left side you will find a navigation drawer that you can open and close using the `Hamburger button <https://en.wikipedia.org/wiki/Hamburger_button>`_. 
+On the left side you will find a navigation drawer that you can open and close using the `Hamburger button <https://en.wikipedia.org/wiki/Hamburger_button>`_.
 
 .. tip:: 
 
-    On small devices such as tablet or phones, the navigation drawer will be hidden by default. Click the Hamburger button to show the full extent of the app 
+    On small devices such as tablet or phones, the navigation drawer will be hidden by default. Click the Hamburger button (highlighted by the red square) to show the full extent of the app. 
     
     .. image:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/small_device_without_menu.png
         :alt: small screen without drawer
@@ -64,22 +64,25 @@ Each module is presented individually. You can directly jump to the module of in
 ACC
 ^^^
 
-This module will conduct the **Accounting** analysis. Accounting will label and calculate the area of all foreground objects (coded with 2 byte). The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Accounting <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Objects-Accounting.pdf>`_ product sheet.
+This module will conduct the **Accounting** analysis. Accounting will label and calculate the area of all foreground objects. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Accounting <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Objects-Accounting.pdf>`_ product sheet.
 
 Setup the input image
 """""""""""""""""""""
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+    
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the files are downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
@@ -99,10 +102,10 @@ Every class that is not set to a reclassifying category will be considered as "m
 
 .. tip::
 
-    For forest analysis you will want to set forest as foreground and all the other classes in background. If you specify special background, it will be treated separately in the analysis (e.g. water, buildings).
+    For forest analysis, set forest as foreground and all the other classes as background. If you specify special background, it will be treated separately in the analysis (e.g. water, buildings).
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 You will need to select parameters for your computation: 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/acc_params.png
@@ -129,17 +132,17 @@ This set the foreground connectivity of your analysis:
     :alt: connectivity image
     :width: 50%
     
-spatial pixel resolution
+Spatial pixel resolution
 ########################
 
 Set the spatial pixel resolution of your image in meters. It is only used for the summary.
 
-area thresholds
+Area thresholds
 ###############
 
 Set up to 5 area thresholds (measured in pixels). 
 
-options
+Options
 #######
 
 Two computation options are available: 
@@ -147,8 +150,8 @@ Two computation options are available:
 -   stats + image of viewport (default)
 -   stats + images of ID, area, viewport (detailed)
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
@@ -176,7 +179,7 @@ Here is the result of the computation using the default parameters on the :code:
 DIST
 ^^^^
 
-This module will conduct the **Euclidean Distance** analysis. Each pixel will show the shortest distance to the foreground (coded with 2 byte) boundary. Pixels inside a foreground object have a positive distance value while background pixels have a negative distance value. The result are spatially explicit maps and tabular summary statistics.
+This module will conduct the **Euclidean Distance** analysis. Each pixel will show the shortest distance to the foreground boundary. Pixels inside a foreground object have a positive distance value while background pixels have a negative distance value. The result are spatially explicit maps and tabular summary statistics.
 Details on the methodology and input/output options can be found in the `Distance <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Distance-Euclidean.pdf>`_ product sheet.
 
 Setup the input image
@@ -184,15 +187,18 @@ Setup the input image
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the files are downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
@@ -210,10 +216,10 @@ Every class that is not set to a reclassifying category will be considered as "m
 
 .. tip::
 
-    for forest analysis you will want to set forest as foreground and all the other classes in background.
+    For forest analysis, set forest as foreground and all the other classes as background.
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 You will need to select parameters for your computation: 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/dist_params.png
@@ -247,7 +253,7 @@ Two computation options are available:
 -   compute the Euclidian Distance and the Hysometric Curve
 
 
-run analysis
+Run the analysis
 """"""""""""
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
@@ -285,15 +291,18 @@ Setup the input image
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the files are downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
@@ -313,15 +322,15 @@ Every class that is not set to a reclassifying category will be considered as "m
 
 .. tip::
 
-    For forest analysis you will want to set forest as foreground and all the other classes in background. If you specify special background, it will be treated separately in the analysis (e.g. water, buildings)
+    For forest analysis, set forest as foreground and all the other classes as background. If you specify special background, it will be treated separately in the analysis (e.g. water, buildings).
 
 .. warning::
 
-    The special background 2 is the non-fragmenting background (optional)
+    The special background 2 is the non-fragmenting background (optional), see the `Fragmentation <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf>`_ product sheet for details.
 
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 You will need to select parameters for your computation: 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/fad_params.png
@@ -361,8 +370,8 @@ Three computation options are available:
 -   FAD-APP2: average per-patch density, color-coded into 2 classes
 -   FAD-APP5: average per-patch density, color-coded into 5 classes
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
@@ -401,15 +410,18 @@ Setup the input image
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the files are downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
@@ -429,14 +441,14 @@ Every class that is not set to a reclassifying category will be considered as "m
 
 .. tip::
 
-    For forest analysis you will want to set forest as foreground and all the other classes in background. If you specify special background, it will be treated separately in the analysis (e.g. water, buildings).
+    For forest analysis, set forest as foreground and all the other classes as background. If you specify special background, it will be treated separately in the analysis (e.g. water, buildings).
     
 .. warning::
 
-    The special background 2 is the non-fragmenting background (optional)
+    The special background 2 is the non-fragmenting background (optional), see the `Fragmentation <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf>`_ product sheet for details.
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 
 You will need to select parameters for your computation: 
 
@@ -465,17 +477,17 @@ This sets the foreground connectivity of your analysis:
     :alt: connectivity image
     :width: 50%
     
-spatial pixel resolution
+Spatial pixel resolution
 ########################
 
 Set the spatial pixel resolution of your image in meters. Only use for the summary.
 
-window size
+Window size
 ###########
 
 Set up to 10 observation windows sizes (in pixels).
 
-options
+Options
 #######
 
 Three computation options are available: 
@@ -484,8 +496,8 @@ Three computation options are available:
 -   FAD-APP2: average per-patch density, color-coded into 2 classes
 -   FAD-APP5: average per-patch density, color-coded into 5 classes
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
@@ -519,15 +531,18 @@ Setup the input image
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the files are downloaded follow the normal process using the :code:`downloads/clc3classes.tif` file (3 classes).
+    Once the files are downloaded, follow the normal process using the :code:`downloads/clc3class.tif` file (3 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
@@ -544,8 +559,8 @@ Every class that is not set to a reclassifying category will be considered as "m
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/3_classes.png
     :alt: upload 3 classes
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 
 You will need to select parameters for your computation: 
 
@@ -558,7 +573,7 @@ You will need to select parameters for your computation:
     
     -   window size: 23
 
-window size
+Window size
 ###########
 
 Set the square window size (in pixels). It should be an odd number in [3, 5, ...501].
@@ -574,8 +589,8 @@ with
 -   :math:`pixres` in meters
 -   :math:`kdim` in pixels
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
@@ -615,15 +630,18 @@ Setup the input image
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the files are downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
@@ -641,10 +659,10 @@ Every class that is not set to a reclassifying category will be considered as "m
 
 .. tip::
 
-    For forest analysis you will want to set forest as foreground and all the other classes in background.
+    For forest analysis, set forest as foreground and all the other classes as background.
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 You will need to select parameters for your computation: 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/acc_params.png
@@ -686,8 +704,8 @@ Intext
 
 Select if you want to distinguish MSPA classes and Holes laying within Core objects (intext=1 (true), default) or not (intext=0).
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
@@ -722,15 +740,18 @@ Setup the input image
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the files are downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
@@ -740,7 +761,7 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 -   background
 -   foreground
--   special background (optional)
+-   special background (for P23 only)
 
 Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
@@ -749,10 +770,10 @@ Every class that is not set to a reclassifying category will be considered as "m
 
 .. tip::
 
-    For forest analysis you will want to set forest as foreground and all the other classes in background. If you specify special background, it will be treated separately in the analysis (e.g. water, buildings)
+    For forest analysis, set forest as foreground and all the other classes as background. If you specify special background, it will be treated separately in the analysis (e.g. water, buildings)
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 
 You will need to select parameters for your computation: 
 
@@ -770,8 +791,7 @@ You will need to select parameters for your computation:
 Window size
 ###########
 
-Set the square window size (in pixels) It should be an odd number in [3, 5, ...501].
-with :math:`kdim` being related to the observation scale by the following formula: 
+Set the square window size (in pixels) It should be an odd number in [3, 5, ...501] with :math:`kdim` being related to the observation scale by the following formula: 
 
 .. math::
 
@@ -817,8 +837,8 @@ You'll find the options displayed with the following names in the dropdown menu:
 -   FG-Shannon   (original spatcon output)
 -   FG-SumD      (original spatcon output)
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
@@ -851,15 +871,18 @@ Setup the input image
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the files are downloaded follow the normal process using the :code:`downloads/clc3classes.tif` file (3 classes).
+    Once the files are downloaded, follow the normal process using the :code:`downloads/clc3classes.tif` file (3 classes).
     
-The first step requires you to select your image in your SEPAL folder. The image need to be a categorical tif raster.
+The first step requires to select your image in your SEPAL folder. The image must be a categorical tif raster.
 
 .. warning:: 
 
@@ -868,8 +891,8 @@ The first step requires you to select your image in your SEPAL folder. The image
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/0_classes.png
     :alt: upload 0 classes
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 You will need to select parameters for your computation: 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/parc_params.png
@@ -893,8 +916,8 @@ This set the foreground connectivity of your analysis:
     :alt: connectivity image
     :width: 50%
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
@@ -932,15 +955,18 @@ Setup the input image
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the files are downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
@@ -958,10 +984,10 @@ Every class that is not set to a reclassifying category will be considered as "m
 
 .. tip::
 
-    For forest analysis you will want to set forest as foreground and all the other classes in background.
+    For forest analysis, set forest as foreground and all the other classes as background.
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 You will need to select parameters for your computation: 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/rss_params.png
@@ -985,8 +1011,8 @@ This set the foreground connectivity of your analysis:
     :alt: connectivity image
     :width: 50%
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
@@ -1020,15 +1046,18 @@ Setup the input image
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the files are downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
@@ -1046,10 +1075,10 @@ Every class that is not set to a reclassifying category will be considered as "m
 
 .. tip::
 
-    For forest analysis you will want to set forest as foreground and all the other classes in background.
+    For forest analysis, set forest as foreground and all the other classes as background.
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 
 You will need to select parameters for your computation: 
 
@@ -1060,20 +1089,20 @@ You will need to select parameters for your computation:
 
     This parameter can be used to perform the default computation:
     
-    -   number of pattern classes: (2) SLF, Coherent
+    -   number of pattern classes: 2: Small & linear features (SLF), Coherent
 
-number of patterns class
-########################
+Number of pattern classes
+#########################
 
 Set the number of pattern classes you want to compute:
 
--   2: SLF, Coherent
+-   2: Small & linear features (SLF), Coherent
 -   3: Core, Core-Openings, Margin
 -   5: Core, Core-Openings, Edge, Perforation, Margin
 -   6: Core, Core-Openings, Edge, Perforation, Islet, Margin
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
