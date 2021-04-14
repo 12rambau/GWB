@@ -14,6 +14,10 @@ module_dir.mkdir(exist_ok=True)
 result_dir = module_dir.joinpath('gwb')
 result_dir.mkdir(exist_ok = True)
 
+# create a donwloads dir 
+down_dir = Path('~', 'downloads').expanduser()
+down_dir.mkdir(exist_ok=True)
+
 def get_result_dir(process):
     """get the result dir for each process"""
     
@@ -38,9 +42,8 @@ def get_licence_dir():
     return licence_dir
 
 utils_dir = Path(__file__).parent.parent.parent.joinpath('utils')
-template_dir = utils_dir.joinpath('template')
+template_dir = utils_dir/'template'
 backup_dir = utils_dir/'backup'
-down_dir = Path('~', 'downloads').expanduser()
 
 #####################
 ##      files      ##

@@ -1,17 +1,17 @@
-Guidos Workbench
-================
+GuidosToolbox Workbench
+=======================
 
-This document provides usage instructions for the image analysis module **GWB** (GuidosToolbox Workbench). **GWB** is a subset of the desktop software package GuidosToolbox (`GTB <https://forest.jrc.ec.europa.eu/en/activities/lpa/gtb/>`_) designed as Jupyter dashboard. More information is available at the **GWB** `homepage <https://forest.jrc.ec.europa.eu/en/activities/lpa/gwb/>`_. 
+This document provides usage instructions for the image analysis module **GWB** (`GuidosToolbox Workbench <https://forest.jrc.ec.europa.eu/en/activities/lpa/gwb/>`_), here implemented as a Jupyter dashboard on SEPAL. 
 
 Introduction
 ------------
 
-the GuidosToolbox (`GTB <https://forest.jrc.ec.europa.eu/en/activities/lpa/gtb/>`_) was developed as a graphical user interface to morphological spatial pattern analysis of raster data (`Soille and Vogt 2009 <https://doi.org/10.1016/j.patrec.2008.10.015>`_). The GTB has since been enhanced with numerous modules for analysis of landscape objects, patterns, and networks, and specialized modules for assessing fragmentation and restoration (`Vogt and Riitters 2017 <https://doi.org/10.1080/22797254.2017.1330650>`_). The GTB has gained global acceptance as a free, intuitive, interactive, and generic stand-alone image analysis platform on several popular operating systems. Here we implemented the most popular GTB modules inside the SEPAL platform as a Jupyter dashboard using the `GWB CLI tool <https://docs.sepal.io/en/latest/cli/gwb.html>`_. 
+In 2008, the GuidosToolbox (`GTB <https://forest.jrc.ec.europa.eu/en/activities/lpa/gtb/>`_, `Vogt and Riitters 2017 <https://doi.org/10.1080/22797254.2017.1330650>`_) was developed as a graphical user interface (GUI) to Morphological Spatial Pattern Analysis (`MSPA <https://forest.jrc.ec.europa.eu/en/activities/lpa/mspa/>`_) of raster data (`Soille and Vogt 2009 <https://doi.org/10.1016/j.patrec.2008.10.015>`_). The GTB has since been enhanced with numerous modules for analysis of landscape objects, patterns, and networks, and specialized modules for assessing fragmentation and restoration. The GuidosToolbox Workbench (`GWB <https://forest.jrc.ec.europa.eu/en/activities/lpa/gwb/>`_) provides the most popular GTB modules as a set of command-line applications for 64bit Linux systems. In the following, we describe the implementation of GWB on the SEPAL platform as a Jupyter dashboard based on the `GWB CLI tool <https://docs.sepal.io/en/latest/cli/gwb.html>`_. 
 
 Presentation
 ^^^^^^^^^^^^
 
-To launch the app please follow the SEPAL registration steps and then move to the SEPAL apps' dashboard.
+To launch the app please follow the `SEPAL registration steps <https://docs.sepal.io/en/latest/setup/register.html>`_ and then move to the SEPAL Apps dashboard (purple wrench icon on the left side panel), search for and click on GWB ANALYSIS.
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/dashboard.png
     :alt: SEPAL dashboard 
@@ -20,12 +20,12 @@ The application should launch itself in the About section, allowing to select th
 
 .. note::
     
-    If this is the first time you use the app, you will actually face the following popup:
+    If this is the first time you use the app, you will actually see the following popup:
     
     .. image:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/licence.png
         :alt: licence
         
-    This licence needs to be accepted to use the **GWB** tools. It is reminded in the section :code:`Licence` of the app. 
+    This licence needs to be accepted to use the **GWB** modules. It is also available in the section :code:`Licence` of the app. 
     If you don't want to accept this Licence, just close the app tab.
 
 General structure
@@ -33,11 +33,11 @@ General structure
 
 The application is strucured as followed: 
 
-On the left side you will find a navigation drawer that you can open and close using the `hamburger button <https://en.wikipedia.org/wiki/Hamburger_button>`_. 
+On the left side you will find a navigation drawer that you can open and close using the `Hamburger button <https://en.wikipedia.org/wiki/Hamburger_button>`_.
 
 .. tip:: 
 
-    On small devices such as tablet or phones, the navigation drawer will be hidden by default. click on the button and it will overlay the rest of the app 
+    On small devices such as tablet or phones, the navigation drawer will be hidden by default. Click the Hamburger button (highlighted by the red square) to show the full extent of the app. 
     
     .. image:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/small_device_without_menu.png
         :alt: small screen without drawer
@@ -47,62 +47,65 @@ On the left side you will find a navigation drawer that you can open and close u
         :alt: small screen with drawer
         :width: 40%
         
-Each name in the list correspond to a tool of the **GWB** module, they will be prensented individually in the next sections. By clicking on it you will display the panels relative to the function you want to use. 
+Each name in the list corresponds to one **GWB** module, presented individually in the next sections. By clicking on it you will display the panels relative to the function you want to use. 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/landing.png
     :alt: presentation of the structure
 
 .. danger:: 
 
-    All the tools in this module use a categorical raster as input. This raster need to use discrete integer value to be manipulated. Any raster with continuous values will raise an error.
+    All **GWB** modules require categorical raster input maps in data type unsigned byte (8bit), with discrete integer values within [0, 255] byte. Any other data format will raise an error.
 
 Modules
 -------
 
-Every module is presented independantely, you can directly jump to the tool you are intersted and this documentation will guide you trough the full process.
+Each module is presented individually. You can directly jump to the module of interest by clicking on the related link under the section Modules in the right panel of this page and this documentation will guide you through the respective processing steps.
 
 ACC
 ^^^
 
-This module will conduct the **Accounting** analysis. Accounting will label and calculate the area of all foreground objects (coded with 2 byte). The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Accounting <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Objects-Accounting.pdf>`_ product sheet.
+This module will conduct the **Accounting** analysis. Accounting will label and calculate the area of all foreground objects. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Accounting <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Objects-Accounting.pdf>`_ product sheet.
 
-Set up image
-""""""""""""
+Setup the input image
+"""""""""""""""""""""
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+    
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
     If the image is not in your SEPAL folders but in your local computer consider reading the `exchange file with SEPAL <https://docs.sepal.io/en/latest/setup/filezilla.html>`_ page of this documentation.
     
-The dropdowns menu will hydrate themselves with the discrete values of your raster. Select each class in your image and place them in one of the following categories: 
+The dropdown menus will list the discrete values of your raster input image. Select each class in your image and place them in one of the following categories: 
 
 -   background
 -   foreground
 -   special background 1 (optional)
 -   special background 2 (optional)
 
-Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte) and removed from the analysis.
+Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/4_classes.png
     :alt: upload 4 classes
 
 .. tip::
 
-    for forest analysis you will want to set forest as foreground and all the other classes in background. If you sepcify sepcial background they will be treated separately in the analysis (e.g. water, buildings).
+    For forest analysis, set forest as foreground and all the other classes as background. If you specify special background, it will be treated separately in the analysis (e.g. water, buildings).
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 You will need to select parameters for your computation: 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/acc_params.png
@@ -122,24 +125,24 @@ Foreground connectivity
 
 This set the foreground connectivity of your analysis: 
 
--   8 neigbors (default) will use every pixel in the vincinity (including diagonals)
--   4 neigbors only use the vertical and horizontal one
+-   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
+-   4 neighbors only use the vertical and horizontal one
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
     :alt: connectivity image
     :width: 50%
     
-spatial pixel resolution
+Spatial pixel resolution
 ########################
 
-Set the spatial pixel resolution of your image in meters. It is only use for the summary.
+Set the spatial pixel resolution of your image in meters. It is only used for the summary.
 
-area thresholds
+Area thresholds
 ###############
 
-Set up to 5 area thresholds in pixels. 
+Set up to 5 area thresholds (measured in pixels). 
 
-options
+Options
 #######
 
 Two computation options are available: 
@@ -147,15 +150,15 @@ Two computation options are available:
 -   stats + image of viewport (default)
 -   stats + images of ID, area, viewport (detailed)
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
-Once your parameters are all set you can launch the analysis. The blue rectangle will display you informations about the computation. It will turn to green at the end and display some computation logs. 
+Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/acc_results.png
     :alt: information logs
 
-The final files can be retreived in :code:`module_results/gwb/acc/` folder. it should include:
+The resulting files are stored in the folder :code:`module_results/gwb/acc/`, for example:
 
 -   :code:`<raster_name>_bin_map.tif`
 -   :code:`<raster_name>_bin_map_acc.tif`
@@ -164,7 +167,7 @@ The final files can be retreived in :code:`module_results/gwb/acc/` folder. it s
 
 .. danger::
 
-    If the rectangle become red, read attentively the instruction of the logs. Usually the instance your using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
+    If the rectangle turns red, carefully read the information in the log. For example, your current instance may be too small to handle the file you want to analyse. In this case, close the app, open a bigger instance and run your analysis again.
     
 Here is the result of the computation using the default parameters on the :code:`example.tif` file.
 
@@ -176,44 +179,47 @@ Here is the result of the computation using the default parameters on the :code:
 DIST
 ^^^^
 
-This module will conduct the **Euclidean Distance** analysis. Each pixel will show the shortest distance to the foreground (coded with 2 byte) boundary. Pixels inside a foreground object have a positive distance value while background pixels have a negative distance value. The result are spatially explicit maps and tabular summary statistics.
+This module will conduct the **Euclidean Distance** analysis. Each pixel will show the shortest distance to the foreground boundary. Pixels inside a foreground object have a positive distance value while background pixels have a negative distance value. The result are spatially explicit maps and tabular summary statistics.
 Details on the methodology and input/output options can be found in the `Distance <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Distance-Euclidean.pdf>`_ product sheet.
 
-Set up image
-""""""""""""
+Setup the input image
+"""""""""""""""""""""
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
     If the image is not in your SEPAL folders but in your local computer consider reading the `exchange file with SEPAL <https://docs.sepal.io/en/latest/setup/filezilla.html>`_ page of this documentation.
     
-The dropdowns menu will hydrate themselves with the discrete values of your raster. Select each class in your image and place them in one of the following categories: 
+The dropdown menus will list the discrete values of your raster input image. Select each class in your image and place them in one of the following categories: 
 
 -   background
 -   foreground
 
-Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte) and removed from the analysis.
+Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
     :alt: upload 2 classes
 
 .. tip::
 
-    for forest analysis you will want to set forest as foreground and all the other classes in background.
+    For forest analysis, set forest as foreground and all the other classes as background.
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 You will need to select parameters for your computation: 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/dist_params.png
@@ -231,8 +237,8 @@ Foreground connectivity
 
 This set the foreground connectivity of your analysis: 
 
--   8 neigbors (default) will use every pixel in the vincinity (including diagonals)
--   4 neigbors only use the vertical and horizontal one
+-   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
+-   4 neighbors only use the vertical and horizontal one
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
     :alt: connectivity image
@@ -247,15 +253,15 @@ Two computation options are available:
 -   compute the Euclidian Distance and the Hysometric Curve
 
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
-Once your parameters are all set you can launch the analysis. The blue rectangle will display you informations about the computation. It will turn to green at the end and display some computation logs. 
+Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/dist_results.png
     :alt: information logs
 
-The final files can be retreived in :code:`module_results/gwb/dist/` folder. it should include:
+The resulting files are stored in the folder :code:`module_results/gwb/dist/`, for example:
 
 -   :code:`<raster_name>_bin_map.tif`
 -   :code:`<raster_name>_bin_map_dist.tif`
@@ -265,7 +271,7 @@ The final files can be retreived in :code:`module_results/gwb/dist/` folder. it 
 
 .. danger::
 
-    If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
+    If the rectangle turns red, carefully read the information in the log. For example, your current instance may be too small to handle the file you want to analyse. In this case, close the app, open a bigger instance and run your analysis again.
     
 Here is the result of the computation using the default parameters on the :code:`example.tif` file.
     
@@ -280,43 +286,51 @@ FAD
 
 This module will conduct the **fragmentation** analysis at **five fixed observation scales**. Because forest fragmentation is scale-dependent, fragmentation is reported at five observation scales, which allows different observers to make their own choice about scales and threshold of concern. The change of fragmentation across different observation scales provides additional interesting information. Fragmentation is measured by determining the Forest Area Density (**FAD**) within a shifting, local neighborhood. It can be measured at pixel or patch level. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Fragmentation <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf>`_ product sheet.
 
-Set up image
-""""""""""""
+Setup the input image
+"""""""""""""""""""""
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes)
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
     If the image is not in your SEPAL folders but in your local computer consider reading the `exchange file with SEPAL <https://docs.sepal.io/en/latest/setup/filezilla.html>`_ page of this documentation.
     
-The dropdowns menu will hydrate themselves with the discrete values of your raster. Select each class in your image and place them in one of the following categories: 
+The dropdown menus will list the discrete values of your raster input image. Select each class in your image and place them in one of the following categories: 
 
 -   background
 -   foreground
 -   special background 1 (optional)
 -   special background 2 (optional)
 
-Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte) and removed from the analysis.
+Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/4_classes.png
     :alt: upload 4 classes
 
 .. tip::
 
-    for forest analysis you will want to set forest as foreground and all the other classes in background. If you sepcify sepcial background they will be treated separately in the analysis (e.g. water, buildings)
+    For forest analysis, set forest as foreground and all the other classes as background. If you specify special background, it will be treated separately in the analysis (e.g. water, buildings).
+
+.. warning::
+
+    The special background 2 is the non-fragmenting background (optional), see the `Fragmentation <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf>`_ product sheet for details.
+
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 You will need to select parameters for your computation: 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/fad_params.png
@@ -327,25 +341,25 @@ You will need to select parameters for your computation:
     These parameters can be used to perform the default computation:
     
     -   Foreground connectivity: 8
-    -   Computation prescision: float-prescision
+    -   Computation precision: float-precision
     -   Options: per-pixel density, color-coded into 6 fragmentation classes (FAD)
 
 Foreground connectivity
 #######################
 
-This set the foreground connectivity of your analysis: 
+This sets the foreground connectivity of your analysis: 
 
--   8 neigbors (default) will use every pixel in the vincinity (including diagonals)
--   4 neigbors only use the vertical and horizontal one
+-   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
+-   4 neighbors only use the vertical and horizontal one
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
     :alt: connectivity image
     :width: 50%
     
-Computation prescision
+Computation precision
 ######################
 
-Set the prescision used to compute you image. Float prescision (default) will give more accurate results that bytes but will also take more Ressource to compute.
+Set the precision used to compute your image. Float precision (default) will give more accurate results compared to rounded byte but will also take more computing resources and disk space.
 
 Options
 #######
@@ -356,15 +370,15 @@ Three computation options are available:
 -   FAD-APP2: average per-patch density, color-coded into 2 classes
 -   FAD-APP5: average per-patch density, color-coded into 5 classes
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
-Once your parameters are all set you can launch the analysis. The blue rectangle will display you information about the computation. It will turn to green at the end and display some computation logs. 
+Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/fad_results.png
     :alt: information logs
 
-The final files can be retreived in :code:`module_results/gwb/fad/` folder. it should include:
+The resulting files are stored in the folder :code:`module_results/gwb/fad/`, for example:
 
 -   :code:`<raster_name>_bin_map.tif`
 -   :code:`<raster_name>_bin_map_fad_<class_number>.tif`
@@ -376,7 +390,7 @@ The final files can be retreived in :code:`module_results/gwb/fad/` folder. it s
 
 .. danger::
 
-    If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
+    If the rectangle turns red, carefully read the information in the log. For example, your current instance may be too small to handle the file you want to analyse. In this case, close the app, open a bigger instance and run your analysis again.
     
 Here is the result of the computation using the default parameters on the :code:`example.tif` file.
     
@@ -389,49 +403,52 @@ Here is the result of the computation using the default parameters on the :code:
 FRAG
 ^^^^
 
-This module will conduct the **fragmentation** analysis at a **user-selected observation scale**. This module and its option are similar to :ref:`gwb_fad` but allow the user to specify a single (or multiple) specific observation scale. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Fragmentation <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf>`_ product sheet.
+This module will conduct the **fragmentation** analysis at a **user-selected observation scale**. This module and its option are similar to :code:`fad` but allow the user to specify a single (or multiple) specific observation scale. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Fragmentation <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf>`_ product sheet.
 
-Set up image
-""""""""""""
+Setup the input image
+"""""""""""""""""""""
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
     If the image is not in your SEPAL folders but in your local computer consider reading the `exchange file with SEPAL <https://docs.sepal.io/en/latest/setup/filezilla.html>`_ page of this documentation.
     
-The dropdowns menu will hydrate themselves with the discrete values of your raster. Select each class in your image and place them in one of the following categories: 
+The dropdown menus will list the discrete values of your raster input image. Select each class in your image and place them in one of the following categories: 
 
 -   background
 -   foreground
 -   special background 1 (optional)
 -   special background 2 (optional)
 
-Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte) and removed from the analysis.
+Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/4_classes.png
     :alt: upload 4 classes
 
 .. tip::
 
-    for forest analysis you will want to set forest as foreground and all the other classes in background. If you specify special background they will be treated separately in the analysis (e.g. water, buildings).
+    For forest analysis, set forest as foreground and all the other classes as background. If you specify special background, it will be treated separately in the analysis (e.g. water, buildings).
     
 .. warning::
 
-    the second special background is the non-fragmenting background (optional)
+    The special background 2 is the non-fragmenting background (optional), see the `Fragmentation <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf>`_ product sheet for details.
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 
 You will need to select parameters for your computation: 
 
@@ -444,33 +461,33 @@ You will need to select parameters for your computation:
     
     -   Foreground connectivity: 8
     -   Spatial pixel resolution: 25
-    -   Computation prescision: float-prescision
+    -   Computation precision: float-precision
     -   Windows size: 23
-    -   Pptions: average per-patch density, color-coded into 2 classes (FAD-APP2)
+    -   Options: average per-patch density, color-coded into 2 classes (FAD-APP2)
 
 Foreground connectivity
 #######################
 
-This set the foreground connectivity of your analysis: 
+This sets the foreground connectivity of your analysis: 
 
--   8 neigbors (default) will use every pixel in the vincinity (including diagonals)
--   4 neigbors only use the vertical and horizontal one
+-   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
+-   4 neighbors only use the vertical and horizontal one
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
     :alt: connectivity image
     :width: 50%
     
-spatial pixel resolution
+Spatial pixel resolution
 ########################
 
 Set the spatial pixel resolution of your image in meters. Only use for the summary.
 
-window size
+Window size
 ###########
 
-Set up to 10 observation windows size (in pixels).
+Set up to 10 observation windows sizes (in pixels).
 
-options
+Options
 #######
 
 Three computation options are available: 
@@ -479,15 +496,15 @@ Three computation options are available:
 -   FAD-APP2: average per-patch density, color-coded into 2 classes
 -   FAD-APP5: average per-patch density, color-coded into 5 classes
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
-Once your parameters are all set you can launch the analysis. The blue rectangle will display you information about the computation. It will turn to green at the end and display some computation logs. 
+Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/frag_results.png
     :alt: information logs
 
-The final files can be retreived in :code:`module_results/gwb/frag/` folder. it should include:
+The resulting files are stored in the folder :code:`module_results/gwb/frag/`, for example:
 
 -   :code:`<raster_name>_bin_map.tif`
 -   :code:`<raster_name>_bin_map_frag_fad-<option>_<class>.tif`
@@ -497,9 +514,9 @@ The final files can be retreived in :code:`module_results/gwb/frag/` folder. it 
 
 .. danger::
 
-    If the rectangle become red, read attentively the instruction of the logs. Usually the instance your using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
+    If the rectangle turns red, carefully read the information in the log. For example, your current instance may be too small to handle the file you want to analyse. In this case, close the app, open a bigger instance and run your analysis again.
     
-Here is the result of the computation using the default parameters on the :code:`example.tif` file.
+Here is the result of the computation using the FAD-APP2 option on the :code:`example.tif` file.
     
 .. figure:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_fad-app2_23.tif
     :width: 50%
@@ -509,38 +526,41 @@ LM
 
 This module will conduct the **Landscape Mosaic** analysis at a **user-selected observation scale**. The Landscape Mosaic measures land cover heterogeneity, or human influence, in a tri-polar classification of a location accounting for the relative contributions of the three land cover types **Agriculture**, **Natural**, **Developed** in the area surrounding that location. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Landscape Mosaic <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Pattern-LM.pdf>`_ product sheet.
 
-Set up image
-""""""""""""
+Setup the input image
+"""""""""""""""""""""
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/clc3classes.tif` file (3 classes).
+    Once the files are downloaded, follow the normal process using the :code:`downloads/clc3class.tif` file (3 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
     If the image is not in your SEPAL folders but in your local computer consider reading the `exchange file with SEPAL <https://docs.sepal.io/en/latest/setup/filezilla.html>`_ page of this documentation.
     
-The dropdowns menu will hydrate themselves with the discrete values of your raster. Select each class in your image and place them in one of the following categories: 
+The dropdown menus will list the discrete values of your raster input image. Select each class in your image and place them in one of the following categories: 
 
--   dominant land cover 1
--   dominant land cover 2
--   dominant land cover 3
+-   dominant land cover 1 (Agriculture)
+-   dominant land cover 2 (Natural)
+-   dominant land cover 3 (Developed)
 
-Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte) and removed from the analysis.
+Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/3_classes.png
     :alt: upload 3 classes
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 
 You will need to select parameters for your computation: 
 
@@ -553,13 +573,13 @@ You will need to select parameters for your computation:
     
     -   window size: 23
 
-window size
+Window size
 ###########
 
 Set the square window size (in pixels). It should be an odd number in [3, 5, ...501].
-with :math:`kdim` beeing the window size you can calculate it from the observation scale using the following formula: 
+with :math:`kdim` being the window size, which is related to the observation scale by the following formula: 
 
-..math::
+.. math::
 
     obs_scale = (pixres * kdim)^2 / 10000
     
@@ -569,15 +589,15 @@ with
 -   :math:`pixres` in meters
 -   :math:`kdim` in pixels
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
-Once your parameters are all set you can launch the analysis. The blue rectangle will display you information about the computation. It will turn to green at the end and display some computation logs. 
+Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/lm_results.png
     :alt: information logs
 
-The final files can be retreived in :code:`module_results/gwb/lm/` folder. it should include:
+The resulting files are stored in the folder :code:`module_results/gwb/lm/`, for example:
 
 -   :code:`<raster_name>_bin_map.tif`
 -   :code:`<raster_name>_bin_map_lm_23.tif`
@@ -590,7 +610,7 @@ The final files can be retreived in :code:`module_results/gwb/lm/` folder. it sh
 
 .. danger::
 
-    If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
+    If the rectangle turns red, carefully read the information in the log. For example, your current instance may be too small to handle the file you want to analyse. In this case, close the app, open a bigger instance and run your analysis again.
     
 Here is the result of the computation using the default parameters on the :code:`clc3classes.tif` file.
     
@@ -603,47 +623,50 @@ Here is the result of the computation using the default parameters on the :code:
 MSPA
 ^^^^
 
-This module will conduct the **Morphological Spatial Pattern Analysis**. MSPA analyses shape and connectivity and conducts a segmentation of foreground patches in up to 25 feature classes. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Morphology <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Pattern-Morphology.pdf>`_ product sheet.
+This module will conduct the **Morphological Spatial Pattern Analysis**. `MSPA <https://forest.jrc.ec.europa.eu/en/activities/lpa/mspa/>`_ analyses shape and connectivity and conducts a segmentation of foreground patches in up to 25 feature classes. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Morphology <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Pattern-Morphology.pdf>`_ product sheet.
 
-Set up image
-""""""""""""
+Setup the input image
+"""""""""""""""""""""
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
     If the image is not in your SEPAL folders but in your local computer consider reading the `exchange file with SEPAL <https://docs.sepal.io/en/latest/setup/filezilla.html>`_ page of this documentation.
     
-The dropdowns menu will hydrate themselves with the discrete values of your raster. Select each class in your image and place them in one of the following categories: 
+The dropdown menus will list the discrete values of your raster input image. Select each class in your image and place them in one of the following categories: 
 
 -   background
 -   foreground
 
-Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte) and removed from the analysis.
+Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
     :alt: upload 2 classes
 
 .. tip::
 
-    for forest analysis you will want to set forest as foreground and all the other classes in background.
+    For forest analysis, set forest as foreground and all the other classes as background.
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 You will need to select parameters for your computation: 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/acc_params.png
-    :alt: acc params
+.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/mspa_params.png
+    :alt: mspa params
     
 .. note::
 
@@ -657,10 +680,10 @@ You will need to select parameters for your computation:
 Foreground connectivity
 #######################
 
-This set the foreground connectivity of your analysis: 
+This sets the foreground connectivity of your analysis: 
 
--   8 neigbors (default) will use every pixel in the vincinity (including diagonals)
--   4 neigbors only use the vertical and horizontal one
+-   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
+-   4 neighbors only use the vertical and horizontal one
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
     :alt: connectivity image
@@ -669,27 +692,27 @@ This set the foreground connectivity of your analysis:
 Edge width
 ##########
 
-Define in pixel the width of the edges that will defin the cores of the MSPA analysis.
+Define the width (measured in pixels) of the Core-boundaries (Edges and Perforations).
 
-Transitions
+Transition
 ###########
 
-Select wether or not to use transitions.
+Select if you want to show transition pixels, where connecting pathways go through edges/perforations (transition=1 (true), default) or not (transition=0).
 
 Intext
 ######
 
-Select wether or not to use intext.
+Select if you want to distinguish MSPA classes and Holes laying within Core objects (intext=1 (true), default) or not (intext=0).
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
-Once your parameters are all set you can launch the analysis. The blue rectangle will display you information about the computation. It will turn to green at the end and display some computation logs. 
+Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/mspa_results.png
     :alt: information logs
 
-The final files can be retreived in :code:`module_results/gwb/mspa/` folder. it should include:
+The resulting files are stored in the folder :code:`module_results/gwb/mspa/`, for example:
 
 -   :code:`<raster_name>_bin_map.tif`
 -   :code:`<raster_name>_bin_map_<4 params>.tif`
@@ -697,7 +720,7 @@ The final files can be retreived in :code:`module_results/gwb/mspa/` folder. it 
 
 .. danger::
 
-    If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
+    If the rectangle turns red, carefully read the information in the log. For example, your current instance may be too small to handle the file you want to analyse. In this case, close the app, open a bigger instance and run your analysis again.
     
 Here is the result of the computation using the default parameters on the :code:`example.tif` file.
     
@@ -712,61 +735,63 @@ P223
 
 This module will conduct the **Density** (P2), **Contagion** (P22) or **Adjacency** (P23) analysis of foreground (**FG**) objects at a user-selected observation scale (`Riitters et al. (2000) <https://www.srs.fs.usda.gov/pubs/ja/ja_riitters006.pdf>`_). The result are spatially explicit maps and tabular summary statistics. The classification is determined by measurements of forest amount (P2) and connectivity (P22) within the neighborhood that is centered on a subject forest pixel. P2 is the probability that a pixel in the neighborhood is forest, and P22 is the probability that a pixel next to a forest pixel is also forest.
 
-Set up image
-""""""""""""
+Setup the input image
+"""""""""""""""""""""
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
     If the image is not in your SEPAL folders but in your local computer consider reading the `exchange file with SEPAL <https://docs.sepal.io/en/latest/setup/filezilla.html>`_ page of this documentation.
     
-The dropdowns menu will hydrate themselves with the discrete values of your raster. Select each class in your image and place them in one of the following categories: 
+The dropdown menus will list the discrete values of your raster input image. Select each class in your image and place them in one of the following categories: 
 
 -   background
 -   foreground
--   special background (optional)
+-   special background (for P23 only)
 
-Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte) and removed from the analysis.
+Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/p223_classes.png
     :alt: upload 3 classes
 
 .. tip::
 
-    for forest analysis you will want to set forest as foreground and all the other classes in background. If you sepcify a sepcial background it will be treated separately in the analysis (e.g. water, buildings)
+    For forest analysis, set forest as foreground and all the other classes as background. If you specify special background, it will be treated separately in the analysis (e.g. water, buildings)
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 
 You will need to select parameters for your computation: 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/acc_params.png
-    :alt: acc params
+.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/p223_params.png
+    :alt: p223 params
     
 .. note::
 
     These parameters can be used to perform the default computation:
     
     -   Window size: 27
-    -   Computation prescision: Float (default)
+    -   Computation precision: Float (default)
     -   Algorithm: FG-Density
     
 Window size
 ###########
 
-Set the square window size (in pixels) It should be an odd number in [3, 5, ...501].
-with :math:`kdim` beeing the window size you can calculate it from the observation scale using the following formula: 
+Set the square window size (in pixels) It should be an odd number in [3, 5, ...501] with :math:`kdim` being related to the observation scale by the following formula: 
 
 .. math::
 
@@ -778,10 +803,10 @@ with
 - :math:`pixres` in meters
 - :math:`kdim` in pixels
 
-Computation prescision
+Computation precision
 ######################
 
-Set the prescision used to compute you image. Float prescision (default) will give more accurate results that bytes but will also take more Ressource to compute.
+Set the precision used to compute your image. Float precision (default) will give more accurate results compared to rounded byte but will also take more computing resources and disk space.
 
 Algorithm
 #########
@@ -801,7 +826,7 @@ P223 will provide a color-coded image showing [0,100]% for either **FG-Density**
 
 For all output types, :math:`rounded byte = (float precision * 254) + 1`
     
-You'll find the options displayed with the following names in the dropdown:
+You'll find the options displayed with the following names in the dropdown menu:
 
 -   FG-Density   (FG-masked and normalised)
 -   FG-Contagion (FG-masked and normalised)
@@ -812,15 +837,15 @@ You'll find the options displayed with the following names in the dropdown:
 -   FG-Shannon   (original spatcon output)
 -   FG-SumD      (original spatcon output)
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
-Once your parameters are all set you can launch the analysis. The blue rectangle will display you information about the computation. It will turn to green at the end and display some computation logs. 
+Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/p223_results.png
     :alt: information logs
 
-The final files can be retreived in :code:`module_results/gwb/p223/` folder. it should include:
+The resulting files are stored in the folder :code:`module_results/gwb/p223/`, for example:
 
 -   :code:`<raster_name>_bin_map.tif`
 -   :code:`<raster_name>_bin_map_p<option>_<window>.tif`
@@ -828,9 +853,9 @@ The final files can be retreived in :code:`module_results/gwb/p223/` folder. it 
 
 .. danger::
 
-    If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
+    If the rectangle turns red, carefully read the information in the log. For example, your current instance may be too small to handle the file you want to analyse. In this case, close the app, open a bigger instance and run your analysis again.
 
-Here is the result of the computation using the default parameters on the :code:`example.tif` file.
+Here is the result of the computation using the P2 (Foreground-Density) option on the :code:`example.tif` file.
 
 .. figure:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_p2_27.tif
     :width: 50%
@@ -841,20 +866,23 @@ PARC
 This module will conduct the **parcellation** analysis. This module provides a statistical summary file (txt/csv- format) with details for each unique class found in the image as well as the full image content: class value, total number of objects, total area, degree of parcellation.
 Details on the methodology and input/output options can be found in the `Parcellation <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Objects-Parcellation.pdf>`_ product sheet.
 
-Set up image
-""""""""""""
+Setup the input image
+"""""""""""""""""""""
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/clc3classes.tif` file (3 classes).
+    Once the files are downloaded, follow the normal process using the :code:`downloads/clc3classes.tif` file (3 classes).
     
-The first step requires you to select your image in your SEPAL folder. The image need to be a categorical tif raster.
+The first step requires to select your image in your SEPAL folder. The image must be a categorical tif raster.
 
 .. warning:: 
 
@@ -863,8 +891,8 @@ The first step requires you to select your image in your SEPAL folder. The image
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/0_classes.png
     :alt: upload 0 classes
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 You will need to select parameters for your computation: 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/parc_params.png
@@ -881,22 +909,22 @@ Foreground connectivity
 
 This set the foreground connectivity of your analysis:
 
--   8 neigbors (default) will use every pixel in the vincinity (including diagonals)
--   4 neigbors only use the vertical and horizontal one
+-   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
+-   4 neighbors only use the vertical and horizontal one
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
     :alt: connectivity image
     :width: 50%
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
-Once your parameters are all set you can launch the analysis. The blue rectangle will display you information about the computation. It will turn to green at the end and display some computation logs. 
+Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/parc_results.png
     :alt: information logs
 
-The final files can be retreived in :code:`module_results/gwb/parc/` folder. it should include:
+The resulting files are stored in the folder :code:`module_results/gwb/parc/`, for example:
 
 -   :code:`<raster_name>_bin_map.tif`
 -   :code:`<raster_name>_bin_map_parc.csv`
@@ -905,7 +933,7 @@ The final files can be retreived in :code:`module_results/gwb/parc/` folder. it 
 
 .. danger::
 
-    If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
+    If the rectangle turns red, carefully read the information in the log. For example, your current instance may be too small to handle the file you want to analyse. In this case, close the app, open a bigger instance and run your analysis again.
 
 Here is the result of the computation using the default parameters on the :code:`clc3classes.tif` file.
 
@@ -922,41 +950,44 @@ RSS
 
 This module will conduct the **Restoration Status Summary analysis**. It will calculate key attributes of the current network status, composed of foreground (forest) patches and it provides the normalized degree of network coherence. The result are tabular summary statistics. Details on the methodology and input/output options can be found in the `Restoration Planner <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-RestorationPlanner.pdf>`_ product sheet.
 
-Set up image
-""""""""""""
+Setup the input image
+"""""""""""""""""""""
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
     If the image is not in your SEPAL folders but in your local computer consider reading the `exchange file with SEPAL <https://docs.sepal.io/en/latest/setup/filezilla.html>`_ page of this documentation.
     
-The dropdowns menu will hydrate themselves with the discrete values of your raster. Select each class in your image and place them in one of the following categories: 
+The dropdown menus will list the discrete values of your raster input image. Select each class in your image and place them in one of the following categories: 
 
 -   background
 -   foreground
 
-Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte) and removed from the analysis.
+Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
     :alt: upload 2 classes
 
 .. tip::
 
-    for forest analysis you will want to set forest as foreground and all the other classes in background.
+    For forest analysis, set forest as foreground and all the other classes as background.
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 You will need to select parameters for your computation: 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/rss_params.png
@@ -973,22 +1004,22 @@ Foreground connectivity
 
 This set the foreground connectivity of your analysis: 
 
--   8 neigbors (default) will use every pixel in the vincinity (including diagonals)
--   4 neigbors only use the vertical and horizontal one
+-   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
+-   4 neighbors only use the vertical and horizontal one
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
     :alt: connectivity image
     :width: 50%
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
-Once your parameters are all set you can launch the analysis. The blue rectangle will display you information about the computation. It will turn to green at the end and display some computation logs. 
+Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/rss_results.png
     :alt: information logs
 
-The final files can be retreived in :code:`module_results/gwb/rss/` folder. it should include:
+The resulting files are stored in the folder :code:`module_results/gwb/rss/`, for example:
 
 -   :code:`<raster_name>_bin_map.tif`
 -   :code:`rss<connectivity>.txt`
@@ -996,7 +1027,7 @@ The final files can be retreived in :code:`module_results/gwb/rss/` folder. it s
 
 .. danger::
 
-    If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
+    If the rectangle turns red, carefully read the information in the log. For example, your current instance may be too small to handle the file you want to analyse. In this case, close the app, open a bigger instance and run your analysis again.
 
 Here is the result of the computation using the default parameters on the :code:`example.tif` file.
 
@@ -1010,41 +1041,44 @@ SPA
 
 This module will conduct the **Simplified Pattern Analysis**. SPA analyses shape and conducts a segmentation of foreground patches into 2, 3, 5, or 6 feature classes. The result are spatially explicit maps and tabular summary statistics. :code:`GWB_SPA` is a simpler version of :code:`GWB_MSPA`. Details on the methodology and input/output options can be found in the `Morphology <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Pattern-Morphology.pdf>`_ product sheet.
 
-Set up image
-""""""""""""
+Setup the input image
+"""""""""""""""""""""
 
 .. tip::
 
-    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, 2 files will be added to your :code:`downloads` folder (:code:`example.tif` and :code:`clc3classes.tif`).
+    You can use the default dataset to test the module. Click on the :code:`Download test dataset` button on the top of the second panel. By clicking on this button, the following two files will be added to your :code:`downloads` folder:
+        
+    -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
+    -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
     .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download tes dataset
+        :alt: download sample dataset
         
     
-    Once the file is downloaded follow the normal process using the :code:`downloads/example.tif` file (2 classes).
+    Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
     
-The first step requires you to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
+The first step requires to reclassify your image. Using the reclassifying panel, select your image in your SEPAL folder.
 
 .. warning:: 
 
     If the image is not in your SEPAL folders but in your local computer consider reading the `exchange file with SEPAL <https://docs.sepal.io/en/latest/setup/filezilla.html>`_ page of this documentation.
     
-The dropdowns menu will hydrate themselves with the discrete values of your raster. Select each class in your image and place them in one of the following categories: 
+The dropdown menus will list the discrete values of your raster input image. Select each class in your image and place them in one of the following categories: 
 
 -   background
 -   foreground
 
-Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte) and removed from the analysis.
+Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
     :alt: upload 2 classes
 
 .. tip::
 
-    for forest analysis you will want to set forest as foreground and all the other classes in background.
+    For forest analysis, set forest as foreground and all the other classes as background.
     
-Select parameters
-"""""""""""""""""
+Select the parameters
+"""""""""""""""""""""
 
 You will need to select parameters for your computation: 
 
@@ -1055,37 +1089,37 @@ You will need to select parameters for your computation:
 
     This parameter can be used to perform the default computation:
     
-    -   number of patterns class: SLF, Coherent (2)
+    -   number of pattern classes: 2: Small & linear features (SLF), Coherent
 
-number of patterns class
-########################
+Number of pattern classes
+#########################
 
-Set the number of pattern class you want to compute:
+Set the number of pattern classes you want to compute:
 
--   SLF, Coherent (2)
--   Core, Core-Openings, Margin (3)
--   Core, Core-Openings, Edge, Perforation, Margin (5)
--   Core, Core-Openings, Edge, Perforation, Islet, Margin (6)
+-   2: Small & linear features (SLF), Coherent
+-   3: Core, Core-Openings, Margin
+-   5: Core, Core-Openings, Edge, Perforation, Margin
+-   6: Core, Core-Openings, Edge, Perforation, Islet, Margin
 
-run analysis
-""""""""""""
+Run the analysis
+""""""""""""""""
 
-Once your parameters are all set you can launch the analysis. The blue rectangle will display you information about the computation. It will turn to green at the end and display some computation logs. 
+Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/spa_results.png
     :alt: information logs
 
-The final files can be retreived in :code:`module_results/gwb/spa/` folder. it should include:
+The resulting files are stored in the folder :code:`module_results/gwb/spa/`, for example:
 
 -   :code:`<raster_name>_bin_map.tif`
--   :code:`<raster_name>_bin_map_spa<nuber of class>.tif`
--   :code:`<raster_name>_bin_map_spa<number of class>.txt`
+-   :code:`<raster_name>_bin_map_spa<number of classes>.tif`
+-   :code:`<raster_name>_bin_map_spa<number of classes>.txt`
 
 .. danger::
 
-    If the rectangle become red, read attentively the instruction of the logs. Usually the instance you're using is too small to handle the file you want to analyse. If it's the case, close the app, open a bigger instance and run your analysis again.
+    If the rectangle turns red, carefully read the information in the log. For example, your current instance may be too small to handle the file you want to analyse. In this case, close the app, open a bigger instance and run your analysis again.
 
-Here is the result of the computation using the default parameters on the :code:`example.tif` file.
+Here is the result of the computation using SPA2 (2 classes) on the :code:`example.tif` file.
 
 .. figure:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_spa2.tif
     :width: 50%
