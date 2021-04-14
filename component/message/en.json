@@ -111,7 +111,7 @@
         "default": {
             "btn": "Download test dataset",
             "msg": "the test files \"{}\" and \"{}\" have been added to the \"downloads\" folder",
-            "tooltip": "Click the button above to download the test files \"clc3class.tif\" and \"example.tif\" into the folder \"downloads\""
+            "tooltip": "Click the button below to download the test files `clc3class.tif` and `example.tif` into the folder `~/downloads/`."
         }
     },
     "gwb": {
