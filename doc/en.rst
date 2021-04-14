@@ -254,7 +254,7 @@ Two computation options are available:
 
 
 Run the analysis
-""""""""""""
+""""""""""""""""
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
@@ -403,7 +403,7 @@ Here is the result of the computation using the default parameters on the :code:
 FRAG
 ^^^^
 
-This module will conduct the **fragmentation** analysis at a **user-selected observation scale**. This module and its option are similar to :ref:`gwb_fad` but allow the user to specify a single (or multiple) specific observation scale. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Fragmentation <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf>`_ product sheet.
+This module will conduct the **fragmentation** analysis at a **user-selected observation scale**. This module and its option are similar to :code:`fad` but allow the user to specify a single (or multiple) specific observation scale. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Fragmentation <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf>`_ product sheet.
 
 Setup the input image
 """""""""""""""""""""
@@ -579,7 +579,7 @@ Window size
 Set the square window size (in pixels). It should be an odd number in [3, 5, ...501].
 with :math:`kdim` being the window size, which is related to the observation scale by the following formula: 
 
-..math::
+.. math::
 
     obs_scale = (pixres * kdim)^2 / 10000
     
