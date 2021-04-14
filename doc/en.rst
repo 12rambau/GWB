@@ -665,8 +665,8 @@ Select the parameters
 """""""""""""""""""""
 You will need to select parameters for your computation: 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/acc_params.png
-    :alt: acc params
+.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/mspa_params.png
+    :alt: mspa params
     
 .. note::
 
@@ -777,8 +777,8 @@ Select the parameters
 
 You will need to select parameters for your computation: 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/acc_params.png
-    :alt: acc params
+.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/p223_params.png
+    :alt: p223 params
     
 .. note::
 
