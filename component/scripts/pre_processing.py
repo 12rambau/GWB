@@ -36,6 +36,10 @@ def set_byte_map(class_list, raster, process, output):
             each nested list is the value of the class that need to be included into each byte value.
         raster (pathlib.Path): the path to the original image
     """
+    print('class_list',class_list)
+    print('raster',raster)
+    print('process',process)
+    print('output',output)
     # check that the inputs are all separated
     if is_overlap(class_list):
         raise Exception(cm.bin.overlap)
@@ -78,7 +82,6 @@ def set_byte_map(class_list, raster, process, output):
                 data_value = (bool_data * (index + 1)).astype(np.uint8)
                 data = data + data_value
                     
-                    
                 
             data = data.astype(out_meta['dtype'])
                 
@@ -109,3 +112,42 @@ def unique(raster):
         features = features.tolist()
         
     return features
+
+def reclassify_from_map(in_raster, map_values, dst_raster=None):
+    """ Remap raster values from map_values dictionary. If the 
+    are missing values in the dictionary 0 value will be returned
+    
+    Args:
+        in_raster (path to raster): Input raster to reclassify
+        map_values (dict): Dictionary with origin:target values
+    """
+    
+    # Get reclassify path raster
+    filename = Path(in_raster).stem
+    dst_raster = Path('~').expanduser()/f'downloads/{filename}_reclassified.tif' if not dst_raster else dst_daster
+    
+    if dst_raster.is_file():
+        output.add_live_msg(cm.bin.file_exist.format(dst_raster), 'warning')
+        return dst_raster
+    
+    with rio.open(in_raster) as src:
+        
+        raw_data = src.read()
+        profile = src.profile
+        profile.update(compress='lzw', dtype=np.uint8)
+    
+        data = np.zeros_like(raw_data, dtype=np.uint8)
+
+        for origin, target in map_values.items():
+
+            bool_data = np.zeros_like(raw_data, dtype=np.bool_)
+            bool_data = bool_data + (raw_data == origin)
+
+            data_value = (bool_data * target).astype(np.uint8)
+
+            data += data_value
+
+            with rio.open(dst_raster, 'w', **profile) as dst:
+                dst.write(data)
+    
+    return data
