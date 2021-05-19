@@ -113,7 +113,7 @@ def unique(raster):
         
     return features
 
-def reclassify_from_map(in_raster, map_values, dst_raster=None):
+def reclassify_from_map(in_raster, map_values, dst_raster=None, overwrite=False):
     """ Remap raster values from map_values dictionary. If the 
     are missing values in the dictionary 0 value will be returned
     
@@ -124,11 +124,20 @@ def reclassify_from_map(in_raster, map_values, dst_raster=None):
     
     # Get reclassify path raster
     filename = Path(in_raster).stem
-    dst_raster = Path('~').expanduser()/f'downloads/{filename}_reclassified.tif' if not dst_raster else dst_daster
+    dst_raster = Path('~').expanduser()/f'downloads/{filename}_reclassified.tif' if not dst_raster else dst_raster
     
-    if dst_raster.is_file():
-        output.add_live_msg(cm.bin.file_exist.format(dst_raster), 'warning')
-        return dst_raster
+    if not overwrite:
+        if dst_raster.is_file():
+            raise Warning(cm.bin.reclassify_exist.format(dst_raster))
+        else:
+            raise Exception(cm.bin.no_exists.format(dst_raster))
+            
+    if not all(list(map_values.values())):
+        raise Exception('All new values has to be filled, try it again.')
+        
+    # Cast to integer map_values
+    
+    map_values = {k: int(v) for k, v in map_values.items()}
     
     with rio.open(in_raster) as src:
         
