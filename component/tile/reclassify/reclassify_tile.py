@@ -4,6 +4,7 @@ from pathlib import Path
 from traitlets import List, Dict, Int
 import ipyvuetify as v
 import sepal_ui.sepalwidgets as sw
+from sepal_ui.scripts.utils import loading_button
 
 from .datatable import *
 from .reclassifytable import ReclassifyTable
@@ -108,8 +109,8 @@ class ReclassifyUI(v.Card, sw.SepalWidget):
         self.class_path=None
         self.workspace()
         
-        self.alert_dialog = Dialog(transition=False)
-        
+#         self.alert_dialog = Dialog(transition=False)
+        self.alert_dialog = sw.Alert().hide()
         title = v.CardTitle(children=["Reclassify raster"])
         description = v.CardText(
             class_='py-0', 
@@ -124,12 +125,12 @@ class ReclassifyUI(v.Card, sw.SepalWidget):
         )
         
         self.get_table_btn = sw.Btn('Get tables', class_='mb-2')
-        self.save_raster_btn = sw.Btn('Save raster', class_='my-2').hide()
+        self.save_raster_btn = sw.Btn('Reclassify', class_='my-2').hide()
         
         
         self.get_items()
     
-        self.w_select_raster = sw.FileInput(['.tif'])
+        self.w_select_raster = sw.FileInput(['.tif'], label='Search raster')
         self.w_reclassify_table = ReclassifyTable().show()
 
         tabs_titles = ['Reclassify', 'Customize classification']
@@ -137,20 +138,23 @@ class ReclassifyUI(v.Card, sw.SepalWidget):
             v.Card(children=[
                 title,
                 description,
-                self.alert_dialog,
                 self.w_select_raster,
                 self.w_class_file,
                 self.get_table_btn,
                 self.w_reclassify_table,
                 self.save_raster_btn,
+                self.alert_dialog,
             ]),
             self.customize_class
         ]
 
         self.children=[
-            self.alert_dialog,
             Tabs(tabs_titles, tab_content)
         ]
+        
+        # Decorate functions
+        self.reclassify_and_save = loading_button(self.save_raster_btn, self.alert_dialog)(self.reclassify_and_save)
+        self.get_reclassify_table = loading_button(self.get_table_btn, self.alert_dialog)(self.get_reclassify_table)
         
         # Events
         self.get_table_btn.on_event('click', self.get_reclassify_table)
@@ -163,25 +167,34 @@ class ReclassifyUI(v.Card, sw.SepalWidget):
         """Reclassify the input raster and save it in sepal space"""
         
         in_raster = self.w_select_raster.file
-        map_values = {k: int(v['value']) for k, v in self.w_reclassify_table.matrix.items()}
-
-        reclassify_from_map(in_raster, map_values)
+        change_matrix = self.w_reclassify_table.matrix
+        
+        map_values = {
+            k: v['value'] if 'text' in change_matrix else v
+                for k, v in change_matrix.items()
+        }
+            # Get reclassify path raster
+        filename = Path(in_raster).stem
+        dst_raster = Path('~').expanduser()/f'downloads/{filename}_reclassified.tif'
+        
+        reclassify_from_map(in_raster, map_values, dst_raster=dst_raster, overwrite=True)
+        
+        self.alert_dialog.add_msg('File {} succesfully reclassified'.format(dst_raster), type_='success')
                 
     def get_reclassify_table(self, *args):
         """Display a reclassify table which will lead the user to select
         a local code 'from user' to a target code based on a classes file"""
         
         code_fields = unique(self.w_select_raster.file)
-        self.w_reclassify_table._get_matrix(self.w_class_file.v_model, code_fields)
+        self.w_reclassify_table._get_matrix(code_fields, self.w_class_file.v_model)
         self.save_raster_btn.show()
         
     def get_items(self, *args):
         """Get classes .csv files from the selected path"""
         
-        self.w_class_file.items = [{'text':'Manual classification', 'value':'manual'}] + \ 
-                                  [{'divider':True}, ] + \
-                                  [{'text':Path(f).name, 'value':f}  
-                                      for f in self.customize_class.classes_files]
+        self.w_class_file.items = [{'text':'Manual classification', 'value':''}] + \
+                                  [{'divider':True}] + \
+                                  [{'text':Path(f).name, 'value':f} for f in self.customize_class.classes_files]
     
     def workspace(self):
         """ Creates the workspace necessary to store the data

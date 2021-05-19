@@ -8,12 +8,7 @@ class ReclassifyTable(v.SimpleTable, sw.SepalWidget):
     matrix = Dict({}).tag(sync=True)
     
     def __init__(self, *args, **kwargs):
-        """Widget to reclassify raster/feature_class into local classes
-        
-        Args:
-        
-            classes_file: classes .csv file containing lines of (code_class, description)
-        """
+        """Widget to reclassify raster/feature_class into local classes"""
         
         self.dense = True
 
@@ -22,18 +17,21 @@ class ReclassifyTable(v.SimpleTable, sw.SepalWidget):
         
 
     
-    def _get_matrix(self, classes_file, code_fields):
+    def _get_matrix(self, code_fields, classes_file=''):
         """ Init table reading local classes file and code/categories fields
         
         Args:
-            classes_file (str) : Classes file containing code/category and description
             code_fields (list) : List of codes/categories of raster/feature collection
+            classes_file (str) : Classes file containing code/category and description
         """
         
         
         self.matrix = {}
         
-        self.items = self.read_classes_from_file(classes_file)
+        # Set empty items if there is not a file selected
+        self.items = []
+        
+        if classes_file: self.items = self.read_classes_from_file(classes_file)
         
         headers = ['From: user code', 'To: Custom Code']
         
