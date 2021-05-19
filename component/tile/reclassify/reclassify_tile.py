@@ -78,7 +78,8 @@ class CustomizeTile(v.Card):
         look_up_folder = Path(self.class_path).glob('*.csv')
         module_classes_folder = (Path(os.getcwd())/'component/parameter').glob('*.csv')
         
-        self.classes_files = [str(f) for f in (list(look_up_folder) + list(module_classes_folder))]
+        self.classes_files = [str(f) for f in (list(look_up_folder) + \
+                                               list(module_classes_folder))]
     
     def get_items(self):
         """Get items for widget selection"""
@@ -177,9 +178,10 @@ class ReclassifyUI(v.Card, sw.SepalWidget):
     def get_items(self, *args):
         """Get classes .csv files from the selected path"""
         
-        self.w_class_file.items =  [
-            {'text':Path(f).name, 'value':f}  for f in self.customize_class.classes_files
-        ]
+        self.w_class_file.items = [{'text':'Manual classification', 'value':'manual'}] + \ 
+                                  [{'divider':True}, ] + \
+                                  [{'text':Path(f).name, 'value':f}  
+                                      for f in self.customize_class.classes_files]
     
     def workspace(self):
         """ Creates the workspace necessary to store the data
