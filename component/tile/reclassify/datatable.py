@@ -76,7 +76,7 @@ class ClassTable(v.DataTable, sw.SepalWidget):
         self.save_icon.on_event('click', self._save_event)
         
     def populate_table(self, items_file):
-        """ Populate table, it will fill the table with the items_file
+        """ Populate table, it will fill the table with the .csv items_file
 
         Args:
             items (.txt): file containing classes and description
@@ -85,7 +85,9 @@ class ClassTable(v.DataTable, sw.SepalWidget):
         self.headers =  [
             {'text': k.capitalize(), 'value': k} for k in self.schema.keys() if k!='id'
         ]
-
+        
+        # If there is not any file passed as an argument, populate and empy table
+        # with the given scheme or s
         self.items = [] if items_file == '' else self.get_items_from_txt(items_file)
     
     def get_items_from_txt(self, items_path):
@@ -264,7 +266,7 @@ class SaveDialog(v.Dialog):
         """
         self.max_width=500
         self.v_model = False
-        self.out_path = Path(out_path)
+        self.out_path = out_path
         
         super().__init__(*args, **kwargs)
         
@@ -282,6 +284,9 @@ class SaveDialog(v.Dialog):
         
         self.cancel = v.Btn(children=['Cancel'])
         cancel = sw.Tooltip(self.cancel, 'Cancel')
+        
+        info = sw.Alert().add_msg(
+            'The table will be stored in {}'.format(str(out_path))).show()
                 
         self.children=[
             v.Card(
@@ -289,6 +294,7 @@ class SaveDialog(v.Dialog):
                 children=[
                     v.CardTitle(children=['Save table']),
                     self.w_file_name,
+                    info,
                     save,
                     cancel
                 ]

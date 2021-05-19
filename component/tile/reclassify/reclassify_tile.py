@@ -5,16 +5,21 @@ from traitlets import List, Dict, Int
 import ipyvuetify as v
 import sepal_ui.sepalwidgets as sw
 
+from .datatable import *
+from .reclassifytable import ReclassifyTable
+from ...scripts.pre_processing import *
 from ...widget.reclassifywgs import *
 
 
-class CustomizeClass(v.Card):
+class CustomizeTile(v.Card):
     
     classes_files = List([]).tag(sync=True)
     
-    def __init__(self, class_path='', *args, **kwargs):
+    def __init__(self, class_path=Path('~').expanduser()/'downloads', *args, **kwargs):
         
-        """Stand-alone component to edit or create a new classification table,
+        """Stand-alone tile composed by a select widget containing .csv reclassify files
+        found in the class_path, and a ClassTable to edit and/or create a new 
+        classification table,
         
         Args:
             class_path (str) (optional): Folder path containing classification tables
@@ -33,13 +38,13 @@ class CustomizeClass(v.Card):
         )
         self.ct = ClassTable(
             out_path=self.class_path,
-            _metadata = {'name':'class_table'}
+            schema = {'id':'number', 'code':'number', 'description':'string'},
         ).hide()
 
         use_btn = sw.Btn('Get table')
         self.children=[
             self.title,
-            v.Flex(class_='d-flex', children=[
+            v.Flex(class_='ml-2 d-flex', children=[
                 self.w_class_file,
                 use_btn,
             ]),
@@ -48,14 +53,18 @@ class CustomizeClass(v.Card):
         self.get_classes_files()
         
         # Events
+        
+        # Listen Class table save dialog to refresh the classes widget
         self.ct.save_dialog.observe(self._refresh_files, 'reload')
+        
+        # Get the corresponding table
         use_btn.on_event('click', self.get_class_table)
         
     def get_class_table(self, *args):
         """Display class table widget in view"""
 
         # Call class table method to build items
-        self.ct.populate_table(self.structure, self.w_class_file.v_model)
+        self.ct.populate_table(self.w_class_file.v_model)
         self.ct.show()
                 
     def _refresh_files(self, *args):
@@ -80,6 +89,8 @@ class CustomizeClass(v.Card):
                         [{'text':Path(f).name, 'value':f}  for f in self.classes_files]
 
         return classes_files
+    
+    
 
 
 class ReclassifyUI(v.Card, sw.SepalWidget):
@@ -104,24 +115,33 @@ class ReclassifyUI(v.Card, sw.SepalWidget):
             children=[sw.Markdown("Reclassify rasters")]
         )
 
-        self.customize_class = CustomizeClass(self.class_path)
+        self.customize_class = CustomizeTile(self.class_path)
         self.w_class_file = v.Select(
             label='Select a classes file', 
             v_model='',
             dense=True
         )
+        
+        self.get_table_btn = sw.Btn('Get tables', class_='mb-2')
+        self.save_raster_btn = sw.Btn('Save raster', class_='my-2').hide()
+        
+        
         self.get_items()
-        
-        
-#         self.w_reclassify = GeeSelector(self.alert_dialog, self.w_class_file)
+    
+        self.w_select_raster = sw.FileInput(['.tif'])
+        self.w_reclassify_table = ReclassifyTable().show()
 
         tabs_titles = ['Reclassify', 'Customize classification']
         tab_content = [
             v.Card(children=[
                 title,
                 description,
+                self.alert_dialog,
+                self.w_select_raster,
                 self.w_class_file,
-#                 self.w_reclassify
+                self.get_table_btn,
+                self.w_reclassify_table,
+                self.save_raster_btn,
             ]),
             self.customize_class
         ]
@@ -132,16 +152,34 @@ class ReclassifyUI(v.Card, sw.SepalWidget):
         ]
         
         # Events
+        self.get_table_btn.on_event('click', self.get_reclassify_table)
+        self.save_raster_btn.on_event('click', self.reclassify_and_save)
         
-        # Refresh tables
-        
+        # Refresh tables        
         self.customize_class.observe(self.get_items, 'classes_files')
         
+    def reclassify_and_save(self, *args):
+        """Reclassify the input raster and save it in sepal space"""
+        
+        in_raster = self.w_select_raster.file
+        map_values = {k: int(v['value']) for k, v in self.w_reclassify_table.matrix.items()}
+
+        reclassify_from_map(in_raster, map_values)
+                
+    def get_reclassify_table(self, *args):
+        """Display a reclassify table which will lead the user to select
+        a local code 'from user' to a target code based on a classes file"""
+        
+        code_fields = unique(self.w_select_raster.file)
+        self.w_reclassify_table._get_matrix(self.w_class_file.v_model, code_fields)
+        self.save_raster_btn.show()
+        
     def get_items(self, *args):
+        """Get classes .csv files from the selected path"""
+        
         self.w_class_file.items =  [
             {'text':Path(f).name, 'value':f}  for f in self.customize_class.classes_files
         ]
-        
     
     def workspace(self):
         """ Creates the workspace necessary to store the data
