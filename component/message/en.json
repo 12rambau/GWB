@@ -102,6 +102,8 @@
         "btn": "Convert the input image classes",
         "title": "Select input map classes",
         "file_exist": "the file {} already exists, no new bin maps have been created",
+        "reclassify_exist": "The file {} already exists.",
+        "no_exists" : "The provided {} file doesn't exists.",
         "running": "The bin map is being processed",
         "finished": "the bin map is ready to be used",
         "no_file": "Please provide a file to be reclassified",
