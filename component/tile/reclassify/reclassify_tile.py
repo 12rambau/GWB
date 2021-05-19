@@ -100,6 +100,7 @@ class ReclassifyUI(v.Card, sw.SepalWidget):
     def __init__(self, *args, **kwargs):
 
         self.class_ = 'pa-4'
+        self._metadata = {'mount_id':'reclassify'}
 
         super().__init__(*args, **kwargs)
         
@@ -111,10 +112,11 @@ class ReclassifyUI(v.Card, sw.SepalWidget):
         
 #         self.alert_dialog = Dialog(transition=False)
         self.alert_dialog = sw.Alert().hide()
-        title = v.CardTitle(children=["Reclassify raster"])
+    
+        title = v.CardTitle(children=[cm.reclassify.title])
         description = v.CardText(
             class_='py-0', 
-            children=[sw.Markdown("Reclassify rasters")]
+            children=[sw.Markdown(cm.reclassify.description)]
         )
 
         self.customize_class = CustomizeTile(self.class_path)
@@ -124,7 +126,7 @@ class ReclassifyUI(v.Card, sw.SepalWidget):
             dense=True
         )
         
-        self.get_table_btn = sw.Btn('Get tables', class_='mb-2')
+        self.get_table_btn = sw.Btn('Get reclassify table', class_='mb-2')
         self.save_raster_btn = sw.Btn('Reclassify', class_='my-2').hide()
         
         
@@ -170,7 +172,7 @@ class ReclassifyUI(v.Card, sw.SepalWidget):
         change_matrix = self.w_reclassify_table.matrix
         
         map_values = {
-            k: v['value'] if 'text' in change_matrix else v
+            k: v['value'] if 'text' in v else v
                 for k, v in change_matrix.items()
         }
             # Get reclassify path raster
