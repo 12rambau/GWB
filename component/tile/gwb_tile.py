@@ -1,6 +1,6 @@
 import shutil
 
-from sepal_ui import sepalwidgets as sw 
+from sepal_ui import sepalwidgets as sw
 
 from component.message import cm
 from component import scripts as cs
@@ -8,53 +8,39 @@ from component import parameter as cp
 
 class GwbTile(sw.Tile):
 
-    def __init__(self, io, output, inputs):
+    def __init__(self, model, inputs):
         
-        # gather io 
-        self.io = io         
-        
-        # create the btn 
-        btn = sw.Btn(cm.process.btn.format(io.process))
+        # gather model 
+        self.model = model         
         
         super().__init__(
-            self.io.tile_id,
+            self.model.tile_id,
             "Run Process",
             inputs = inputs,
-            output = output,
-            btn = btn
+            alert = sw.Alert(),
+            btn = sw.Btn(cm.process.btn.format(model.process))
         )
         
         # link js behaviours
-        btn.on_event('click', self._on_click)
+        self.btn.on_event('click', self._on_click)
         
     def _on_click(self, widget, event, data):
         
-        # the btn will be silence in the tiles
-        # widget.toggle_loading()
-        
-        try:
-            
-            # update the params list 
-            self.io.update_params_list()
-        
-            # compute acc process 
-            files = cs.run_gwb_process(
-                process = self.io.process, 
-                raster = self.io.bin_map, 
-                params_list = self.io.params_list, 
-                title = self.io.get_params_list(), 
-                output = self.output,
-                offset = self.io.offset
-            )
-            
-        except Exception as e:
-            self.output.add_live_msg(str(e), 'error')
+        # update the params list 
+        self.model.update_params_list()
+
+        # compute acc process 
+        files = cs.run_gwb_process(
+            process = self.model.process, 
+            raster = self.model.bin_map, 
+            params_list = self.model.params_list, 
+            title = self.model.get_params_list(), 
+            output = self.alert,
+            offset = self.model.offset
+        )
         
         # remove the tmp directory 
         # whatever the result
         shutil.rmtree(cp.get_tmp_dir())
-        
-        # release the btn 
-        widget.toggle_loading()
         
         return

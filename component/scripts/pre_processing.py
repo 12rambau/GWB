@@ -36,10 +36,6 @@ def set_byte_map(class_list, raster, process, output):
             each nested list is the value of the class that need to be included into each byte value.
         raster (pathlib.Path): the path to the original image
     """
-    print('class_list',class_list)
-    print('raster',raster)
-    print('process',process)
-    print('output',output)
     # check that the inputs are all separated
     if is_overlap(class_list):
         raise Exception(cm.bin.overlap)

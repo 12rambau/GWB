@@ -2,6 +2,7 @@ import json
 import shutil
 
 from sepal_ui import sepalwidgets as sw 
+from sepal_ui.scripts import utils as su
 import ipyvuetify as v
 
 from component.message import cm
@@ -13,7 +14,7 @@ from .gwb_tile import GwbTile
 
 class P223Tile(GwbTile):
 
-    def __init__(self, io):
+    def __init__(self, model):
         
         # create the widgets
         algorithm = v.Select(
@@ -34,32 +35,29 @@ class P223Tile(GwbTile):
         )
         
         # bind to the io
-        self.output = sw.Alert() \
-            .bind(algorithm, io, 'algorithm') \
-            .bind(kdim, io, 'kdim') \
-            .bind(prescision, io, 'prescision')
+        model \
+            .bind(algorithm, 'algorithm') \
+            .bind(kdim, 'kdim') \
+            .bind(prescision, 'prescision')
         
         # create extra js behaviour 
         kdim.on_event('focusout', self._on_focusout)
         
         super().__init__(
-            io = io,
+            model = model,
             inputs = [
                 algorithm,
                 kdim,
                 prescision,
-            ],
-            output = self.output
+            ]
         )
         
+    @su.loading_button()
     def _on_click(self, widget, event, data):
         
-        # silence the btn
-        widget.toggle_loading()
-        
         # check inputs 
-        if not self.output.check_input(self.io.kdim, cm.lm.no_kdim): return widget.toggle_loading()
-        if not self.output.check_input(self.io.bin_map, cm.bin.no_bin): return widget.toggle_loading()
+        if not self.alert.check_input(self.model.kdim, cm.lm.no_kdim): return
+        if not self.alert.check_input(self.model.bin_map, cm.bin.no_bin): return
         
         super()._on_click(widget, event, data)
         

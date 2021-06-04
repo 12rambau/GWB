@@ -1,8 +1,10 @@
 import json 
 
+from sepal_ui import model
+
 from component import parameter as cp
 
-class GWBIo():
+class GWBModel(model.Model):
     """
     Mother class of all the other io. 
     The process will be launched thanks to this object parameters 

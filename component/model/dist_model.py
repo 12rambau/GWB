@@ -1,22 +1,24 @@
 import json
 
-from .gwb_io import GWBIo
+from traitlets import Any
+
+from .gwb_model import GWBModel
 from component  import parameter as cp
 
-class DistIo(GWBIo):
+class DistModel(GWBModel):
+    
+    # the init file
+    file = Any(None).tag(sync=True)
+
+    # all the bytes values 
+    background = Any([]).tag(sync=True)
+    foreground = Any([]).tag(sync=True)
+
+    # the process 
+    connectivity = Any(cp.connectivity[0]['value']).tag(sync=True)
+    options = Any(cp.dist_options[0]['value']).tag(sync=True)
     
     def __init__(self):
-        
-        # the init file
-        self.file = None
-        
-        # all the bytes values 
-        self.background = []
-        self.foreground = []
-        
-        # the process 
-        self.connectivity = cp.connectivity[0]['value']
-        self.options = cp.dist_options[0]['value']
         
         super().__init__(process = 'dist')
     

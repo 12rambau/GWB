@@ -1,27 +1,33 @@
 import json
 
-from .gwb_io import GWBIo
+from traitlets import Any
+
+from .gwb_model import GWBModel
 from component  import parameter as cp
 
-class ParcIo(GWBIo):
+class RssModel(GWBModel):
+    
+    # the init file
+    file = Any(None).tag(sync=True)
+
+    # all the bytes values 
+    background = Any([]).tag(sync=True)
+    foreground = Any([]).tag(sync=True)
+
+    # the process 
+    connectivity = Any(cp.connectivity[0]['value']).tag(sync=True)
     
     def __init__(self):
         
-        # the init file
-        self.file = None
-        
-        # the process 
-        self.connectivity = cp.connectivity[0]['value']
-        self.res = None
-        self.thresholds = "[]"
-        self.options = cp.acc_options[0]['value']
-        
-        super().__init__(process = 'parc')
+        super().__init__(process = 'rss')
     
     def update_byte_list(self):
         """manually update the byte_list"""
         
-        return super().update_byte_list([])
+        return super().update_byte_list([
+            self.background, 
+            self.foreground
+        ])
     
     def update_params_list(self):
         """manually update the params list"""

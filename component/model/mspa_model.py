@@ -1,24 +1,26 @@
 import json
 
-from .gwb_io import GWBIo
+from traitlets import Any
+
+from .gwb_model import GWBModel
 from component  import parameter as cp
 
-class MspaIo(GWBIo):
+class MspaModel(GWBModel):
+    
+    # the init file
+    file = Any(None).tag(sync=True)
+
+    # all the bytes values 
+    background = Any([]).tag(sync=True) 
+    foreground = Any([]).tag(sync=True) 
+
+    # the process 
+    connectivity = Any(cp.connectivity[0]['value']).tag(sync=True) 
+    edge_width = Any(1).tag(sync=True)
+    transition = Any(1).tag(sync=True)
+    int_ext = Any(1).tag(sync=True)
     
     def __init__(self):
-        
-        # the init file
-        self.file = None
-        
-        # all the bytes values 
-        self.background = []
-        self.foreground = []
-        
-        # the process 
-        self.connectivity = cp.connectivity[0]['value']
-        self.edge_width = 1
-        self.transition = 1
-        self.int_ext = 1
         
         super().__init__(process = 'mspa')
     

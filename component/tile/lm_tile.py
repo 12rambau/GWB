@@ -2,6 +2,7 @@ import json
 import shutil
 
 from sepal_ui import sepalwidgets as sw 
+from sepal_ui.scripts import utils as su
 import ipyvuetify as v
 
 from component.message import cm
@@ -13,7 +14,7 @@ from .gwb_tile import GwbTile
 
 class LmTile(GwbTile):
 
-    def __init__(self, io): 
+    def __init__(self, model): 
         
         # create the widgets
         kdim = v.TextField(
@@ -26,25 +27,21 @@ class LmTile(GwbTile):
         
         
         # bind to the io
-        self.output = sw.Alert() \
-            .bind(kdim, io, 'kdim')
+        model.bind(kdim, 'kdim')
         
         # extra js behaviour
         kdim.on_event('focusout', self._on_focusout)
         
         super().__init__(
-            io = io,
-            inputs = [kdim],
-            output = self.output
+            model = model,
+            inputs = [kdim]
         )
         
+    @su.loading_button()
     def _on_click(self, widget, event, data):
         
-        # silence the btn
-        widget.toggle_loading()
-        
         # check inputs 
-        if not self.output.check_input(self.io.kdim, cm.lm.no_kdim): return widget.toggle_loading()
+        if not self.alert.check_input(self.model.kdim, cm.lm.no_kdim): return
         
         super()._on_click(widget, event, data)
         

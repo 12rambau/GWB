@@ -1,20 +1,22 @@
 import json
 
-from .gwb_io import GWBIo
+from traitlets import Any
+
+from .gwb_model import GWBModel
 from component  import parameter as cp
 
-class RecIo(GWBIo):
+class RecIo(GWBModel):
+    
+    # the init file
+    file = Any(None).tag(sync=True)
+
+    # the process 
+    recode_json = Any(json.dumps({i: i for i in range(256)})).tag(sync=True)
+    res = Any(None).tag(sync=True)
+    thresholds = Any("[]").tag(sync=True)
+    options = Any(cp.acc_options[0]['value']).tag(sync=True)
     
     def __init__(self):
-        
-        # the init file
-        self.file = None
-        
-        # the process 
-        self.recode_json = json.dumps({i: i for i in range(256)})
-        self.res = None
-        self.thresholds = "[]"
-        self.options = cp.acc_options[0]['value']
         
         super().__init__(process = 'rec')
     

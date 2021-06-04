@@ -2,6 +2,7 @@ import json
 import shutil
 
 from sepal_ui import sepalwidgets as sw 
+from sepal_ui.scripts import utils as su
 import ipyvuetify as v
 
 from component.message import cm
@@ -13,7 +14,7 @@ from .gwb_tile import GwbTile
 
 class ParcTile(GwbTile):
 
-    def __init__(self, io):
+    def __init__(self, model):
         
         # create the widgets
         connectivity = v.Select(
@@ -23,23 +24,19 @@ class ParcTile(GwbTile):
         )        
         
         # bind to the io
-        self.output = sw.Alert() \
-            .bind(connectivity, io, 'connectivity')
+        model.bind(connectivity, 'connectivity')
         
         super().__init__(
-            io = io,
-            inputs = [connectivity],
-            output = self.output
+            model = model,
+            inputs = [connectivity]
         )
         
+    @su.loading_button()
     def _on_click(self, widget, event, data):
         
-        # silence the btn
-        widget.toggle_loading()
-        
         # check inputs 
-        if not self.output.check_input(self.io.connectivity, cm.acc.no_connex): return widget.toggle_loading()
-        if not self.output.check_input(self.io.bin_map, cm.bin.no_bin): return widget.toggle_loading()
+        if not self.alert.check_input(self.model.connectivity, cm.acc.no_connex): return
+        if not self.alert.check_input(self.model.bin_map, cm.bin.no_bin): return
         
         super()._on_click(widget, event, data)
         

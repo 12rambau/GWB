@@ -1,23 +1,26 @@
 import json
 
-from .gwb_io import GWBIo
+from traitlets import Any
+
+from .gwb_model import GWBModel
 from component  import parameter as cp
 
-class P223Io(GWBIo):
+class P223Model(GWBModel):
+    
+    # the init file
+    file = Any(None).tag(sync=True)
+
+    # all the bytes values 
+    background = Any([]).tag(sync=True)
+    foreground = Any([]).tag(sync=True)
+    spe_background = Any([]).tag(sync=True)
+
+    # the process 
+    algorithm = Any(cp.algo[0]['value']).tag(sync=True) 
+    kdim =Any(None).tag(sync=True)
+    prescision = Any(cp.prescision[0]['value']).tag(sync=True) 
     
     def __init__(self):
-        
-        # the init file
-        self.file = None
-        
-        # all the bytes values 
-        self.background = []
-        self.foreground = []
-        
-        # the process 
-        self.algorithm = cp.algo[0]['value']
-        self.kdim = None
-        self.prescision = cp.prescision[0]['value']
         
         super().__init__(process = 'p223')
     
