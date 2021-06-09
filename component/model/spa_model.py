@@ -1,21 +1,23 @@
 import json
 
-from .gwb_io import GWBIo
+from traitlets import Any
+
+from .gwb_model import GWBModel
 from component  import parameter as cp
 
-class SpaIo(GWBIo):
+class SpaModel(GWBModel):
+    
+    # the init file
+    file = Any(None).tag(sync=True)
+
+    # all the bytes values 
+    background = Any([]).tag(sync=True)
+    foreground = Any([]).tag(sync=True)
+ 
+    # the process 
+    options = Any(None).tag(sync=True)
     
     def __init__(self):
-        
-        # the init file
-        self.file = None
-        
-        # all the bytes values 
-        self.background = []
-        self.foreground = []
-        
-        # the process 
-        self.options = None
         
         super().__init__(process = 'spa')
     

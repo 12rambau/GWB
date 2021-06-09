@@ -1,22 +1,24 @@
 import json
 
-from .gwb_io import GWBIo
+from traitlets import Any
+
+from .gwb_model import GWBModel
 from component  import parameter as cp
 
-class LmIo(GWBIo):
+class LmModel(GWBModel):
+    
+    # the init file
+    file = Any(None).tag(sync=True)
+
+    # all the bytes values 
+    lc_1 = Any([]).tag(sync=True)
+    lc_2 = Any([]).tag(sync=True)
+    lc_3 = Any([]).tag(sync=True)
+
+    # the process 
+    kdim = Any(None).tag(sync=True)
     
     def __init__(self):
-        
-        # the init file
-        self.file = None
-        
-        # all the bytes values 
-        self.lc_1 = []
-        self.lc_2 = []
-        self.lc_3 = []
-        
-        # the process 
-        self.kdim = None
         
         super().__init__(process = 'lm')
     

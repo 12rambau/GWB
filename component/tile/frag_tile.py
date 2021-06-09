@@ -2,6 +2,7 @@ import json
 import shutil
 
 from sepal_ui import sepalwidgets as sw 
+from sepal_ui.scripts import utils as su
 import ipyvuetify as v
 
 from component.message import cm
@@ -13,7 +14,7 @@ from .gwb_tile import GwbTile
 
 class FragTile(GwbTile):
 
-    def __init__(self, io): 
+    def __init__(self, model): 
         
         # create the widgets
         connectivity = v.Select(
@@ -42,40 +43,37 @@ class FragTile(GwbTile):
         
         
         # bind to the io
-        self.output = sw.Alert() \
-            .bind(connectivity, io, 'connectivity') \
-            .bind(res, io, 'res') \
-            .bind(windows.save, io, 'window_size') \
-            .bind(options, io, 'options') \
-            .bind(prescision, io, 'prescision')
+        model \
+            .bind(connectivity, 'connectivity') \
+            .bind(res, 'res') \
+            .bind(windows.save, 'window_size') \
+            .bind(options, 'options') \
+            .bind(prescision, 'prescision')
         
         # extra js behaviour 
         res.on_event('focusout', self._on_focus_out)
         
         super().__init__(
-            io = io,
+            model = model,
             inputs = [
                 connectivity,
                 res,
                 windows,
                 options,
                 prescision
-            ],
-            output = self.output
+            ]
         )
-        
+       
+    @su.loading_button()
     def _on_click(self, widget, event, data):
         
-        # silence the btn
-        widget.toggle_loading()
-        
         # check inputs 
-        if not self.output.check_input(self.io.connectivity, cm.acc.no_connex): return widget.toggle_loading()
-        if not self.output.check_input(self.io.res, cm.acc.no_res): return widget.toggle_loading()
-        if not self.output.check_input(len(json.loads(self.io.window_size)) or None, cm.frag.no_windows): return widget.toggle_loading()
-        if not self.output.check_input(self.io.options, cm.acc.no_options): return widget.toggle_loading()
-        if not self.output.check_input(self.io.prescision, cm.fad.no_prescision): return widget.toggle_loading()
-        if not self.output.check_input(self.io.bin_map, cm.bin.no_bin): return widget.toggle_loading()
+        if not self.alert.check_input(self.model.connectivity, cm.acc.no_connex): return
+        if not self.alert.check_input(self.model.res, cm.acc.no_res): return
+        if not self.alert.check_input(json.loads(self.model.window_size), cm.frag.no_windows): return
+        if not self.alert.check_input(self.model.options, cm.acc.no_options): return
+        if not self.alert.check_input(self.model.prescision, cm.fad.no_prescision): return
+        if not self.alert.check_input(self.model.bin_map, cm.bin.no_bin): return
         
         super()._on_click(widget, event, data)
         

@@ -1,7 +1,8 @@
 import json
 import shutil
 
-from sepal_ui import sepalwidgets as sw 
+from sepal_ui import sepalwidgets as sw
+from sepal_ui.scripts import utils as su
 import ipyvuetify as v
 
 from component.message import cm
@@ -13,7 +14,7 @@ from .gwb_tile import GwbTile
 
 class FadTile(GwbTile):
 
-    def __init__(self, io):
+    def __init__(self, model):
         
         # create the widgets
         connectivity = v.Select(
@@ -34,31 +35,24 @@ class FadTile(GwbTile):
         
         
         # bind to the io
-        self.output = sw.Alert() \
-            .bind(connectivity, io, 'connectivity') \
-            .bind(prescision, io, 'prescision') \
-            .bind(options, io, 'options')
+        model \
+            .bind(connectivity, 'connectivity') \
+            .bind(prescision, 'prescision') \
+            .bind(options, 'options')
         
         super().__init__(
-            io = io,
-            inputs = [
-                connectivity,
-                prescision,
-                options
-            ],
-            output = self.output
+            model = model,
+            inputs = [connectivity, prescision, options],
         )
         
+    @su.loading_button()
     def _on_click(self, widget, event, data):
         
-        # silence the btn
-        widget.toggle_loading()
-        
         # check inputs 
-        if not self.output.check_input(self.io.connectivity, cm.acc.no_connex): return widget.toggle_loading()
-        if not self.output.check_input(self.io.prescision, cm.fad.no_prescision): return widget.toggle_loading()
-        if not self.output.check_input(self.io.options, cm.acc.no_options): return widget.toggle_loading()
-        if not self.output.check_input(self.io.bin_map, cm.bin.no_bin): return widget.toggle_loading()
+        if not self.alert.check_input(self.model.connectivity, cm.acc.no_connex): return 
+        if not self.alert.check_input(self.model.prescision, cm.fad.no_prescision): return 
+        if not self.alert.check_input(self.model.options, cm.acc.no_options): return 
+        if not self.alert.check_input(self.model.bin_map, cm.bin.no_bin): return 
         
         super()._on_click(widget, event, data)
         

@@ -1,4 +1,5 @@
 from sepal_ui import sepalwidgets as sw
+from sepal_ui.scripts import utils as su
 import ipyvuetify as v
 import rasterio as rio
 
@@ -8,10 +9,10 @@ from component import parameter as cp
 
 class ConvertByte(sw.Tile):
     
-    def __init__(self, io, nb_class):
+    def __init__(self, model, nb_class):
         
-        # gather the io 
-        self.io = io
+        # gather the model 
+        self.model = model
         
         # create the download layout 
         mkd_txt = sw.Markdown(cm.bin.default.tooltip)
@@ -23,7 +24,7 @@ class ConvertByte(sw.Tile):
         self.classes = [v.Select(
             label = cp.convert[nb_class]['label'][i], 
             items = None, 
-            v_model = None, 
+            v_model = [], 
             chips = True, 
             small_chips = True,
             multiple = True,
@@ -32,57 +33,42 @@ class ConvertByte(sw.Tile):
         ) for i in range(len(cp.convert[nb_class]['label']))]
         requirements = sw.Markdown(cm.requirement[nb_class])
         
-        # bind it to the io 
-        self.output = sw.Alert().bind(self.file, self.io, 'file')
+        # bind it to the model 
+        self.model.bind(self.file, 'file')
         for i in range(len(cp.convert[nb_class]['label'])):
-            self.output.bind(self.classes[i], self.io, cp.convert[nb_class]['io'][i])
-        
-        # create the btn
-        btn = sw.Btn(cm.bin.btn)
+            self.model.bind(self.classes[i], cp.convert[nb_class]['io'][i])
         
         super().__init__(
-            self.io.tile_id,
+            self.model.tile_id,
             cm.bin.title,
             inputs = [mkd_txt, self.down_test, v.Divider(), requirements, self.file] + self.classes,
-            output = self.output,
-            btn = btn
+            alert = sw.Alert(),
+            btn = sw.Btn(cm.bin.btn)
         )
         
         # bind js event
-        btn.on_event('click', self._on_click)
+        self.btn.on_event('click', self._on_click)
         self.file.observe(self._on_change, 'v_model')
         self.down_test.on_event('click', self._on_download)
         
+    @su.loading_button(debug=True)
     def _on_click(self, widget, event, data):
             
-        # silence the btn 
-        widget.toggle_loading()
-            
         # check variables
-        if not self.output.check_input(self.io.file, cm.bin.no_file): return widget.toggle_loading()
+        if not self.alert.check_input(self.model.file, cm.bin.no_file): return
             
-        # compute the bin map
-        try:
-        
-            # update byte list 
-            self.io.update_byte_list()
-        
-            # create a bin map 
-            bin_map = cs.set_byte_map(
-                self.io.byte_list, 
-                self.io.file, 
-                self.io.process, 
-                self.output
-            )
-            
-            self.io.set_bin_map(bin_map)
-            
-        except Exception as e:
-            self.output.add_live_msg(str(e), 'error')
-                
-            
-        # release the btn 
-        widget.toggle_loading()
+        # update byte list 
+        self.model.update_byte_list()
+
+        # create a bin map 
+        bin_map = cs.set_byte_map(
+            self.model.byte_list, 
+            self.model.file, 
+            self.model.process, 
+            self.alert
+        )
+
+        self.model.set_bin_map(bin_map)
             
         return self
     
@@ -94,7 +80,7 @@ class ConvertByte(sw.Tile):
         
         # empty all select
         for i in range(nb_class):
-            self.classes[i].v_model = None
+            self.classes[i].v_model = []
                 
         # get all unique values from the image
         features = cs.unique(change['new'])
@@ -105,12 +91,9 @@ class ConvertByte(sw.Tile):
         
         return self
     
+    @su.loading_button()
     def _on_download(self, widget, event, data):
         
-        widget.toggle_loading()
-        
-        cs.download_test(self.output)
-        
-        widget.toggle_loading()
+        cs.download_test(self.alert)
         
         return self

@@ -1,25 +1,27 @@
 import json
 
-from .gwb_io import GWBIo
+from traitlets import Any
+
+from .gwb_model import GWBModel
 from component  import parameter as cp
 
-class FadIo(GWBIo):
+class FadModel(GWBModel):
+    
+    # the init file
+    file = Any(None).tag(sync=True)
+
+    # all the bytes values 
+    background = Any([]).tag(sync=True)
+    foreground = Any([]).tag(sync=True)
+    spe_background_1 = Any([]).tag(sync=True)
+    spe_background_2 = Any([]).tag(sync=True)
+
+    # the process 
+    connectivity = Any(cp.connectivity[0]['value']).tag(sync=True) 
+    prescision = Any(cp.prescision[0]['value']).tag(sync=True) 
+    options = Any(cp.fad_options[0]['value']).tag(sync=True)
     
     def __init__(self):
-        
-        # the init file
-        self.file = None
-        
-        # all the bytes values 
-        self.background = []
-        self.foreground = []
-        self.spe_background_1 = []
-        self.spe_background_2 = []
-        
-        # the process 
-        self.connectivity = cp.connectivity[0]['value']
-        self.prescision = cp.prescision[0]['value']
-        self.options = cp.fad_options[0]['value']
         
         super().__init__(process = 'fad')
     

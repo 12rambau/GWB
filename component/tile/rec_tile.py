@@ -2,6 +2,7 @@ import json
 import shutil
 
 from sepal_ui import sepalwidgets as sw 
+from sepal_ui.scripts import utils as su
 import ipyvuetify as v
 
 from component.message import cm
@@ -13,23 +14,21 @@ from .gwb_tile import GwbTile
 
 class RecTile(GwbTile):
 
-    def __init__(self, io, convert_tile):
+    def __init__(self, model, convert_tile):
         
         # create the widgets
         self.rec_table = cw.RecTable()        
         
         # bind to the io
-        self.output = sw.Alert() \
-            .bind(self.rec_table.save, io, 'recode_json')
+        model.bind(self.rec_table.save, 'recode_json')
         
         super().__init__(
-            io = io,
-            inputs = [self.rec_table],
-            output = self.output,
+            model = model,
+            inputs = [self.rec_table]
         )
         
         # link js behaviours
-        convert_tile.output.observe(self._on_class_change, 'class')
+        convert_tile.alert.observe(self._on_class_change, 'class')
         
     def _on_class_change(self, change):
         """update the table when a new file is loaded"""
@@ -39,13 +38,11 @@ class RecTile(GwbTile):
             
         return self
         
+    @su.loading_button()
     def _on_click(self, widget, event, data):
         
-        # silence the btn
-        widget.toggle_loading()
-        
         # check inputs 
-        if not self.output.check_input(self.io.bin_map, cm.bin.no_bin): return widget.toggle_loading()
+        if not self.alert.check_input(self.model.bin_map, cm.bin.no_bin): return
         
         super()._on_click(widget, event, data)
         

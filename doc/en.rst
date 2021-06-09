@@ -623,6 +623,10 @@ Here is the result of the computation using the default parameters on the :code:
 MSPA
 ^^^^
 
+.. warning:: 
+
+    If your are considering using the MSPA tool, keep in mind that the process is relatively complex and provide a lot of informmation (up to 25 classes). If you are only interested in fragmentation and/or less than 6 classes, please consider using :code:`FRAG` or :code:`SPA`.
+
 This module will conduct the **Morphological Spatial Pattern Analysis**. `MSPA <https://forest.jrc.ec.europa.eu/en/activities/lpa/mspa/>`_ analyses shape and connectivity and conducts a segmentation of foreground patches in up to 25 feature classes. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Morphology <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Pattern-Morphology.pdf>`_ product sheet.
 
 Setup the input image
