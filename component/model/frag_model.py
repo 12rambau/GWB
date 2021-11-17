@@ -21,7 +21,7 @@ class FragModel(GWBModel):
     res = Any(None).tag(sync=True)
     window_size = Any("[]").tag(sync=True) 
     prescision = Any(cp.prescision[0]['value']).tag(sync=True) 
-    options = Any(cp.fad_options[0]['value']).tag(sync=True) 
+    options = Any(cp.frag_options[0]['value']).tag(sync=True) 
     
     def __init__(self):
         

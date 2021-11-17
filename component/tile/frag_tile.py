@@ -31,8 +31,8 @@ class FragTile(GwbTile):
         windows = cw.Windows(label = cm.frag.windows)
         options = v.Select(
             label = cm.acc.options,
-            items= cp.fad_options,
-            v_model = cp.fad_options[0]['value']
+            items= cp.frag_options,
+            v_model = cp.frag_options[0]['value']
         )
         
         prescision = v.Select(

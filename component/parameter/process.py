@@ -28,6 +28,16 @@ fad_options = [
     {'text': 'average per-patch density, color-coded into 5 classes', 'value': 'FAD-APP5'}
 ]
 
+####################
+##      frag      ##
+####################
+frag_options = [
+    {'text': 'per-pixel density, color-coded into 5 fragmentation classes', 'value': 'FOS5'},
+    {'text': 'per-pixel density, color-coded into 6 fragmentation classes', 'value': 'FOS6'},
+    {'text': 'average per-patch density, color-coded into 2 classes', 'value': 'FOS-APP2'},
+    {'text': 'average per-patch density, color-coded into 5 classes', 'value': 'FOS-APP5'}
+]
+
 prescision = [
     {'text': "float precision (default, require more disk space)", 'value': 1},
     {'text': 'rounded byte', 'value': 0}
