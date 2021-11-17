@@ -1,5 +1,5 @@
 gwb = {
-    'acc':  {'command': 'GWB_ACC', 'folder': 'acc',  'offset': 23},
+    'acc':  {'command': 'GWB_ACC', 'folder': 'acc',  'offset': 25},
     'dist': {'command': 'GWB_DIST', 'folder': 'dist', 'offset': 17},
     'fad':  {'command': 'GWB_FAD', 'folder': 'fad',  'offset': 28},
     'frag': {'command': 'GWB_FRAG', 'folder': 'frag', 'offset': 32},

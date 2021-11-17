@@ -21,6 +21,7 @@ class AccModel(GWBModel):
     res = Any(None).tag(sync=True)
     thresholds = Any("[]").tag(sync=True)
     options = Any(cp.acc_options[0]['value']).tag(sync=True)
+    big_3_pink = Any(True).tag(sync=True)
     
     def __init__(self):
         
@@ -44,6 +45,7 @@ class AccModel(GWBModel):
                 self.res,
                 self.join_attr('thresholds'),
                 self.options,
+                int(self.big_3_pink)
             ])
     
     def get_params_list(self):

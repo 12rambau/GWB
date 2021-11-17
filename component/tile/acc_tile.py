@@ -34,13 +34,15 @@ class AccTile(GwbTile):
             items= cp.acc_options,
             v_model = cp.acc_options[0]['value']
         )
+        big_3_pink = v.Switch(label=cm.acc.big3pink, v_model=True)
         
         # bind to the 
         model \
             .bind(connectivity, 'connectivity') \
             .bind(res, 'res') \
             .bind(thresholds.save, 'thresholds') \
-            .bind(options, 'options')
+            .bind(options, 'options') \
+            .bind(big_3_pink, 'big_3_pink')
         
         # extra js behaviour 
         res.on_event('focusout', self._on_focus_out)
@@ -51,7 +53,8 @@ class AccTile(GwbTile):
                 connectivity,
                 res,
                 thresholds,
-                options
+                options,
+                big_3_pink
             ]
         )
     
