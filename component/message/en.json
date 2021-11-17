@@ -32,6 +32,7 @@
         "connectivity": "Foreground connectivity",
         "res": "spatial pixel resolution (meters)",
         "thresholds": "Add your area thresholds (up to 5) area thresholds (pixel)",
+        "big3pink": "Show 3 largest objects in pink color",
         "options": "Output options",
         "no_connex": "Please select connectivity",
         "no_res": "Please set the resolution",

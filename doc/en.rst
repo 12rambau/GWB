@@ -118,15 +118,16 @@ You will need to select parameters for your computation:
     -   Foreground connectivity: 8
     -   spatial pixel resolution: 25
     -   area thresholds: 200 2000 20000 100000 200000
-    -   options: default
+    -   option: default
+    -   big3pink: True
 
 Foreground connectivity
 #######################
 
-This set the foreground connectivity of your analysis: 
+This sets the foreground connectivity of your analysis: 
 
 -   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
--   4 neighbors only use the vertical and horizontal one
+-   4 neighbors only use the vertical and horizontal ones
 
 .. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
     :alt: connectivity image
@@ -149,6 +150,15 @@ Two computation options are available:
 
 -   stats + image of viewport (default)
 -   stats + images of ID, area, viewport (detailed)
+
+Big3pink
+########
+
+Two options are available: 
+
+-   do not highlight the 3 largest objects (False)
+-   show the 3 largest objects in pink color (True)
+
 
 Run the analysis
 """"""""""""""""
@@ -463,7 +473,7 @@ You will need to select parameters for your computation:
     -   Spatial pixel resolution: 25
     -   Computation precision: float-precision
     -   Windows size: 23
-    -   Options: average per-patch density, color-coded into 2 classes (FAD-APP2)
+    -   Options: fragmentation at pixel or at patch level with various number of color-coded classes
 
 Foreground connectivity
 #######################
@@ -490,11 +500,12 @@ Set up to 10 observation windows sizes (in pixels).
 Options
 #######
 
-Three computation options are available: 
+Four computation options are available: 
 
--   FAD: per-pixel density, color-coded into 6 fragmentation classes
--   FAD-APP2: average per-patch density, color-coded into 2 classes
--   FAD-APP5: average per-patch density, color-coded into 5 classes
+-   FOS5: per-pixel density, color-coded into 5 fragmentation classes
+-   FOS6: per-pixel density, color-coded into 6 fragmentation classes
+-   FOS-APP2: average per-patch density, color-coded into 2 classes
+-   FOS-APP5: average per-patch density, color-coded into 5 classes
 
 Run the analysis
 """"""""""""""""
