@@ -1,79 +1,77 @@
-import json 
+import json
 
 from sepal_ui import model
 
 from component import parameter as cp
 
+
 class GWBModel(model.Model):
     """
-    Mother class of all the other io. 
-    The process will be launched thanks to this object parameters 
+    Mother class of all the other io.
+    The process will be launched thanks to this object parameters
     """
 
-    def __init__(self, process = 'gwb', byte_list = [], params_list=[], bin_map=None):
-    
-        # to make sure that each tile of each process have 1 name 
-        self.tile_id = f'{process}_tile'
+    def __init__(self, process="gwb", byte_list=[], params_list=[], bin_map=None):
+
+        # to make sure that each tile of each process have 1 name
+        self.tile_id = f"{process}_tile"
         self.process = process
-        self.offset = cp.gwb[process]['offset']
-    
-        # if applicable 
-        # the list of the bytes values 
+        self.offset = cp.gwb[process]["offset"]
+
+        # if applicable
+        # the list of the bytes values
         # the first one will be indexed as 1
         self.byte_list = byte_list
-        
-        # the list of the parameter 
+
+        # the list of the parameter
         # each sublist will be considered as a line
         self.params_list = params_list
-        
+
         self.bin_map = bin_map
-        
-    def join_attr(self, attr, sep=' '):
+
+    def join_attr(self, attr, sep=" "):
         """
         join the values of a list using the separator
         lot of them are stored as int and cannot be joined easily
-        
-        Args: 
+
+        Args:
             attr (list): list of attr that need to be on 1 line in the parameter file
-            sep (str): the strin to use as separator 
-            
+            sep (str): the strin to use as separator
+
         return:
-            (str): the joined str 
+            (str): the joined str
         """
-        
+
         # will raise an error if the attribute doesn't exist
         params_list = getattr(self, attr)
-        
-        # transform into str list 
+
+        # transform into str list
         params_list = json.loads(params_list)
         params_list = [str(p) for p in params_list]
-        
+
         return sep.join(params_list)
-    
+
     def set_bin_map(self, path):
-        
+
         self.bin_map = path
-        
+
         return self
-    
+
     def update_byte_list(self, list_):
-        
+
         self.byte_list = list_
-        
+
         return self
-    
+
     def update_params_list(self, list_):
-        
+
         self.params_list = [str(e) for e in list_]
-        
+
         return self
-    
+
     def get_params_list(self, list_=None):
-        
+
         list_ = list_ or self.params_list
         list_ = [str(e) for e in list_]
-        
-        return '_'.join(list_)
-        
-    
-    
+
+        return "_".join(list_)
