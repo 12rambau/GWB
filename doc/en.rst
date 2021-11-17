@@ -119,7 +119,7 @@ You will need to select parameters for your computation:
     -   spatial pixel resolution: 25
     -   area thresholds: 200 2000 20000 100000 200000
     -   option: default
-    -   big3pink: 0
+    -   big3pink: True
 
 Foreground connectivity
 #######################
@@ -156,8 +156,8 @@ Big3pink
 
 Two options are available: 
 
--   do not highlight the 3 largest objects (0)
--   show the 3 largest objects in pink color (1)
+-   do not highlight the 3 largest objects (False)
+-   show the 3 largest objects in pink color (True)
 
 
 Run the analysis
