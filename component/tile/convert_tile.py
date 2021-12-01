@@ -25,10 +25,10 @@ class ConvertByte(sw.Tile):
         )
 
         # create the widgets
-        file = v.Html(tag="h3", children=["select image"])
+        file = v.Html(tag="h3", children=[cm.bin.file])
         self.file = sw.FileInput([".tif", ".tiff", ".vrt"])
-        self.band = v.Select(label="select image band", items=None, v_model=None)
-        reclassify = v.Html(tag="h3", children=["adapt to gwb classes"])
+        self.band = v.Select(label=cm.bin.band, items=None, v_model=None)
+        reclassify = v.Html(tag="h3", children=[cm.bin.classes], class_="mb-3")
         self.classes = [
             v.Select(
                 label=cp.convert[nb_class]["label"][i],
