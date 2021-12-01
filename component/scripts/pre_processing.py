@@ -15,10 +15,6 @@ def is_overlap(class_list):
 
     for a, b in combinations(class_list, 2):
 
-        # don't test empty lists
-        if a == [] or b == []:
-            continue
-
         # if the two lists intersects, I stop
         if bool(set(a) & set(b)):
             overlap = True
