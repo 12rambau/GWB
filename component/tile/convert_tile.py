@@ -85,7 +85,11 @@ class ConvertByte(sw.Tile):
 
         # create a bin map
         bin_map = cs.set_byte_map(
-            self.model.byte_list, self.model.file, self.model.process, self.alert
+            self.model.byte_list,
+            self.model.file,
+            self.band.v_model,
+            self.model.process,
+            self.alert,
         )
 
         self.model.set_bin_map(bin_map)
