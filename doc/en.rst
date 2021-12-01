@@ -13,8 +13,9 @@ Presentation
 
 To launch the app please follow the `SEPAL registration steps <https://docs.sepal.io/en/latest/setup/register.html>`_ and then move to the SEPAL Apps dashboard (purple wrench icon on the left side panel), search for and click on GWB ANALYSIS.
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/dashboard.png
-    :alt: SEPAL dashboard 
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/dashboard.png
+    :title: SEPAL dashboard 
+    :group: gwb-module
     
 The application should launch itself in the About section, allowing to select the tool you want to use. 
 
@@ -22,8 +23,9 @@ The application should launch itself in the About section, allowing to select th
     
     If this is the first time you use the app, you will actually see the following popup:
     
-    .. image:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/licence.png
-        :alt: licence
+    .. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/licence.png
+        :title: licence
+        :group: gwb-module
         
     This licence needs to be accepted to use the **GWB** modules. It is also available in the section :code:`Licence` of the app. 
     If you don't want to accept this Licence, just close the app tab.
@@ -39,18 +41,21 @@ On the left side you will find a navigation drawer that you can open and close u
 
     On small devices such as tablet or phones, the navigation drawer will be hidden by default. Click the Hamburger button (highlighted by the red square) to show the full extent of the app. 
     
-    .. image:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/small_device_without_menu.png
-        :alt: small screen without drawer
-        :width: 40%
+    .. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/small_device_without_menu.png
+        :title: small screen without drawer
+        :width: 49%
+        :group: gwb-module
         
-    .. image:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/small_device_with_menu.png
-        :alt: small screen with drawer
-        :width: 40%
+    .. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/small_device_with_menu.png
+        :title: small screen with drawer
+        :width: 49%
+        :group: gwb-module
         
 Each name in the list corresponds to one **GWB** module, presented individually in the next sections. By clicking on it you will display the panels relative to the function you want to use. 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/landing.png
-    :alt: presentation of the structure
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/landing.png
+    :title: presentation of the structure
+    :group: gwb-module
 
 .. danger:: 
 
@@ -76,8 +81,9 @@ Setup the input image
     -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
-    .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download sample dataset
+    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+        :title: download sample dataset
+        :group: gwb-module
         
     
     Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
@@ -97,8 +103,9 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/4_classes.png
-    :alt: upload 4 classes
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/4_classes.png
+    :title: upload 4 classes
+    :group: gwb-module
 
 .. tip::
 
@@ -108,8 +115,9 @@ Select the parameters
 """""""""""""""""""""
 You will need to select parameters for your computation: 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/acc_params.png
-    :alt: acc params
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/acc_params.png
+    :title: acc params
+    :group: gwb-module
     
 .. note::
 
@@ -129,9 +137,10 @@ This sets the foreground connectivity of your analysis:
 -   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
 -   4 neighbors only use the vertical and horizontal ones
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
-    :alt: connectivity image
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
+    :title: connectivity image
     :width: 50%
+    :group: gwb-module
     
 Spatial pixel resolution
 ########################
@@ -165,8 +174,9 @@ Run the analysis
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/acc_results.png
-    :alt: information logs
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/acc_results.png
+    :title: information logs
+    :group: gwb-module
 
 The resulting files are stored in the folder :code:`module_results/gwb/acc/`, for example:
 
@@ -181,9 +191,10 @@ The resulting files are stored in the folder :code:`module_results/gwb/acc/`, fo
     
 Here is the result of the computation using the default parameters on the :code:`example.tif` file.
 
-.. figure:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_acc.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_acc.tif
     :width: 50%
     :align: center
+    :group: gwb-module
 
 
 DIST
@@ -202,8 +213,9 @@ Setup the input image
     -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
-    .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download sample dataset
+    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+        :title: download sample dataset
+        :group: gwb-module
         
     
     Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
@@ -221,8 +233,9 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
-    :alt: upload 2 classes
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
+    :title: upload 2 classes
+    :group: gwb-module
 
 .. tip::
 
@@ -232,8 +245,9 @@ Select the parameters
 """""""""""""""""""""
 You will need to select parameters for your computation: 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/dist_params.png
-    :alt: dist params
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/dist_params.png
+    :title: dist params
+    :group: gwb-module
     
 .. note::
 
@@ -250,9 +264,10 @@ This set the foreground connectivity of your analysis:
 -   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
 -   4 neighbors only use the vertical and horizontal one
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
-    :alt: connectivity image
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
+    :title: connectivity image
     :width: 50%
+    :group: gwb-module
 
 Options
 #######
@@ -268,8 +283,9 @@ Run the analysis
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/dist_results.png
-    :alt: information logs
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/dist_results.png
+    :title: information logs
+    :group: gwb-module
 
 The resulting files are stored in the folder :code:`module_results/gwb/dist/`, for example:
 
@@ -285,11 +301,13 @@ The resulting files are stored in the folder :code:`module_results/gwb/dist/`, f
     
 Here is the result of the computation using the default parameters on the :code:`example.tif` file.
     
-.. image:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_dist_hmc.png
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_dist_hmc.png
     :width: 49%
+    :group: gwb-module
 
-.. image:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_dist.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_dist.tif
     :width: 49%
+    :group: gwb-module
 
 FAD
 ^^^
@@ -306,8 +324,9 @@ Setup the input image
     -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
-    .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download sample dataset
+    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+        :title: download sample dataset
+        :group: gwb-module
         
     
     Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
@@ -327,8 +346,9 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/4_classes.png
-    :alt: upload 4 classes
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/4_classes.png
+    :title: upload 4 classes
+    :group: gwb-module
 
 .. tip::
 
@@ -343,8 +363,9 @@ Select the parameters
 """""""""""""""""""""
 You will need to select parameters for your computation: 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/fad_params.png
-    :alt: acc params
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/fad_params.png
+    :title: acc params
+    :group: gwb-module
     
 .. note::
 
@@ -362,9 +383,10 @@ This sets the foreground connectivity of your analysis:
 -   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
 -   4 neighbors only use the vertical and horizontal one
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
-    :alt: connectivity image
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
+    :title: connectivity image
     :width: 50%
+    :group: gwb-module
     
 Computation precision
 ######################
@@ -385,8 +407,9 @@ Run the analysis
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/fad_results.png
-    :alt: information logs
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/fad_results.png
+    :title: information logs
+    :group: gwb-module
 
 The resulting files are stored in the folder :code:`module_results/gwb/fad/`, for example:
 
@@ -404,11 +427,13 @@ The resulting files are stored in the folder :code:`module_results/gwb/fad/`, fo
     
 Here is the result of the computation using the default parameters on the :code:`example.tif` file.
     
-.. image:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_fad_barplot.png
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_fad_barplot.png
     :width: 49%
+    :group: gwb-module
 
-.. image:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_fad_mscale.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_fad_mscale.tif
     :width: 49%
+    :group: gwb-module
 
 FRAG
 ^^^^
@@ -425,8 +450,9 @@ Setup the input image
     -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
-    .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download sample dataset
+    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+        :title: download sample dataset
+        :group: gwb-module
         
     
     Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
@@ -446,8 +472,9 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/4_classes.png
-    :alt: upload 4 classes
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/4_classes.png
+    :title: upload 4 classes
+    :group: gwb-module
 
 .. tip::
 
@@ -462,8 +489,9 @@ Select the parameters
 
 You will need to select parameters for your computation: 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/frag_params.png
-    :alt: acc params
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/frag_params.png
+    :title: acc params
+    :group: gwb-module
     
 .. note::
 
@@ -483,9 +511,10 @@ This sets the foreground connectivity of your analysis:
 -   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
 -   4 neighbors only use the vertical and horizontal one
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
-    :alt: connectivity image
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
+    :title: connectivity image
     :width: 50%
+    :group: gwb-module
     
 Spatial pixel resolution
 ########################
@@ -512,8 +541,9 @@ Run the analysis
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/frag_results.png
-    :alt: information logs
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/frag_results.png
+    :title: information logs
+    :group: gwb-module
 
 The resulting files are stored in the folder :code:`module_results/gwb/frag/`, for example:
 
@@ -529,8 +559,9 @@ The resulting files are stored in the folder :code:`module_results/gwb/frag/`, f
     
 Here is the result of the computation using the FAD-APP2 option on the :code:`example.tif` file.
     
-.. figure:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_fad-app2_23.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_fad-app2_23.tif
     :width: 50%
+    :group: gwb-module
 
 LM
 ^^
@@ -547,8 +578,9 @@ Setup the input image
     -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
-    .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download sample dataset
+    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+        :title: download sample dataset
+        :group: gwb-module
         
     
     Once the files are downloaded, follow the normal process using the :code:`downloads/clc3class.tif` file (3 classes).
@@ -567,16 +599,18 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/3_classes.png
-    :alt: upload 3 classes
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/3_classes.png
+    :title: upload 3 classes
+    :group: gwb-module
     
 Select the parameters
 """""""""""""""""""""
 
 You will need to select parameters for your computation: 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/lm_params.png
-    :alt: lm params
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/lm_params.png
+    :title: lm params
+    :group: gwb-module
     
 .. note::
 
@@ -605,8 +639,9 @@ Run the analysis
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/lm_results.png
-    :alt: information logs
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/lm_results.png
+    :title: information logs
+    :group: gwb-module
 
 The resulting files are stored in the folder :code:`module_results/gwb/lm/`, for example:
 
@@ -625,11 +660,13 @@ The resulting files are stored in the folder :code:`module_results/gwb/lm/`, for
     
 Here is the result of the computation using the default parameters on the :code:`clc3classes.tif` file.
     
-.. image:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/lm103class_legend.png
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/lm103class_legend.png
     :width: 49%
+    :group: gwb-module
 
-.. image:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/clc3class_lm_23.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/clc3class_lm_23.tif
     :width: 49%
+    :group: gwb-module
 
 MSPA
 ^^^^
@@ -650,8 +687,9 @@ Setup the input image
     -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
-    .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download sample dataset
+    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+        :title: download sample dataset
+        :group: gwb-module
         
     
     Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
@@ -669,8 +707,9 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
-    :alt: upload 2 classes
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
+    :title: upload 2 classes
+    :group: gwb-module
 
 .. tip::
 
@@ -680,8 +719,9 @@ Select the parameters
 """""""""""""""""""""
 You will need to select parameters for your computation: 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/mspa_params.png
-    :alt: mspa params
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/mspa_params.png
+    :title: mspa params
+    :group: gwb-module
     
 .. note::
 
@@ -700,9 +740,10 @@ This sets the foreground connectivity of your analysis:
 -   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
 -   4 neighbors only use the vertical and horizontal one
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
-    :alt: connectivity image
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
+    :title: connectivity image
     :width: 50%
+    :group: gwb-module
     
 Edge width
 ##########
@@ -724,8 +765,9 @@ Run the analysis
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/mspa_results.png
-    :alt: information logs
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/mspa_results.png
+    :title: information logs
+    :group: gwb-module
 
 The resulting files are stored in the folder :code:`module_results/gwb/mspa/`, for example:
 
@@ -739,11 +781,13 @@ The resulting files are stored in the folder :code:`module_results/gwb/mspa/`, f
     
 Here is the result of the computation using the default parameters on the :code:`example.tif` file.
     
-.. image:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/mspalegend.gif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/mspalegend.gif
     :width: 49%
+    :group: gwb-module
 
-.. image:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_8_1_1_1.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_8_1_1_1.tif
     :width: 49%
+    :group: gwb-module
 
 P223
 ^^^^
@@ -760,8 +804,9 @@ Setup the input image
     -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
-    .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download sample dataset
+    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+        :title: download sample dataset
+        :group: gwb-module
         
     
     Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
@@ -780,8 +825,9 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/p223_classes.png
-    :alt: upload 3 classes
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/p223_classes.png
+    :title: upload 3 classes
+    :group: gwb-module
 
 .. tip::
 
@@ -792,8 +838,9 @@ Select the parameters
 
 You will need to select parameters for your computation: 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/p223_params.png
-    :alt: p223 params
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/p223_params.png
+    :title: p223 params
+    :group: gwb-module
     
 .. note::
 
@@ -857,8 +904,9 @@ Run the analysis
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/p223_results.png
-    :alt: information logs
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/p223_results.png
+    :title: information logs
+    :group: gwb-module
 
 The resulting files are stored in the folder :code:`module_results/gwb/p223/`, for example:
 
@@ -872,8 +920,9 @@ The resulting files are stored in the folder :code:`module_results/gwb/p223/`, f
 
 Here is the result of the computation using the P2 (Foreground-Density) option on the :code:`example.tif` file.
 
-.. figure:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_p2_27.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_p2_27.tif
     :width: 50%
+    :group: gwb-module
 
 PARC
 ^^^^
@@ -891,8 +940,9 @@ Setup the input image
     -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
-    .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download sample dataset
+    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+        :title: download sample dataset
+        :group: gwb-module
         
     
     Once the files are downloaded, follow the normal process using the :code:`downloads/clc3classes.tif` file (3 classes).
@@ -903,15 +953,17 @@ The first step requires to select your image in your SEPAL folder. The image mus
 
     If the image is not in your SEPAL folders but in your local computer consider reading the `exchange file with SEPAL <https://docs.sepal.io/en/latest/setup/filezilla.html>`_ page of this documentation.
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/0_classes.png
-    :alt: upload 0 classes
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/0_classes.png
+    :title: upload 0 classes
+    :group: gwb-module
     
 Select the parameters
 """""""""""""""""""""
 You will need to select parameters for your computation: 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/parc_params.png
-    :alt: parc params
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/parc_params.png
+    :title: parc params
+    :group: gwb-module
     
 .. note::
 
@@ -927,17 +979,19 @@ This set the foreground connectivity of your analysis:
 -   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
 -   4 neighbors only use the vertical and horizontal one
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
-    :alt: connectivity image
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
+    :title: connectivity image
     :width: 50%
+    :group: gwb-module
 
 Run the analysis
 """"""""""""""""
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/parc_results.png
-    :alt: information logs
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/parc_results.png
+    :title: information logs
+    :group: gwb-module
 
 The resulting files are stored in the folder :code:`module_results/gwb/parc/`, for example:
 
@@ -975,8 +1029,9 @@ Setup the input image
     -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
-    .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download sample dataset
+    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+        :title: download sample dataset
+        :group: gwb-module
         
     
     Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
@@ -994,8 +1049,9 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
-    :alt: upload 2 classes
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
+    :title: upload 2 classes
+    :group: gwb-module
 
 .. tip::
 
@@ -1005,8 +1061,9 @@ Select the parameters
 """""""""""""""""""""
 You will need to select parameters for your computation: 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/rss_params.png
-    :alt: rss params
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/rss_params.png
+    :title: rss params
+    :group: gwb-module
     
 .. note::
 
@@ -1022,17 +1079,19 @@ This set the foreground connectivity of your analysis:
 -   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
 -   4 neighbors only use the vertical and horizontal one
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
-    :alt: connectivity image
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
+    :title: connectivity image
     :width: 50%
+    :group: gwb-module
 
 Run the analysis
 """"""""""""""""
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/rss_results.png
-    :alt: information logs
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/rss_results.png
+    :title: information logs
+    :group: gwb-module
 
 The resulting files are stored in the folder :code:`module_results/gwb/rss/`, for example:
 
@@ -1066,8 +1125,9 @@ Setup the input image
     -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 byte - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 byte - Natural, 3 byte - Developed
     
-    .. figure::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
-        :alt: download sample dataset
+    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+        :title: download sample dataset
+        :group: gwb-module
         
     
     Once the files are downloaded, follow the normal process using the :code:`downloads/example.tif` file (2 classes).
@@ -1085,8 +1145,9 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered as "missing data" (0 byte).
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
-    :alt: upload 2 classes
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
+    :title: upload 2 classes
+    :group: gwb-module
 
 .. tip::
 
@@ -1097,8 +1158,9 @@ Select the parameters
 
 You will need to select parameters for your computation: 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/spa_params.png
-    :alt: spa params
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/spa_params.png
+    :title: spa params
+    :group: gwb-module
     
 .. note::
 
@@ -1121,8 +1183,9 @@ Run the analysis
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn to green and display the computation log. 
 
-.. figure:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/spa_results.png
-    :alt: information logs
+.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/spa_results.png
+    :title: information logs
+    :group: gwb-module
 
 The resulting files are stored in the folder :code:`module_results/gwb/spa/`, for example:
 
@@ -1136,5 +1199,6 @@ The resulting files are stored in the folder :code:`module_results/gwb/spa/`, fo
 
 Here is the result of the computation using SPA2 (2 classes) on the :code:`example.tif` file.
 
-.. figure:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_spa2.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_spa2.tif
     :width: 50%
+    :group: gwb-module
