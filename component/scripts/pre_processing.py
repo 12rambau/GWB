@@ -55,7 +55,7 @@ def set_byte_map(class_list, raster, process, output):
     with rio.open(raster) as src:
 
         out_meta = src.meta.copy()
-        out_meta.update(compress="lzw", dtype=np.uint8)
+        out_meta.update(compress="lzw", dtype=np.uint8, driver="GTiff")
         raw_data = src.read()
 
         if class_list == []:
@@ -88,7 +88,7 @@ def set_byte_map(class_list, raster, process, output):
     return bin_map
 
 
-def unique(raster):
+def unique(raster, band):
     """Retreive all the existing feature in the byte file"""
 
     features = []
@@ -100,7 +100,7 @@ def unique(raster):
 
     with rio.open(raster) as src:
 
-        data = src.read(1)
+        data = src.read(band)
         count = np.bincount(data.flatten())
         del data
 
