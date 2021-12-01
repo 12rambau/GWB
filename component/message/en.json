@@ -105,6 +105,9 @@
         "Provide a byte-formatted input image. Recode the classes into the 3 following classes : background (nonforest), foreground (forest), special background 1 (for P23 only). All remaining classes will be considered as missing data."
     ],
     "bin": {
+        "file": "Select image",
+        "band": "Select image band",
+        "classes": "remap into Byte map",
         "btn": "Convert the input image classes",
         "title": "Select input map classes",
         "file_exist": "the file {} already exists, no new bin maps have been created",

@@ -15,10 +15,6 @@ def is_overlap(class_list):
 
     for a, b in combinations(class_list, 2):
 
-        # don't test empty lists
-        if a == [] or b == []:
-            continue
-
         # if the two lists intersects, I stop
         if bool(set(a) & set(b)):
             overlap = True
@@ -27,7 +23,7 @@ def is_overlap(class_list):
     return overlap
 
 
-def set_byte_map(class_list, raster, process, output):
+def set_byte_map(class_list, raster, band, process, output):
     """
     reclassify a map using the provided class list
 
@@ -55,40 +51,40 @@ def set_byte_map(class_list, raster, process, output):
     with rio.open(raster) as src:
 
         out_meta = src.meta.copy()
-        out_meta.update(compress="lzw", dtype=np.uint8)
-        raw_data = src.read()
-
-        if class_list == []:
-            data = raw_data
-        else:
-            data = np.zeros_like(raw_data, dtype=np.uint8)
-            total_class = sum([len(c) for c in class_list])
-            c = 0
-            output.update_progress(0)
-            for index, class_ in enumerate(class_list):
-
-                bool_data = np.zeros_like(raw_data, dtype=np.bool_)
-                for val in class_:
-                    bool_data = bool_data + (raw_data == val)
-
-                    # display the advancement
-                    c += 1
-                    output.update_progress(c / total_class)
-
-                data_value = (bool_data * (index + 1)).astype(np.uint8)
-                data = data + data_value
-
-            data = data.astype(out_meta["dtype"])
+        out_meta.update(count=1, compress="lzw", dtype=np.uint8, driver="GTiff")
 
         with rio.open(bin_map, "w", **out_meta) as dst:
-            dst.write(data)
+
+            # loop on windows
+            # I assume windows are the same on each band
+            output.update_progress(0)
+            nb_windows = sum(1 for _ in src.block_windows(1))
+            for iw, block in enumerate(src.block_windows(1)):
+
+                # get the raw data on the window
+                window = block[1]
+                raw_data = src.read(band, window=window)
+
+                # reclassify data using the class_list
+                data = np.zeros_like(raw_data, dtype=np.uint8)
+                total_class = sum([len(c) for c in class_list])
+
+                for ic, class_ in enumerate(class_list):
+
+                    bool_data = np.isin(raw_data, class_)
+                    data_value = (bool_data * (ic + 1)).astype(np.uint8)
+                    data = data + data_value
+
+                data = data.astype(out_meta["dtype"])
+                dst.write(data, 1, window=window)
+                output.update_progress((iw + 1) / nb_windows)
 
     output.add_live_msg(cm.bin.finished, "success")
 
     return bin_map
 
 
-def unique(raster):
+def unique(raster, band):
     """Retreive all the existing feature in the byte file"""
 
     features = []
@@ -100,14 +96,17 @@ def unique(raster):
 
     with rio.open(raster) as src:
 
-        data = src.read(1)
-        count = np.bincount(data.flatten())
-        del data
+        features = []
 
-        features = np.where(count != 0)[0]
-        features = features.tolist()
+        # loop on windows
+        for ji, window in src.block_windows(1):
 
-    return features
+            win_data = src.read(band, window=window)
+            win_count = np.bincount(win_data.flatten())
+            win_features = np.where(win_count != 0)[0]
+            features += win_features.tolist()
+
+    return list(set(features))
 
 
 def reclassify_from_map(in_raster, map_values, dst_raster=None, overwrite=False):

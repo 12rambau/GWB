@@ -25,8 +25,10 @@ class ConvertByte(sw.Tile):
         )
 
         # create the widgets
-
-        self.file = sw.FileInput([".tif", ".tiff"])
+        file = v.Html(tag="h3", children=[cm.bin.file])
+        self.file = sw.FileInput([".tif", ".tiff", ".vrt"])
+        self.band = v.Select(label=cm.bin.band, items=None, v_model=None)
+        reclassify = v.Html(tag="h3", children=[cm.bin.classes], class_="mb-3")
         self.classes = [
             v.Select(
                 label=cp.convert[nb_class]["label"][i],
@@ -50,8 +52,17 @@ class ConvertByte(sw.Tile):
         super().__init__(
             self.model.tile_id,
             cm.bin.title,
-            inputs=[mkd_txt, self.down_test, v.Divider(), requirements, self.file]
-            + self.classes,
+            inputs=[
+                mkd_txt,
+                self.down_test,
+                v.Divider(),
+                requirements,
+                file,
+                self.file,
+                self.band,
+                reclassify,
+                *self.classes,
+            ],
             alert=sw.Alert(),
             btn=sw.Btn(cm.bin.btn),
         )
@@ -59,6 +70,7 @@ class ConvertByte(sw.Tile):
         # bind js event
         self.btn.on_event("click", self._on_click)
         self.file.observe(self._on_change, "v_model")
+        self.band.observe(self._on_valid_band, "v_model")
         self.down_test.on_event("click", self._on_download)
 
     @su.loading_button(debug=True)
@@ -73,29 +85,65 @@ class ConvertByte(sw.Tile):
 
         # create a bin map
         bin_map = cs.set_byte_map(
-            self.model.byte_list, self.model.file, self.model.process, self.alert
+            self.model.byte_list,
+            self.model.file,
+            self.band.v_model,
+            self.model.process,
+            self.alert,
         )
 
         self.model.set_bin_map(bin_map)
 
         return self
 
+    @su.switch("loading", debug=True, on_widgets=["band"])
     def _on_change(self, change):
         """update the list according to the file selection"""
 
-        # get the nb_class
-        nb_class = len(self.classes)
+        # switch band status
+        # cannot be done in the switch decorator as there number is
+        # undertermined at class creation
+        for w in self.classes:
+            w.loading = True
+            w.v_model = []
 
-        # empty all select
-        for i in range(nb_class):
-            self.classes[i].v_model = []
+        self.band.v_model = None
 
-        # get all unique values from the image
-        features = cs.unique(change["new"])
+        # exit if nothing is set
+        if change["new"] == None:
+            return self
 
-        # add the new list as items
-        for i in range(nb_class):
-            self.classes[i].items = features
+        # load the bands
+        with rio.open(change["new"]) as f:
+            self.band.items = [i + 1 for i in range(f.meta["count"])]
+
+        # switch back the states
+        for w in self.classes:
+            w.loading = False
+
+        return self
+
+    @su.switch("loading", debug=True, on_widgets=["band"])
+    def _on_valid_band(self, change):
+
+        # switch band status
+        # cannot be done in the switch decorator as there number is
+        # undertermined at class creation
+        for w in self.classes:
+            w.loading = True
+
+        # exit if none
+        if change["new"] is None:
+            return self
+
+        # get the unique features
+        features = cs.unique(self.file.v_model, self.band.v_model)
+        for w in self.classes:
+            w.items = features
+
+        # switch back the states
+        for w in self.classes:
+            w.loading = False
 
         return self
 
