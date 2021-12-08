@@ -21,3 +21,4 @@ ipywidgets==7.6.5
 numpy==1.17.4
 rasterio==1.1.5
 traitlets==5.1.1
+cryptography>=2.1.4
