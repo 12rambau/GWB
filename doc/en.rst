@@ -191,7 +191,7 @@ The resulting files are stored in the folder :code:`module_results/gwb/acc/`, fo
     
 Here is the result of the computation using the default parameters on the :code:`example.tif` file.
 
-.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_acc.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_acc.png
     :width: 50%
     :align: center
     :group: gwb-module
@@ -305,7 +305,7 @@ Here is the result of the computation using the default parameters on the :code:
     :width: 49%
     :group: gwb-module
 
-.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_dist.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_dist.png
     :width: 49%
     :group: gwb-module
 
@@ -431,7 +431,7 @@ Here is the result of the computation using the default parameters on the :code:
     :width: 49%
     :group: gwb-module
 
-.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_fad_mscale.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_fad_mscale.png
     :width: 49%
     :group: gwb-module
 
@@ -559,7 +559,7 @@ The resulting files are stored in the folder :code:`module_results/gwb/frag/`, f
     
 Here is the result of the computation using the FAD-APP2 option on the :code:`example.tif` file.
     
-.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_fad-app2_23.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_fad-app2_23.png
     :width: 50%
     :group: gwb-module
 
@@ -664,7 +664,7 @@ Here is the result of the computation using the default parameters on the :code:
     :width: 49%
     :group: gwb-module
 
-.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/clc3class_lm_23.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/clc3class_lm_23.png
     :width: 49%
     :group: gwb-module
 
@@ -785,7 +785,7 @@ Here is the result of the computation using the default parameters on the :code:
     :width: 49%
     :group: gwb-module
 
-.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_8_1_1_1.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_8_1_1_1.png
     :width: 49%
     :group: gwb-module
 
@@ -920,7 +920,7 @@ The resulting files are stored in the folder :code:`module_results/gwb/p223/`, f
 
 Here is the result of the computation using the P2 (Foreground-Density) option on the :code:`example.tif` file.
 
-.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_p2_27.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_p2_27.png
     :width: 50%
     :group: gwb-module
 
@@ -1199,6 +1199,6 @@ The resulting files are stored in the folder :code:`module_results/gwb/spa/`, fo
 
 Here is the result of the computation using SPA2 (2 classes) on the :code:`example.tif` file.
 
-.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_spa2.tif
+.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_spa2.png
     :width: 50%
     :group: gwb-module
