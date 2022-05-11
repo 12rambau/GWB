@@ -42,7 +42,7 @@ class MspaModel(GWBModel):
                 self.transition,
                 self.int_ext,
                 self.disk,
-                self.statistics
+                self.statistics,
             ]
         )
 
