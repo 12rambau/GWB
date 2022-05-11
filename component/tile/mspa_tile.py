@@ -22,13 +22,15 @@ class MspaTile(GwbTile):
             items=cp.connectivity,
             v_model=cp.connectivity[0]["value"],
         )
-        edge_width = v.Slider(label=cm.mspa.edge_width, min=1, max=30, v_model=1)
+        edge_width = v.Slider(label=cm.mspa.edge_width, min=1, max=30, v_model=1, thumb_label=True)
         transition = v.Switch(
             label=cm.mspa.transition, false_value=0, true_value=1, v_model=1
         )
         int_ext = v.Switch(
             label=cm.mspa.int_ext, false_value=0, true_value=1, v_model=1
         )
+        disk = v.Switch(label=cm.mspa.disk, false_value=0, true_value=1, v_model=0)
+        stats = v.Switch(label=cm.mspa.stats, fals_value=0, true_value=1, v_model=0)
 
         # bind to the io
         (
@@ -36,10 +38,12 @@ class MspaTile(GwbTile):
             .bind(edge_width, "edge_width")
             .bind(transition, "transition")
             .bind(int_ext, "int_ext")
+            .bind(disk, "disk")
+            .bind(stats, "statistics")
         )
 
         super().__init__(
-            model=model, inputs=[connectivity, edge_width, transition, int_ext]
+            model=model, inputs=[connectivity, edge_width, transition, int_ext, disk, stats]
         )
 
     @su.loading_button()

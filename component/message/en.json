@@ -70,6 +70,8 @@
         "edge_width": "edge width (pixels)",
         "transition": "transition",
         "int_ext": "intext",
+        "disk": "Minimise RAM use (slower)",
+        "stats": "Compute statistics",
         "no_edge_width": "Please provide a positive edge width"
 
     },

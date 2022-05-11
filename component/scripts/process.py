@@ -36,10 +36,11 @@ def run_gwb_process(process, raster, params_list, title, output, offset):
     # create the input file
     parameter_file = in_dir / f"{process}-parameters.txt"
     with parameter_file.open("w") as f:
-        offset_lines = ["\n" for i in range(offset - 1)]
+        star_line = ["*"*76 + "\n"]
+        offset_lines = ["\n" for i in range(offset - 2)]
         params_lines = [str(p) + "\n" for p in params_list]
         finish_lines = ["\n"]
-        f.writelines(offset_lines + params_lines + finish_lines)
+        f.writelines(offset_lines + star_line + params_lines + star_line + finish_lines)
 
     # create the command
     command = [f"GWB_{process.upper()}", f"-i={in_dir}", f"-o={out_dir}"]
