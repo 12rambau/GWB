@@ -79,7 +79,7 @@ algo = [
 ##      spa      ##
 ###################
 spa_options = [
-    {"text": "2: Small & linear features (SLF), Coherent", "value": 2},
+    {"text": "2: Small & linear features (SLF), Contiguous", "value": 2},
     {"text": "3: Core, Core-Openings, Margin", "value": 3},
     {"text": "5: Core, Core-Openings, Edge, Perforation, Margin", "value": 5},
     {"text": "6: Core, Core-Openings, Edge, Perforation, Islet, Margin", "value": 6},
