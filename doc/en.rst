@@ -1,7 +1,7 @@
 GuidosToolbox Workbench
 =======================
 
-This document provides usage instructions for the image analysis module **GWB** (`GuidosToolbox Workbench <https://forest.jrc.ec.europa.eu/en/activities/lpa/gwb/>`_), here implemented as a Jupyter dashboard on SEPAL. 
+This document provides usage instructions for the image analysis module **GWB** (`GuidosToolbox Workbench <https://forest.jrc.ec.europa.eu/en/activities/lpa/gwb/>`_), here implemented as a Jupyter dashboard on SEPAL. Citation reference: `GuidosToolbox Workbench: Spatial analysis of raster maps for ecological applications <https://doi.org/10.1111/ecog.05864>`_.
 
 Introduction
 ------------
@@ -673,7 +673,7 @@ MSPA
 
 .. warning:: 
 
-    If your are considering using the MSPA tool, keep in mind that the process is relatively complex and provide a lot of informmation (up to 25 classes). If you are only interested in fragmentation and/or less than 6 classes, please consider using :code:`FRAG` or :code:`SPA`.
+    If you are considering using the MSPA module, keep in mind that the result provides a lot of information (up to 25 classes). The alternative module :code:`GWB_SPA` provides a similar but simplified assessment with up to 6 classes only. Both modules describe morphological features of foreground objects. While MSPA may address certain features of fragmentation, a more comprehensive assessment of fragmentation is obtained with the dedicated fragmentation modules :code:`GWB_FRAG` or :code:`GWB_FAD`.
 
 This module will conduct the **Morphological Spatial Pattern Analysis**. `MSPA <https://forest.jrc.ec.europa.eu/en/activities/lpa/mspa/>`_ analyses shape and connectivity and conducts a segmentation of foreground patches in up to 25 feature classes. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Morphology <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Pattern-Morphology.pdf>`_ product sheet.
 
@@ -731,6 +731,8 @@ You will need to select parameters for your computation:
     -   Edge width: 1
     -   Transition: True
     -   Intext: True
+    -   Disk: False
+    -   Statistics: False
 
 Foreground connectivity
 #######################
@@ -759,6 +761,16 @@ Intext
 ######
 
 Select if you want to distinguish MSPA classes and Holes laying within Core objects (intext=1 (true), default) or not (intext=0).
+
+Disk
+####
+
+Select if you want to process with minimum RAM usage (disk=0 (false), default) or not (disk=1 (true) requires 20% less RAM but +40% processing time).
+
+Statistics
+##########
+
+Select if you want to calculate summary statistics (statistics=0 (false), default) or (statistics=1 (true) +10% processing time)
 
 Run the analysis
 """"""""""""""""
@@ -1106,9 +1118,9 @@ The resulting files are stored in the folder :code:`module_results/gwb/rss/`, fo
 Here is the result of the computation using the default parameters on the :code:`example.tif` file.
 
 .. csv-table::
-    :header: FNAME, AREA, RAC[%], NR_OBJ, LARG_OBJ, APS, CNOA, ECA, COH[%]
+    :header: FNAME, AREA, RAC[%], NR_OBJ, LARG_OBJ, APS, CNOA, ECA, COH[%], REST_POT[%]
     
-    example_bin_map.tif,428490.00,42.860572,2850,214811,150.34737,311712,221292.76,51.644789
+    example_bin_map.tif,428490.00,42.860572,2850,214811,150.34737,311712,221292.76,51.644789,48.355211
 
 SPA
 ^^^
@@ -1173,7 +1185,7 @@ Number of pattern classes
 
 Set the number of pattern classes you want to compute:
 
--   2: Small & linear features (SLF), Coherent
+-   2: Contiguous, Small & linear features (SLF)
 -   3: Core, Core-Openings, Margin
 -   5: Core, Core-Openings, Edge, Perforation, Margin
 -   6: Core, Core-Openings, Edge, Perforation, Islet, Margin
