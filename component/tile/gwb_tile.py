@@ -41,6 +41,6 @@ class GwbTile(sw.Tile):
 
         # remove the tmp directory
         # whatever the result
-        shutil.rmtree(cp.get_tmp_dir())
+        # shutil.rmtree(cp.get_tmp_dir())
 
         return

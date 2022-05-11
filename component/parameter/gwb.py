@@ -4,7 +4,7 @@ gwb = {
     "fad": {"command": "GWB_FAD", "folder": "fad", "offset": 28},
     "frag": {"command": "GWB_FRAG", "folder": "frag", "offset": 32},
     "lm": {"command": "GWB_LM", "folder": "lm", "offset": 14},
-    "mspa": {"command": "GWB_MSPA", "folder": "mspa", "offset": 23},
+    "mspa": {"command": "GWB_MSPA", "folder": "mspa", "offset": 27},
     "p223": {"command": "GWB_P223", "folder": "p2", "offset": 41},
     "parc": {"command": "GWB_PARC", "folder": "parc", "offset": 17},
     "rss": {"command": "GWB_RSS", "folder": "", "offset": 14},

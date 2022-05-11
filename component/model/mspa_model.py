@@ -20,6 +20,8 @@ class MspaModel(GWBModel):
     edge_width = Any(1).tag(sync=True)
     transition = Any(1).tag(sync=True)
     int_ext = Any(1).tag(sync=True)
+    disk = Any(0).tag(sync=True)
+    statistics = Any(0).tag(sync=True)
 
     def __init__(self):
 
@@ -39,6 +41,8 @@ class MspaModel(GWBModel):
                 self.edge_width,
                 self.transition,
                 self.int_ext,
+                self.disk,
+                self.statistics,
             ]
         )
 
