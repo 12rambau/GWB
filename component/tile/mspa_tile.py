@@ -32,7 +32,7 @@ class MspaTile(GwbTile):
             label=cm.mspa.int_ext, false_value=0, true_value=1, v_model=1
         )
         disk = v.Switch(label=cm.mspa.disk, false_value=0, true_value=1, v_model=0)
-        stats = v.Switch(label=cm.mspa.stats, fals_value=0, true_value=1, v_model=0)
+        stats = v.Switch(label=cm.mspa.stats, false_value=0, true_value=1, v_model=0)
 
         # bind to the io
         (
