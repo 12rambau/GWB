@@ -30,16 +30,19 @@ The application should launch itself in the About section, allowing to select th
     This licence needs to be accepted to use the **GWB** modules. It is also available in the section :code:`Licence` of the app. 
     If you don't want to accept this Licence, just close the app tab.
 
+Usage
+^^^^^
+
 General structure
-^^^^^^^^^^^^^^^^^
+"""""""""""""""""
 
 The application is strucured as followed: 
 
-On the left side you will find a navigation drawer that you can open and close using the `Hamburger button <https://en.wikipedia.org/wiki/Hamburger_button>`_.
+On the left side you will find a navigation drawer that you can open and close using :btn:`<fas fa-ellipsis-v>` (topleft side of the window).
 
 .. tip:: 
 
-    On small devices such as tablet or phones, the navigation drawer will be hidden by default. Click the Hamburger button (highlighted by the red square) to show the full extent of the app. 
+    On small devices such as tablet or phones, the navigation drawer will be hidden by default. Click on :btn:`<fas fa-ellipsis-v>` (topleft side of the window) to show the full extent of the app. 
     
     .. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/small_device_without_menu.png
         :title: small screen without drawer
@@ -60,6 +63,18 @@ Each name in the list corresponds to one **GWB** module, presented individually 
 .. danger:: 
 
     All **GWB** modules require categorical raster input maps in data type unsigned byte (8bit), with discrete integer values within [0, 255] byte. Any other data format will raise an error.
+    
+Launch a module
+"""""""""""""""
+
+For all modules, the first step is sanitizing the image provided by the user and changing the band values according to the module requirements.
+    
+Then you can select the parameters associated to the selected module and run it by clicking on the final button. 
+In the next section we'll describe every module and their specificities.
+
+.. note::
+
+    The :code:`module_results` folder is not dedicated to save your dada but only produce them. Once created, no binary image using the same name can be produced. If you're running the same analysis with different parameters you can safely reuse the same one, if not please delete/move the previous image before running. A warning message will be displayed in the application.
 
 Modules
 -------
