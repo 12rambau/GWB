@@ -23,7 +23,7 @@ class MspaTile(GwbTile):
             v_model=cp.connectivity[0]["value"],
         )
         edge_width = v.Slider(
-            label=cm.mspa.edge_width, min=1, max=30, v_model=1, thumb_label=True
+            label=cm.mspa.edge_width, min=1, max=100, v_model=1, thumb_label=True
         )
         transition = v.Switch(
             label=cm.mspa.transition, false_value=0, true_value=1, v_model=1
