@@ -38,11 +38,11 @@ General structure
 
 The application is strucured as followed: 
 
-On the left side you will find a navigation drawer that you can open and close using :btn:`<fas fa-ellipsis-v>` (topleft side of the window).
+On the left side you will find a navigation drawer that you can open and close using :btn:`<fa-solid fa-ellipsis-vertical>` (topleft side of the window).
 
 .. tip:: 
 
-    On small devices such as tablet or phones, the navigation drawer will be hidden by default. Click on :btn:`<fas fa-ellipsis-v>` (topleft side of the window) to show the full extent of the app. 
+    On small devices such as tablet or phones, the navigation drawer will be hidden by default. Click on :btn:`<fa-solid fa-ellipsis-vertical>` (topleft side of the window) to show the full extent of the app. 
     
     .. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/small_device_without_menu.png
         :title: small screen without drawer
