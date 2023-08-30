@@ -14,3 +14,4 @@ from .parc_tile import *
 from .rss_tile import *
 from .spa_tile import *
 from .rec_tile import *
+from .tile_disclaimer import *
