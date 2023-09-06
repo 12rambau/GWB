@@ -10,18 +10,18 @@ from component.message import cm
 tiles = {
     "acc": {"title": "Accounting of image objects and areas", "desc": "some desc"},
     "dist": {"title": "Euclidean Distance", "desc": "some desc"},
-    "fad": {"title": "Forest Area Density", "desc": "some desc"},
     "frag": {"title": "Fragmentation", "desc": "some desc"},
     "lm": {"title": "Landscape Mosaic", "desc": "some desc"},
     "mspa": {"title": "Morphological Spatial Pattern Analysis", "desc": "some desc"},
-    "p223": {
-        "title": "Density (P2), Contagion (P22) or or FG-Adjacency (P23)",
-        "desc": "some desc",
-    },
     "parc": {"title": "Parcellation", "desc": "some desc"},
     "rss": {"title": "Restoration Status Summary", "desc": "some desc"},
     "spa": {"title": "Simplified Pattern Analysis", "desc": "some desc"},
     "reclassify": {"title": "Reclassify local rasters", "desc": "some desc"},
+    "fad": {"title": "Forest Area Density", "desc": "some desc"},
+    "p223": {
+        "title": "Density (P2), Contagion (P22) or or FG-Adjacency (P23)",
+        "desc": "some desc",
+    },
 }
 
 
@@ -75,12 +75,11 @@ class ProcessDialog(v.Dialog):
             process = tile.DistTile(model)
 
         elif tile_id == "fad":
-            model = models.FadModel()
-            title = sw.Tile(
-                model.tile_id, cm.fad.title, [sw.Markdown(cm.fad.description)]
-            )
-            convert = tile.ConvertByte(model, 4)
-            process = tile.FadTile(model)
+            process = tile.FadTile()
+            self.built_tiles[tile_id] = [process]
+            self.card_content.children = [process]
+            return
+
         elif tile_id == "frag":
             model = models.FragModel()
             title = sw.Tile(
@@ -106,12 +105,10 @@ class ProcessDialog(v.Dialog):
             process = tile.MspaTile(model)
 
         elif tile_id == "p223":
-            model = models.P223Model()
-            title = sw.Tile(
-                model.tile_id, cm.p223.title, [sw.Markdown(cm.p223.description)]
-            )
-            convert = tile.ConvertByte(model, 5)
-            process = tile.P223Tile(model)
+            process = tile.P223Tile()
+            self.built_tiles[tile_id] = [process]
+            self.card_content.children = [process]
+            return
 
         elif tile_id == "parc":
             model = models.ParcModel()
