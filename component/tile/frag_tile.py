@@ -15,7 +15,6 @@ from .gwb_tile import GwbTile
 
 class FragTile(GwbTile):
     def __init__(self, model):
-
         # create the widgets
         connectivity = v.Select(
             label=cm.acc.connectivity,
@@ -38,6 +37,8 @@ class FragTile(GwbTile):
             v_model=cp.prescision[0]["value"],
         )
 
+        stats = v.Switch(label=cm.frag.stats, false_value=0, true_value=1, v_model=0)
+
         # bind to the io
         (
             model.bind(connectivity, "connectivity")
@@ -45,18 +46,18 @@ class FragTile(GwbTile):
             .bind(windows.save, "window_size")
             .bind(options, "options")
             .bind(prescision, "prescision")
+            .bind(stats, "statistics")
         )
 
         # extra js behaviour
         res.on_event("focusout", self._on_focus_out)
 
         super().__init__(
-            model=model, inputs=[connectivity, res, windows, options, prescision]
+            model=model, inputs=[connectivity, res, windows, options, prescision, stats]
         )
 
-    @su.loading_button()
+    @su.loading_button(debug=True)
     def _on_click(self, widget, event, data):
-
         # check inputs
         if not all(
             [
@@ -77,7 +78,6 @@ class FragTile(GwbTile):
         return
 
     def _on_focus_out(self, widget, event, data):
-
         # clear error
         widget.error_messages = None
 
@@ -87,7 +87,6 @@ class FragTile(GwbTile):
 
         valid = True
         try:
-
             value = int(widget.v_model)
 
             if value < 0:

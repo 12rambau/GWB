@@ -7,7 +7,6 @@ from component import parameter as cp
 
 
 class FragModel(GWBModel):
-
     # the init file
     file = Any(None).tag(sync=True)
 
@@ -16,6 +15,7 @@ class FragModel(GWBModel):
     foreground = Any([]).tag(sync=True)
     spe_background_1 = Any([]).tag(sync=True)
     spe_background_2 = Any([]).tag(sync=True)
+    statistics = Any(0).tag(sync=True)
 
     # the process
     connectivity = Any(cp.connectivity[0]["value"]).tag(sync=True)
@@ -25,7 +25,6 @@ class FragModel(GWBModel):
     options = Any(cp.frag_options[0]["value"]).tag(sync=True)
 
     def __init__(self):
-
         super().__init__(process="frag")
 
     def update_byte_list(self):
@@ -50,6 +49,7 @@ class FragModel(GWBModel):
                 self.res,
                 self.join_attr("window_size"),
                 self.prescision,
+                self.statistics,
             ]
         )
 

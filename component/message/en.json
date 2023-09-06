@@ -56,7 +56,8 @@
         "windows": "Observation scale",
         "window_lbl": "Scale {}",
         "invalid_window": "A window should be a odd int in [3, 501]",
-        "no_windows": "Please provide at least 1 window size"
+        "no_windows": "Please provide at least 1 window size",
+        "stats": "Compute statistics"
     },
     "lm": {
         "title": "LM: Landscape Mosaic",
