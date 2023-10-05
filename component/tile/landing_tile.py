@@ -1,8 +1,6 @@
-from sepal_ui import sepalwidgets as sw
 import ipyvuetify as v
+from sepal_ui import sepalwidgets as sw
 
-
-from component.tile.reclassify import *
 from component import model as models
 from component import tile
 from component.message import cm
@@ -16,7 +14,6 @@ tiles = {
     "parc": {"title": "Parcellation", "desc": "some desc"},
     "rss": {"title": "Restoration Status Summary", "desc": "some desc"},
     "spa": {"title": "Simplified Pattern Analysis", "desc": "some desc"},
-    "reclassify": {"title": "Reclassify local rasters", "desc": "some desc"},
     "fad": {"title": "Forest Area Density", "desc": "some desc"},
     "p223": {
         "title": "Density (P2), Contagion (P22) or or FG-Adjacency (P23)",
@@ -51,7 +48,6 @@ class ProcessDialog(v.Dialog):
 
     def load_element(self, tile_id):
         """Load the element in the dialog."""
-
         if tile_id in self.built_tiles:
             self.card_content.children = self.built_tiles[tile_id]
             return
@@ -134,12 +130,6 @@ class ProcessDialog(v.Dialog):
             convert = tile.ConvertByte(model, 2)
             process = tile.SpaTile(model)
 
-        elif tile_id == "reclassify":
-            reclass_ui = ReclassifyUI()
-            self.built_tiles[tile_id] = [reclass_ui]
-            self.card_content.children = [reclass_ui]
-            return
-
         else:
             raise ValueError(f"Tile {tile_id} not found")
 
@@ -153,7 +143,6 @@ class ProcessDialog(v.Dialog):
 
     def open_dialog(self, *_, tile_id: str):
         """Open dialog."""
-
         self.load_element(tile_id)
         self.v_model = True
 
@@ -175,8 +164,7 @@ class LandingTile(sw.Tile):
         # create the description
 
         def get_description(tile_id):
-            """Get the description of the tile"""
-
+            """Get the description of the tile."""
             # if the description is larger than 100 characters, only show the first 100
             # and add a ... at the end
             if len(getattr(cm, tile_id).description) > 250:
@@ -216,8 +204,7 @@ class LandingTile(sw.Tile):
         ]
 
     def open_dialog(self, widget, event, data):
-        """Open the dialog for the selected tile"""
-
+        """Open the dialog for the selected tile."""
         widget.loading = True
         self.process_dialog.open_dialog(tile_id=widget.attributes["id"])
         widget.loading = False
