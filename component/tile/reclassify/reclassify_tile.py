@@ -159,10 +159,10 @@ class ReclassifyUI(v.Card, sw.SepalWidget):
 
         # Decorate functions
         self.reclassify_and_save = loading_button(
-            self.save_raster_btn, self.alert_dialog
+            self.alert_dialog, self.save_raster_btn, 
         )(self.reclassify_and_save)
         self.get_reclassify_table = loading_button(
-            self.get_table_btn, self.alert_dialog
+            self.alert_dialog, self.get_table_btn, 
         )(self.get_reclassify_table)
 
         # Events
