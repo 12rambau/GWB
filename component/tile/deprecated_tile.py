@@ -7,7 +7,7 @@ class DeprecatedTile(sw.Tile):
         markdown = sw.Markdown(
             f"The module {tile_id} has been deprecated. For details and alternatives, please view <a href='https://ies-ows.jrc.ec.europa.eu/gtb/GWB/GWB_changelog.txt' target='_blank'>the changelog</a>."
         )
-        alert.add_msg(markdown, "info")
+        alert.add_msg(markdown, "warning")
         inputs = [alert]
 
         super().__init__(
