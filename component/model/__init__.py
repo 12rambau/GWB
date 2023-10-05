@@ -8,6 +8,6 @@ from .frag_model import *
 from .lm_model import *
 from .mspa_model import *
 from .parc_model import *
+from .rec_model import *
 from .rss_model import *
 from .spa_model import *
-from .rec_model import *

@@ -1,11 +1,11 @@
-from sepal_ui import sepalwidgets as sw
-from sepal_ui.scripts import utils as su
 import ipyvuetify as v
 import rasterio as rio
+from sepal_ui import sepalwidgets as sw
+from sepal_ui.scripts import utils as su
 
-from component.message import cm
-from component import scripts as cs
 from component import parameter as cp
+from component import scripts as cs
+from component.message import cm
 
 
 class ConvertByte(sw.Tile):
@@ -98,8 +98,7 @@ class ConvertByte(sw.Tile):
 
     @su.switch("loading", debug=True, on_widgets=["band"])
     def _on_change(self, change):
-        """update the list according to the file selection"""
-
+        """update the list according to the file selection."""
         # switch band status
         # cannot be done in the switch decorator as there number is
         # undertermined at class creation
@@ -110,7 +109,7 @@ class ConvertByte(sw.Tile):
         self.band.v_model = None
 
         # exit if nothing is set
-        if change["new"] == None:
+        if change["new"] is None:
             return self
 
         # load the bands

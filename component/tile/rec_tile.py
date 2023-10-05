@@ -1,14 +1,7 @@
-import json
-import shutil
-
-from sepal_ui import sepalwidgets as sw
 from sepal_ui.scripts import utils as su
-import ipyvuetify as v
 
-from component.message import cm
-from component import parameter as cp
 from component import widget as cw
-from component import scripts as cs
+from component.message import cm
 
 from .gwb_tile import GwbTile
 
@@ -28,8 +21,7 @@ class RecTile(GwbTile):
         convert_tile.alert.observe(self._on_class_change, "class")
 
     def _on_class_change(self, change):
-        """update the table when a new file is loaded"""
-
+        """update the table when a new file is loaded."""
         if any(class_ in change["new"] for class_ in ["success", "warning"]):
             self.rec_table.reload_body(self.io.bin_map)
 

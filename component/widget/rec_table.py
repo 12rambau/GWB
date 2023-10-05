@@ -33,8 +33,7 @@ class RecTable(v.SimpleTable):
         super().__init__(children=[header, self.tbody], class_="mb-5")
 
     def reload_body(self, raster):
-        """dynamically change the body of the widget according to the raster file"""
-
+        """dynamically change the body of the widget according to the raster file."""
         # empty the tbody children
         self.tbody.children = []
 

@@ -1,14 +1,8 @@
-import json
-import shutil
-
-from sepal_ui import sepalwidgets as sw
-from sepal_ui.scripts import utils as su
 import ipyvuetify as v
+from sepal_ui.scripts import utils as su
 
-from component.message import cm
-from component import parameter as cp
-from component import widget as cw
 from component import scripts as cs
+from component.message import cm
 
 from .gwb_tile import GwbTile
 

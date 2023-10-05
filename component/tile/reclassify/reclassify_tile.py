@@ -1,15 +1,17 @@
 import os
-from functools import partial
 from pathlib import Path
-from traitlets import List, Dict, Int
+
 import ipyvuetify as v
 import sepal_ui.sepalwidgets as sw
 from sepal_ui.scripts.utils import loading_button
+from traitlets import List
 
-from .datatable import *
+from component.message import cm
+
+from ...scripts.pre_processing import reclassify_from_map, unique
+from ...widget.reclassifywgs import Tabs
+from .datatable import ClassTable
 from .reclassifytable import ReclassifyTable
-from ...scripts.pre_processing import *
-from ...widget.reclassifywgs import *
 
 
 class CustomizeTile(v.Card):
@@ -19,15 +21,15 @@ class CustomizeTile(v.Card):
     def __init__(
         self, class_path=Path("~").expanduser() / "downloads", *args, **kwargs
     ):
+        """Stand-alone tile.
 
-        """Stand-alone tile composed by a select widget containing .csv reclassify files
+        Composed by a select widget containing .csv reclassify files
         found in the class_path, and a ClassTable to edit and/or create a new
-        classification table,
+        classification table,.
 
         Args:
             class_path (str) (optional): Folder path containing classification tables
         """
-
         super().__init__(*args, **kwargs)
 
         self.title = v.CardTitle(children=["Edit or create new classifications"])
@@ -67,20 +69,18 @@ class CustomizeTile(v.Card):
         use_btn.on_event("click", self.get_class_table)
 
     def get_class_table(self, *args):
-        """Display class table widget in view"""
-
+        """Display class table widget in view."""
         # Call class table method to build items
         self.ct.populate_table(self.w_class_file.v_model)
         self.ct.show()
 
     def _refresh_files(self, *args):
-        """Trigger event when a new file is created"""
+        """Trigger event when a new file is created."""
         self.get_classes_files()
         self.w_class_file.items = self.get_items()
 
     def get_classes_files(self):
-        """Search for classes inside module path"""
-
+        """Search for classes inside module path."""
         look_up_folder = Path(self.class_path).glob("*.csv")
         module_classes_folder = (Path(os.getcwd()) / "component/parameter").glob(
             "*.csv"
@@ -91,7 +91,7 @@ class CustomizeTile(v.Card):
         ]
 
     def get_items(self):
-        """Get items for widget selection"""
+        """Get items for widget selection."""
         self.get_classes_files()
         classes_files = (
             [{"divider": True}, {"header": "New classification"}]
@@ -173,8 +173,7 @@ class ReclassifyUI(v.Card, sw.SepalWidget):
         self.customize_class.observe(self.get_items, "classes_files")
 
     def reclassify_and_save(self, *args):
-        """Reclassify the input raster and save it in sepal space"""
-
+        """Reclassify the input raster and save it in sepal space."""
         in_raster = self.w_select_raster.file
         change_matrix = self.w_reclassify_table.matrix
 
@@ -194,16 +193,16 @@ class ReclassifyUI(v.Card, sw.SepalWidget):
         )
 
     def get_reclassify_table(self, *args):
-        """Display a reclassify table which will lead the user to select
-        a local code 'from user' to a target code based on a classes file"""
+        """Display a reclassify table which will lead the user to select a local code 'from user' to a target code.
 
+        Based on a classes file.
+        """
         code_fields = unique(self.w_select_raster.file)
         self.w_reclassify_table._get_matrix(code_fields, self.w_class_file.v_model)
         self.save_raster_btn.show()
 
     def get_items(self, *args):
-        """Get classes .csv files from the selected path"""
-
+        """Get classes .csv files from the selected path."""
         self.w_class_file.items = (
             [{"text": "Manual classification", "value": ""}]
             + [{"divider": True}]
@@ -214,12 +213,11 @@ class ReclassifyUI(v.Card, sw.SepalWidget):
         )
 
     def workspace(self):
-        """Creates the workspace necessary to store the data
+        """Creates the workspace necessary to store the data.
 
-        return:
+        Return:
             returns env paths
         """
-
         base_dir = Path("~").expanduser()
 
         root_dir = base_dir / "module_results/gwb"

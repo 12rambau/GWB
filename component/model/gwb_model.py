@@ -6,9 +6,9 @@ from component import parameter as cp
 
 
 class GWBModel(model.Model):
-    """
-    Mother class of all the other io.
-    The process will be launched thanks to this object parameters
+    """Mother class of all the other io.
+
+    The process will be launched thanks to this object parameters.
     """
 
     def __init__(self, process="gwb", byte_list=[], params_list=[], bin_map=None):
@@ -30,18 +30,15 @@ class GWBModel(model.Model):
         self.bin_map = bin_map
 
     def join_attr(self, attr, sep=" "):
-        """
-        join the values of a list using the separator
-        lot of them are stored as int and cannot be joined easily
+        """Join the values of a list using the separator lot of them are stored as int and cannot be joined easily.
 
         Args:
             attr (list): list of attr that need to be on 1 line in the parameter file
             sep (str): the strin to use as separator
 
-        return:
+        Return:
             (str): the joined str
         """
-
         # will raise an error if the attribute doesn't exist
         params_list = getattr(self, attr)
 

@@ -1,7 +1,7 @@
-from traitlets import Int, link
-from ipywidgets import Output
 import ipyvuetify as v
-from sepal_ui import sepalwidgets as sw
+from IPython.display import display
+from ipywidgets import Output
+from traitlets import Int, link
 
 
 class Dialog(v.Dialog):

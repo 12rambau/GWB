@@ -1,16 +1,15 @@
-from pathlib import Path
 from itertools import combinations
+from pathlib import Path
 
-import rasterio as rio
 import numpy as np
+import rasterio as rio
 
 from component import parameter as cp
 from component.message import cm
 
 
 def is_overlap(class_list):
-    """check if the lists overlaps"""
-
+    """Check if the lists overlaps."""
     overlap = False
 
     for a, b in combinations(class_list, 2):
@@ -24,8 +23,7 @@ def is_overlap(class_list):
 
 
 def set_byte_map(class_list, raster, band, process, output):
-    """
-    reclassify a map using the provided class list
+    """Reclassify a map using the provided class list.
 
     Args:
         class_list (list(list(int))): each list of the root list represent a byte value starting at 1.
@@ -67,7 +65,7 @@ def set_byte_map(class_list, raster, band, process, output):
 
                 # reclassify data using the class_list
                 data = np.zeros_like(raw_data, dtype=np.uint8)
-                total_class = sum([len(c) for c in class_list])
+                sum([len(c) for c in class_list])
 
                 for ic, class_ in enumerate(class_list):
 
@@ -85,8 +83,7 @@ def set_byte_map(class_list, raster, band, process, output):
 
 
 def unique(raster, band):
-    """Retreive all the existing feature in the byte file"""
-
+    """Retreive all the existing feature in the byte file."""
     features = []
 
     if raster:
@@ -110,14 +107,14 @@ def unique(raster, band):
 
 
 def reclassify_from_map(in_raster, map_values, dst_raster=None, overwrite=False):
-    """Remap raster values from map_values dictionary. If the
-    are missing values in the dictionary 0 value will be returned
+    """Remap raster values from map_values dictionary.
+
+    If the are missing values in the dictionary 0 value will be returned.
 
     Args:
         in_raster (path to raster): Input raster to reclassify
         map_values (dict): Dictionary with origin:target values
     """
-
     # Get reclassify path raster
     filename = Path(in_raster).stem
     dst_raster = dst_raster or Path.home() / f"downloads/{filename}_reclassified.tif"
