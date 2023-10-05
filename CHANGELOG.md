@@ -1,3 +1,15 @@
+## 1.2.0 (2023-10-05)
+
+### Feat
+
+- add GWB system version on the appbar
+
+### Refactor
+
+- use warning color on deprecated tools
+- separate reclassify process as different tile
+- **ReclassifyUI**: fix order of loading_button params
+
 ## 1.1.0 (2023-10-05)
 
 ### Feat
