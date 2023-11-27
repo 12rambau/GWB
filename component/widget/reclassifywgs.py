@@ -1,12 +1,12 @@
 import ipyvuetify as v
 from IPython.display import display
 from ipywidgets import Output
+from sepal_ui import color
 from traitlets import Int, link
 
 
 class Dialog(v.Dialog):
     def __init__(self, output=None, *args, **kwargs):
-
         self.output = output if output else Output()
 
         self.v_model = False
@@ -25,13 +25,11 @@ class Dialog(v.Dialog):
 
 
 class Tabs(v.Card):
-
     current = Int(0).tag(sync=True)
 
     def __init__(self, titles, content, **kwargs):
-
         self.background_color = "primary"
-        self.dark = True
+        self.dark = True if color._dark_theme else False
 
         self.tabs = [
             v.Tabs(

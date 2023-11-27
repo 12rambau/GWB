@@ -9,7 +9,6 @@ from component.message import cm
 
 class LicenceDialog(sw.SepalWidget, v.Dialog):
     def __init__(self):
-
         with cp.eula_md.open() as f:
             licence = f.read()
         mkd = sw.Markdown(licence)

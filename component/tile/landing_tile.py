@@ -4,6 +4,7 @@ from sepal_ui import sepalwidgets as sw
 from component import model as models
 from component import tile
 from component.message import cm
+from component.widget.licence_dialog import LicenceDialog
 
 tiles = {
     "acc": {"title": "Accounting of image objects and areas", "desc": "some desc"},
@@ -196,12 +197,11 @@ class LandingTile(sw.Tile):
             card.on_event("click", self.open_dialog)
 
         self.process_dialog = ProcessDialog()
+        license_dialog = LicenceDialog()
 
         self.children = [
             v.Flex(xs12=True, sm6=True, md3=True, children=[card]) for card in cards
-        ] + [
-            self.process_dialog,
-        ]
+        ] + [self.process_dialog, license_dialog]
 
     def open_dialog(self, widget, event, data):
         """Open the dialog for the selected tile."""
