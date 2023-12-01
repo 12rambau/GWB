@@ -53,7 +53,7 @@ class FragTile(GwbTile):
             model=model, inputs=[connectivity, res, windows, options, prescision, stats]
         )
 
-    @su.loading_button(debug=True)
+    @su.loading_button()
     def _on_click(self, widget, event, data):
         # check inputs
         if not all(
