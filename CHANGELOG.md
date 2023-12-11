@@ -1,3 +1,15 @@
+## 1.3.0 (2023-12-11)
+
+### Feat
+
+- use sepal_ui==2.17 to avoid conflicts with ipyleaflet
+- add license dialog
+- separate reclassify tile
+
+### Refactor
+
+- **decorator**: remove debug arg
+
 ## 1.2.0 (2023-10-05)
 
 ### Feat
