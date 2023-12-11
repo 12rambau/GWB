@@ -2,8 +2,8 @@ import json
 
 import ipyvuetify as v
 
-from component.message import cm
 from component import scripts as cs
+from component.message import cm
 
 
 class Windows(v.Layout):

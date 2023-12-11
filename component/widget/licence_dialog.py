@@ -9,7 +9,6 @@ from component.message import cm
 
 class LicenceDialog(sw.SepalWidget, v.Dialog):
     def __init__(self):
-
         with cp.eula_md.open() as f:
             licence = f.read()
         mkd = sw.Markdown(licence)
@@ -30,13 +29,11 @@ class LicenceDialog(sw.SepalWidget, v.Dialog):
         btn.on_event("click", self._set_gwb)
 
     def _is_gwb(self):
-        """return if the gwb EULA.TXT exist or not"""
-
+        """return if the gwb EULA.TXT exist or not."""
         return cp.get_licence_dir().joinpath("EULA.txt").is_file()
 
     def _set_gwb(self, widget, event, data):
-        """Write the EULA.txt file into the gwb hidden folder"""
-
+        """Write the EULA.txt file into the gwb hidden folder."""
         shutil.copy(cp.eula_txt, cp.get_licence_dir())
         self.value = False
 

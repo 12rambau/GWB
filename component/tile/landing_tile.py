@@ -1,27 +1,25 @@
-from sepal_ui import sepalwidgets as sw
 import ipyvuetify as v
+from sepal_ui import sepalwidgets as sw
 
-
-from component.tile.reclassify import *
 from component import model as models
 from component import tile
 from component.message import cm
+from component.widget.licence_dialog import LicenceDialog
 
 tiles = {
     "acc": {"title": "Accounting of image objects and areas", "desc": "some desc"},
     "dist": {"title": "Euclidean Distance", "desc": "some desc"},
-    "fad": {"title": "Forest Area Density", "desc": "some desc"},
     "frag": {"title": "Fragmentation", "desc": "some desc"},
     "lm": {"title": "Landscape Mosaic", "desc": "some desc"},
     "mspa": {"title": "Morphological Spatial Pattern Analysis", "desc": "some desc"},
+    "parc": {"title": "Parcellation", "desc": "some desc"},
+    "rss": {"title": "Restoration Status Summary", "desc": "some desc"},
+    "spa": {"title": "Simplified Pattern Analysis", "desc": "some desc"},
+    "fad": {"title": "Forest Area Density", "desc": "some desc"},
     "p223": {
         "title": "Density (P2), Contagion (P22) or or FG-Adjacency (P23)",
         "desc": "some desc",
     },
-    "parc": {"title": "Parcellation", "desc": "some desc"},
-    "rss": {"title": "Restoration Status Summary", "desc": "some desc"},
-    "spa": {"title": "Simplified Pattern Analysis", "desc": "some desc"},
-    "reclassify": {"title": "Reclassify local rasters", "desc": "some desc"},
 }
 
 
@@ -51,7 +49,6 @@ class ProcessDialog(v.Dialog):
 
     def load_element(self, tile_id):
         """Load the element in the dialog."""
-
         if tile_id in self.built_tiles:
             self.card_content.children = self.built_tiles[tile_id]
             return
@@ -75,12 +72,11 @@ class ProcessDialog(v.Dialog):
             process = tile.DistTile(model)
 
         elif tile_id == "fad":
-            model = models.FadModel()
-            title = sw.Tile(
-                model.tile_id, cm.fad.title, [sw.Markdown(cm.fad.description)]
-            )
-            convert = tile.ConvertByte(model, 4)
-            process = tile.FadTile(model)
+            process = tile.FadTile()
+            self.built_tiles[tile_id] = [process]
+            self.card_content.children = [process]
+            return
+
         elif tile_id == "frag":
             model = models.FragModel()
             title = sw.Tile(
@@ -106,12 +102,10 @@ class ProcessDialog(v.Dialog):
             process = tile.MspaTile(model)
 
         elif tile_id == "p223":
-            model = models.P223Model()
-            title = sw.Tile(
-                model.tile_id, cm.p223.title, [sw.Markdown(cm.p223.description)]
-            )
-            convert = tile.ConvertByte(model, 5)
-            process = tile.P223Tile(model)
+            process = tile.P223Tile()
+            self.built_tiles[tile_id] = [process]
+            self.card_content.children = [process]
+            return
 
         elif tile_id == "parc":
             model = models.ParcModel()
@@ -137,12 +131,6 @@ class ProcessDialog(v.Dialog):
             convert = tile.ConvertByte(model, 2)
             process = tile.SpaTile(model)
 
-        elif tile_id == "reclassify":
-            reclass_ui = ReclassifyUI()
-            self.built_tiles[tile_id] = [reclass_ui]
-            self.card_content.children = [reclass_ui]
-            return
-
         else:
             raise ValueError(f"Tile {tile_id} not found")
 
@@ -156,7 +144,6 @@ class ProcessDialog(v.Dialog):
 
     def open_dialog(self, *_, tile_id: str):
         """Open dialog."""
-
         self.load_element(tile_id)
         self.v_model = True
 
@@ -178,8 +165,7 @@ class LandingTile(sw.Tile):
         # create the description
 
         def get_description(tile_id):
-            """Get the description of the tile"""
-
+            """Get the description of the tile."""
             # if the description is larger than 100 characters, only show the first 100
             # and add a ... at the end
             if len(getattr(cm, tile_id).description) > 250:
@@ -211,16 +197,14 @@ class LandingTile(sw.Tile):
             card.on_event("click", self.open_dialog)
 
         self.process_dialog = ProcessDialog()
+        license_dialog = LicenceDialog()
 
         self.children = [
             v.Flex(xs12=True, sm6=True, md3=True, children=[card]) for card in cards
-        ] + [
-            self.process_dialog,
-        ]
+        ] + [self.process_dialog, license_dialog]
 
     def open_dialog(self, widget, event, data):
-        """Open the dialog for the selected tile"""
-
+        """Open the dialog for the selected tile."""
         widget.loading = True
         self.process_dialog.open_dialog(tile_id=widget.attributes["id"])
         widget.loading = False

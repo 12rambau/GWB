@@ -1,13 +1,11 @@
-import json
-
 from traitlets import Any
 
-from .gwb_model import GWBModel
 from component import parameter as cp
+
+from .gwb_model import GWBModel
 
 
 class FragModel(GWBModel):
-
     # the init file
     file = Any(None).tag(sync=True)
 
@@ -16,6 +14,7 @@ class FragModel(GWBModel):
     foreground = Any([]).tag(sync=True)
     spe_background_1 = Any([]).tag(sync=True)
     spe_background_2 = Any([]).tag(sync=True)
+    statistics = Any(0).tag(sync=True)
 
     # the process
     connectivity = Any(cp.connectivity[0]["value"]).tag(sync=True)
@@ -25,12 +24,10 @@ class FragModel(GWBModel):
     options = Any(cp.frag_options[0]["value"]).tag(sync=True)
 
     def __init__(self):
-
         super().__init__(process="frag")
 
     def update_byte_list(self):
-        """manually update the byte_list"""
-
+        """manually update the byte_list."""
         return super().update_byte_list(
             [
                 self.background,
@@ -41,8 +38,7 @@ class FragModel(GWBModel):
         )
 
     def update_params_list(self):
-        """manually update the params list"""
-
+        """manually update the params list."""
         return super().update_params_list(
             [
                 self.options,
@@ -50,12 +46,12 @@ class FragModel(GWBModel):
                 self.res,
                 self.join_attr("window_size"),
                 self.prescision,
+                self.statistics,
             ]
         )
 
     def get_params_list(self):
-        """get the params list for naming purposes (_ and no spaces)"""
-
+        """get the params list for naming purposes (_ and no spaces)."""
         self.update_params_list()
 
         params = self.params_list

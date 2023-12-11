@@ -20,8 +20,7 @@ down_dir.mkdir(exist_ok=True)
 
 
 def get_result_dir(process):
-    """get the result dir for each process"""
-
+    """Get the result dir for each process."""
     # create the subresult dir
     dir_ = result_dir / process
     dir_.mkdir(exist_ok=True)
@@ -30,8 +29,7 @@ def get_result_dir(process):
 
 
 def get_tmp_dir():
-    """get or create the tmp dir corresponding to each process"""
-
+    """Get or create the tmp dir corresponding to each process."""
     tmp_dir = result_dir / "tmp"
     tmp_dir.mkdir(exist_ok=True)
 

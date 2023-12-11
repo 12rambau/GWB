@@ -25,7 +25,7 @@ Then, navigate to the SEPAL **Apps** dashboard (purple wrench icon in the left p
 
 Finally, search for and select **GWB ANALYSIS**.
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/dashboard.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/dashboard.png
     :title: SEPAL dashboard 
     :group: gwb-module
     
@@ -35,7 +35,7 @@ The application should launch itself and display the **About** section. Select t
 
     If this is the first time you have used the app, you will see the following pop-up window:
 
-    .. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/licence.png
+    .. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/licence.png
         :title: Licence
         :group: gwb-module
 
@@ -56,19 +56,19 @@ On the left side you will find a navigation drawer that you can open and close u
 
     On small devices such as tablets or phones, the navigation drawer will be hidden by default. Select the :btn:`<fa-solid fa-ellipsis-vertical>` (upper-left side of the window) to display the full extent of the app.
     
-    .. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/small_device_without_menu.png
+    .. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/small_device_without_menu.png
         :title: Small screen without drawer
         :width: 49%
         :group: gwb-module
         
-    .. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/small_device_with_menu.png
+    .. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/small_device_with_menu.png
         :title: Small screen with drawer
         :width: 49%
         :group: gwb-module
 
 Each name in the list corresponds to one **GWB** module, presented separately in the following sections. By selecting a name, the panels relative to the function will be displayed.
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/landing.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/landing.png
     :title: Presentation of the structure
     :group: gwb-module
 
@@ -109,7 +109,7 @@ Set up the input image
     -   :code:`example.tif`: 0 bytes - Missing, 1 byte - Background, 2 bytes - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 bytes - Natural, 3 bytes - Developed
     
-    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+    .. thumbnail::  https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/test_dataset.png
         :title: Download sample dataset
         :group: gwb-module
     
@@ -132,7 +132,7 @@ Select each class in your image and place them in one of the following categorie
 
 Every class that is not set to a reclassifying category will be considered "missing data" (0 byte).
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/4_classes.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/4_classes.png
     :title: Upload four classes
     :group: gwb-module
 
@@ -144,7 +144,7 @@ Select the parameters
 """""""""""""""""""""
 You will need to select parameters for your computation:
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/acc_params.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/acc_params.png
     :title: ACC parameters
     :group: gwb-module
     
@@ -166,7 +166,7 @@ This sets the foreground connectivity of your analysis. Specifically:
 -   8 neighbours (default) will use every pixel in the vicinity (including diagonals)
 -   4 neighbours will only use the vertical and horizontal ones
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/connectivity.png
     :title: Connectivity image
     :width: 50%
     :group: gwb-module
@@ -202,7 +202,7 @@ Run the analysis
 
 Once your parameters are set, launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn green and display the computation log.
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/acc_results.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/acc_results.png
     :title: Information logs
     :group: gwb-module
 
@@ -241,7 +241,7 @@ Set up the input image
     -   :code:`example.tif`: 0 bytes - Missing, 1 byte - Background, 2 bytes - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 bytes - Natural, 3 bytes - Developed
     
-    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+    .. thumbnail::  https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/test_dataset.png
         :title: Download sample dataset
         :group: gwb-module
     
@@ -260,7 +260,7 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered "missing data" (0 bytes).
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/2_classes.png
     :title: Upload two classes
     :group: gwb-module
 
@@ -272,7 +272,7 @@ Select the parameters
 """""""""""""""""""""
 You will need to select parameters for your computation:
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/dist_params.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/dist_params.png
     :title: DIST parameters
     :group: gwb-module
     
@@ -291,7 +291,7 @@ This sets the foreground connectivity of your analysis. Specifically,
 -   8 neighbors (default) will use every pixel in the vicinity (including diagonals)
 -   4 neighbors will only use the vertical and horizontal one
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/connectivity.png
     :title: Connectivity image
     :width: 50%
     :group: gwb-module
@@ -309,7 +309,7 @@ Run the analysis
 
 Once your parameters are set, launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn green and display the **Computation log**.
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/dist_results.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/dist_results.png
     :title: Information logs
     :group: gwb-module
 
@@ -335,6 +335,10 @@ Here is the result of the computation using the default parameters on the :code:
     :width: 49%
     :group: gwb-module
 
+<<<<<<< Updated upstream
+FRAG
+^^^^
+=======
 Forest area density (FAD)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -356,7 +360,7 @@ Set up the input image
     -   :code:`example.tif`: 0 bytes - Missing, 1 byte - Background, 2 bytes - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 bytes - Natural, 3 bytes - Developed
 
-    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+    .. thumbnail::  https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/test_dataset.png
         :title: Download sample dataset
         :group: gwb-module
     
@@ -377,7 +381,7 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered "missing data" (0 bytes).
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/4_classes.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/4_classes.png
     :title: Upload four classes
     :group: gwb-module
 
@@ -393,7 +397,7 @@ Select the parameters
 """""""""""""""""""""
 You will need to select parameters for your computation: 
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/fad_params.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/fad_params.png
     :title: ACC parameters
     :group: gwb-module
     
@@ -413,7 +417,7 @@ This sets the foreground connectivity of your analysis:
 -   8 neighbours (default) will use every pixel in the vicinity (including diagonals)
 -   4 neighbours only will use the vertical and horizontal one
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/connectivity.png
     :title: Connectivity image
     :width: 50%
     :group: gwb-module
@@ -437,7 +441,7 @@ Run the analysis
 
 Once your parameters are all set you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn green and display the computation log.
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/fad_results.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/fad_results.png
     :title: Information logs
     :group: gwb-module
 
@@ -460,15 +464,9 @@ Here is the result of the computation using the default parameters on the :code:
 .. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_fad_barplot.png
     :width: 49%
     :group: gwb-module
+>>>>>>> Stashed changes
 
-.. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_fad_mscale.png
-    :width: 49%
-    :group: gwb-module
-
-Fragmentation (FRAG)
-^^^^^^^^^^^^^^^^^^^^
-
-This module will conduct the **Fragmentation** analysis at a **user-selected observation scale**. This module and its option are similar to :code:`fad`, but allow the user to specify a single (or multiple) specific observation scale. The results are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Fragmentation product sheet <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf>`_.
+This module will conduct the **fragmentation** analysis at a **user-selected observation scale**. The result are spatially explicit maps and tabular summary statistics. Details on the methodology and input/output options can be found in the `Fragmentation <https://ies-ows.jrc.ec.europa.eu/gtb/GTB/psheets/GTB-Fragmentation-FADFOS.pdf>`_ product sheet.
 
 Set up the input image
 """"""""""""""""""""""
@@ -480,7 +478,7 @@ Set up the input image
     -   :code:`example.tif`: 0 bytes - Missing, 1 byte - Background, 2 bytes - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 bytes - Natural, 3 bytes - Developed
     
-    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+    .. thumbnail::  https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/test_dataset.png
         :title: Download sample dataset
         :group: gwb-module
         
@@ -501,7 +499,7 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered "missing data" (0 byte).
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/4_classes.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/4_classes.png
     :title: Upload four classes
     :group: gwb-module
 
@@ -518,7 +516,7 @@ Select the parameters
 
 You will need to select parameters for your computation: 
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/frag_params.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/frag_params.png
     :title: ACC parameters
     :group: gwb-module
     
@@ -540,7 +538,7 @@ This sets the foreground connectivity of your analysis:
 -   8 neighbours (default) will use every pixel in the vicinity (including diagonals)
 -   4 neighbours will only use the vertical and horizontal one
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/connectivity.png
     :title: Connectivity image
     :width: 50%
     :group: gwb-module
@@ -570,7 +568,7 @@ Run the analysis
 
 Once your parameters are all set, you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn green and display the computation log.
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/frag_results.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/frag_results.png
     :title: Information logs
     :group: gwb-module
 
@@ -611,7 +609,7 @@ Set up the input image
     -   :code:`example.tif`: 0 bytes - Missing, 1 byte - Background, 2 bytes - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 bytes - Natural, 3 bytes - Developed
     
-    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+    .. thumbnail::  https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/test_dataset.png
         :title: Download sample dataset
         :group: gwb-module
 
@@ -631,7 +629,7 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered "missing data" (0 bytes).
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/3_classes.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/3_classes.png
     :title: Upload three classes
     :group: gwb-module
     
@@ -640,7 +638,7 @@ Select the parameters
 
 You will need to select parameters for your computation: 
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/lm_params.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/lm_params.png
     :title: LM parameters
     :group: gwb-module
     
@@ -670,7 +668,7 @@ Run the analysis
 
 Once your parameters are all set, you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn green and display the computation log.
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/lm_results.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/lm_results.png
     :title: Information logs
     :group: gwb-module
 
@@ -718,7 +716,7 @@ Set up the input image
     -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 bytes - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 bytes - Natural, 3 bytes - Developed
     
-    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+    .. thumbnail::  https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/test_dataset.png
         :title: Download sample dataset
         :group: gwb-module
         
@@ -737,7 +735,7 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered "missing data" (0 bytes).
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/2_classes.png
     :title: Upload 2 classes
     :group: gwb-module
 
@@ -749,7 +747,7 @@ Select the parameters
 """""""""""""""""""""
 You will need to select parameters for your computation: 
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/mspa_params.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/mspa_params.png
     :title: MSPA parameters
     :group: gwb-module
     
@@ -772,7 +770,7 @@ This sets the foreground connectivity of your analysis:
 -   8 neighbours (default) will use every pixel in the vicinity (including diagonals)
 -   4 neighbours will only use the vertical and horizontal one
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/connectivity.png
     :title: Connectivity image
     :width: 50%
     :group: gwb-module
@@ -807,7 +805,7 @@ Run the analysis
 
 Once your parameters are set, you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn green and display the computation log.
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/mspa_results.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/mspa_results.png
     :title: Information logs
     :group: gwb-module
 
@@ -831,6 +829,8 @@ Here is the result of the computation using the default parameters on the :code:
     :width: 49%
     :group: gwb-module
 
+<<<<<<< Updated upstream
+=======
 Density, Contagion or Adjacency Analysis (P223)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -850,7 +850,7 @@ Set up the input image
     -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 bytes - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 bytes - Natural, 3 bytes - Developed
     
-    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+    .. thumbnail::  https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/test_dataset.png
         :title: Download sample dataset
         :group: gwb-module
         
@@ -870,7 +870,7 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered as "missing data" (0 bytes).
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/p223_classes.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/p223_classes.png
     :title: Upload three classes
     :group: gwb-module
 
@@ -883,7 +883,7 @@ Select the parameters
 
 You will need to select parameters for your computation: 
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/p223_params.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/p223_params.png
     :title: P223 parameters
     :group: gwb-module
     
@@ -950,7 +950,7 @@ Run the analysis
 
 Once your parameters are set, you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn green and display the computation log.
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/p223_results.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/p223_results.png
     :title: Information logs
     :group: gwb-module
 
@@ -969,9 +969,10 @@ Here is the result of the computation using the P2 (Foreground-Density) option o
 .. thumbnail:: https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/cli/gwb/example_p2_27.png
     :width: 50%
     :group: gwb-module
+>>>>>>> Stashed changes
 
-Parcellation (PARC)
-^^^^^^^^^^^^^^^^^^^
+PARC
+^^^^
 
 This module will conduct the **Parcellation** analysis, providing a statistical summary file (.txt/.csv format) with details for each unique class found in the image, as well as the full image content: class value, total number of objects, total area, and degree of parcellation.
 
@@ -987,7 +988,7 @@ Set up the input image
     -   :code:`example.tif`: 0 bytes - Missing, 1 byte - Background, 2 bytes - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 bytes - Natural, 3 bytes - Developed
     
-    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+    .. thumbnail::  https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/test_dataset.png
         :title: download sample dataset
         :group: gwb-module
             
@@ -999,7 +1000,7 @@ The first step requires selecting your image in your **SEPAL folder**. The image
 
     If the image is on your local computer and not in your **SEPAL folders**, see `Exchange files with SEPAL <https://docs.sepal.io/en/latest/setup/filezilla.html>`_.
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/0_classes.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/0_classes.png
     :title: Upload zero classes
     :group: gwb-module
     
@@ -1007,7 +1008,7 @@ Select the parameters
 """""""""""""""""""""
 You will need to select parameters for your computation: 
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/parc_params.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/parc_params.png
     :title: PARC parameters
     :group: gwb-module
     
@@ -1025,7 +1026,7 @@ This sets the foreground connectivity of your analysis:
 -   8 neighbours (default) will use every pixel in the vicinity (including diagonals)
 -   4 neighbours will only use the vertical and horizontal one
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/connectivity.png
     :title: Connectivity image
     :width: 50%
     :group: gwb-module
@@ -1035,7 +1036,7 @@ Run the analysis
 
 Once your parameters are all set, you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn green and display the computation log.
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/parc_results.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/parc_results.png
     :title: Information logs
     :group: gwb-module
 
@@ -1078,7 +1079,7 @@ Set up the input image
     -   :code:`example.tif`: 0 byte - Missing, 1 byte - Background, 2 bytes - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 bytes - Natural, 3 bytes - Developed
     
-    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+    .. thumbnail::  https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/test_dataset.png
         :title: Download sample dataset
         :group: gwb-module
         
@@ -1097,7 +1098,7 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered "missing data" (0 bytes).
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/2_classes.png
     :title: Upload two classes
     :group: gwb-module
 
@@ -1109,7 +1110,7 @@ Select the parameters
 """""""""""""""""""""
 You will need to select parameters for your computation:
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/rss_params.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/rss_params.png
     :title: RSS parameters
     :group: gwb-module
     
@@ -1127,7 +1128,7 @@ This sets the foreground connectivity of your analysis:
 -   8 neighbours (default) will use every pixel in the vicinity (including diagonals)
 -   4 neighbours will only use the vertical and horizontal one
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/connectivity.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/connectivity.png
     :title: Connectivity image
     :width: 50%
     :group: gwb-module
@@ -1137,7 +1138,7 @@ Run the analysis
 
 Once your parameters are set, you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn green and display the computation log. 
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/rss_results.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/rss_results.png
     :title: Information logs
     :group: gwb-module
 
@@ -1179,7 +1180,7 @@ Set up the input image
     -   :code:`example.tif`: 0 bytes - Missing, 1 byte - Background, 2 bytes - Foreground
     -   :code:`clc3class.tif`: 1 byte - Agriculture, 2 bytes - Natural, 3 bytes - Developed
     
-    .. thumbnail::  https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/test_dataset.png
+    .. thumbnail::  https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/test_dataset.png
         :title: Download sample dataset
         :group: gwb-module
     
@@ -1198,7 +1199,7 @@ The dropdown menus will list the discrete values of your raster input image. Sel
 
 Every class that is not set to a reclassifying category will be considered "missing data" (0 bytes).
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/2_classes.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/2_classes.png
     :title: Upload two classes
     :group: gwb-module
 
@@ -1211,7 +1212,7 @@ Select the parameters
 
 You will need to select parameters for your computation: 
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/spa_params.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/spa_params.png
     :title: SPA parameters
     :group: gwb-module
     
@@ -1236,7 +1237,7 @@ Run the analysis
 
 Once your parameters are set, you can launch the analysis. The blue rectangle will display information about the computation. Upon completion, it will turn green and display the computation log.
 
-.. thumbnail:: https://raw.githubusercontent.com/12rambau/gwb/master/doc/img/spa_results.png
+.. thumbnail:: https://raw.githubusercontent.com/sepal-contrib/gwb/master/doc/img/spa_results.png
     :title: Information logs
     :group: gwb-module
 

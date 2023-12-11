@@ -1,16 +1,15 @@
-from sepal_ui import sepalwidgets as sw
-from sepal_ui.scripts import utils as su
 import ipyvuetify as v
 import rasterio as rio
+from sepal_ui import sepalwidgets as sw
+from sepal_ui.scripts import utils as su
 
-from component.message import cm
-from component import scripts as cs
 from component import parameter as cp
+from component import scripts as cs
+from component.message import cm
 
 
 class ConvertByte(sw.Tile):
     def __init__(self, model, nb_class):
-
         # gather the model
         self.model = model
 
@@ -73,9 +72,8 @@ class ConvertByte(sw.Tile):
         self.band.observe(self._on_valid_band, "v_model")
         self.down_test.on_event("click", self._on_download)
 
-    @su.loading_button(debug=True)
+    @su.loading_button()
     def _on_click(self, widget, event, data):
-
         # check variables
         if not self.alert.check_input(self.model.file, cm.bin.no_file):
             return
@@ -96,10 +94,9 @@ class ConvertByte(sw.Tile):
 
         return self
 
-    @su.switch("loading", debug=True, on_widgets=["band"])
+    @su.switch("loading", on_widgets=["band"])
     def _on_change(self, change):
-        """update the list according to the file selection"""
-
+        """update the list according to the file selection."""
         # switch band status
         # cannot be done in the switch decorator as there number is
         # undertermined at class creation
@@ -110,7 +107,7 @@ class ConvertByte(sw.Tile):
         self.band.v_model = None
 
         # exit if nothing is set
-        if change["new"] == None:
+        if change["new"] is None:
             return self
 
         # load the bands
@@ -123,9 +120,8 @@ class ConvertByte(sw.Tile):
 
         return self
 
-    @su.switch("loading", debug=True, on_widgets=["band"])
+    @su.switch("loading", on_widgets=["band"])
     def _on_valid_band(self, change):
-
         # switch band status
         # cannot be done in the switch decorator as there number is
         # undertermined at class creation
@@ -149,7 +145,6 @@ class ConvertByte(sw.Tile):
 
     @su.loading_button()
     def _on_download(self, widget, event, data):
-
         cs.download_test(self.alert)
 
         return self

@@ -1,6 +1,7 @@
+from functools import partial
+
 import ipyvuetify as v
 import sepal_ui.sepalwidgets as sw
-from functools import partial
 from traitlets import Dict
 
 
@@ -9,21 +10,19 @@ class ReclassifyTable(v.SimpleTable, sw.SepalWidget):
     matrix = Dict({}).tag(sync=True)
 
     def __init__(self, *args, **kwargs):
-        """Widget to reclassify raster/feature_class into local classes"""
-
+        """Widget to reclassify raster/feature_class into local classes."""
         self.dense = True
 
         # Create table
         super().__init__(*args, **kwargs)
 
     def _get_matrix(self, code_fields, classes_file=""):
-        """Init table reading local classes file and code/categories fields
+        """Init table reading local classes file and code/categories fields.
 
         Args:
             code_fields (list) : List of codes/categories of raster/feature collection
             classes_file (str) : Classes file containing code/category and description
         """
-
         self.matrix = {}
 
         # Set empty items if there is not a file selected
@@ -59,7 +58,7 @@ class ReclassifyTable(v.SimpleTable, sw.SepalWidget):
         self.children = [v.Html(tag="tbody", children=header + rows)]
 
     def read_classes_from_file(self, class_file):
-        """Read classes from .csv file
+        """Read classes from .csv file.
 
         Args:
             class_file (str): classes .csv file containing lines of (code_class, description)
@@ -77,16 +76,15 @@ class ReclassifyTable(v.SimpleTable, sw.SepalWidget):
         return items
 
     def store(self, code, change):
-        """Store user row code and new select value (file class)"""
+        """Store user row code and new select value (file class)."""
         self.matrix[code] = change["new"]
 
     def get_classes(self, code):
-        """Get class selector on the fly and store code to matrix
+        """Get class selector on the fly and store code to matrix.
 
         Args:
             code (str) : id to link local (raster, fc) with new classes (from file)
         """
-
         select = v.Combobox(
             _metadata={"name": code},
             items=self.items,

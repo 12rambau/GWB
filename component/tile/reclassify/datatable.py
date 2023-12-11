@@ -1,18 +1,18 @@
 from functools import partial
 from pathlib import Path
-from traitlets import Int, Dict, link
-from ipywidgets import Output
+
 import ipyvuetify as v
 import sepal_ui.sepalwidgets as sw
+from IPython.display import display
+from ipywidgets import Output
+from traitlets import Dict, Int
 
 
 class ClassTable(v.DataTable, sw.SepalWidget):
     def __init__(
         self, schema, out_path=Path("~").expanduser() / "downloads", *args, **kwargs
     ):
-
-        """Custom data table to display classification .csv files with features to create,
-        edit or remove rows.
+        """Custom data table to display classification .csv files with features to create, edit or remove rows.
 
         Args:
             schema (dict): schema (dict {'title':'type'}): Dictionary
@@ -21,24 +21,23 @@ class ClassTable(v.DataTable, sw.SepalWidget):
 
             out_path (str) (optional): output path where table will be saved, default to ~/downloads/
         """
-
         self.out_path = out_path
         self.schema = schema
         self.dialog = Output()
 
         self.edit_icon = v.Icon(children=["mdi-pencil"])
-        edit_icon = sw.Tooltip(self.edit_icon, "Edit selelcted row")
+        edit_icon = sw.Tooltip(self.edit_icon, "Edit selelcted row", bottom=True)
 
         self.delete_icon = v.Icon(children=["mdi-delete"])
         delete_icon = sw.Tooltip(
-            self.delete_icon, "Permanently delete the selected row"
+            self.delete_icon, "Permanently delete the selected row", bottom=True
         )
 
         self.add_icon = v.Icon(children=["mdi-plus"])
-        add_icon = sw.Tooltip(self.add_icon, "Create a new element")
+        add_icon = sw.Tooltip(self.add_icon, "Create a new element", bottom=True)
 
         self.save_icon = v.Icon(children=["mdi-content-save"])
-        save_icon = sw.Tooltip(self.save_icon, "Write current table on SEPAL space")
+        save_icon = sw.Tooltip(self.save_icon, "Write current table on SEPAL space", bottom=True)
         self.save_dialog = SaveDialog(
             table=self, out_path=self.out_path, transition=False
         )
@@ -72,7 +71,7 @@ class ClassTable(v.DataTable, sw.SepalWidget):
         self.save_icon.on_event("click", self._save_event)
 
     def populate_table(self, items_file):
-        """Populate table, it will fill the table with the .csv items_file
+        """Populate table, it will fill the table with the .csv items_file.
 
         Args:
             items (.txt): file containing classes and description
@@ -89,8 +88,7 @@ class ClassTable(v.DataTable, sw.SepalWidget):
         self.items = [] if items_file == "" else self.get_items_from_txt(items_file)
 
     def get_items_from_txt(self, items_path):
-        """Read txt file with classification"""
-
+        """Read txt file with classification."""
         items = []
         keys = self.schema.keys()
         with open(items_path) as f:
@@ -125,8 +123,7 @@ class ClassTable(v.DataTable, sw.SepalWidget):
             display(dial)
 
     def _remove_event(self, widget, event, data):
-        """Remove current selected (self.v_model) element from table"""
-
+        """Remove current selected (self.v_model) element from table."""
         current_items = self.items.copy()
         current_items.remove(self.v_model[0])
 
@@ -138,16 +135,13 @@ class EditDialog(v.Dialog):
     model = Dict().tag(sync=True)
 
     def __init__(self, table, schema, *args, default=None, **kwargs):
-        """
-
-        Dialog to modify/create new elements from the ClassTable data table
+        """Dialog to modify/create new elements from the ClassTable data table.
 
         Args:
             table (ClassTable, v.DataTable): Table linked with dialog
             schema (dict {'title':'type'}): Schema for table showing headers and type of data
             default (dict): Dictionary with default valules
         """
-
         self.table = table
         self.default = default
         self.title = "New element" if not self.default else "Modify element"
@@ -158,13 +152,13 @@ class EditDialog(v.Dialog):
 
         # Action buttons
         self.save = v.Btn(children=["Save"])
-        save_tool = sw.Tooltip(self.save, "Create new element")
+        save_tool = sw.Tooltip(self.save, "Create new element", bottom=True)
 
         self.cancel = v.Btn(children=["Cancel"])
-        cancel_tool = sw.Tooltip(self.cancel, "Ignore changes")
+        cancel_tool = sw.Tooltip(self.cancel, "Ignore changes", bottom=True)
 
         self.modify = v.Btn(children=["Modify"])
-        modify_tool = sw.Tooltip(self.modify, "Update row")
+        modify_tool = sw.Tooltip(self.modify, "Update row", bottom=True)
 
         save = [save_tool, cancel_tool]
         modify = [modify_tool, cancel_tool]
@@ -189,8 +183,7 @@ class EditDialog(v.Dialog):
         self.cancel.on_event("click", self._cancel)
 
     def _modify(self, widget, event, data):
-        """Modify elements to the table"""
-
+        """Modify elements to the table."""
         current_items = self.table.items.copy()
 
         for i, item in enumerate(current_items):
@@ -201,8 +194,7 @@ class EditDialog(v.Dialog):
         self.v_model = False
 
     def _save(self, widget, event, data):
-        """Add elements to the table"""
-
+        """Add elements to the table."""
         current_items = self.table.items.copy()
         item_to_add = self.model
         new_items = [item_to_add] + current_items
@@ -211,20 +203,18 @@ class EditDialog(v.Dialog):
         self.v_model = False
 
     def _get_index(self):
-        """Get an unique index for a new element"""
-
+        """Get an unique index for a new element."""
         index = (
             1 if not self.table.items else max([i["id"] for i in self.table.items]) + 1
         )
         return index
 
     def _cancel(self, widget, event, data):
-        """Close dialog"""
-
+        """Close dialog."""
         self.v_model = False
 
     def _populate_dict(self, change, title):
-        """Populate model with new values"""
+        """Populate model with new values."""
         self.model[title] = change["new"]
 
     def _get_widgets(self):
@@ -254,9 +244,7 @@ class SaveDialog(v.Dialog):
     reload = Int().tag(sync=True)
 
     def __init__(self, table, out_path, *args, **kwargs):
-        """
-
-        Dialog to save as .csv file the content of a ClassTable data table
+        """Dialog to save as .csv file the content of a ClassTable data table.
 
         Args:
             table (ClassTable, v.DataTable): Table linked with dialog
@@ -276,10 +264,10 @@ class SaveDialog(v.Dialog):
 
         # Action buttons
         self.save = v.Btn(children=["Save"])
-        save = sw.Tooltip(self.save, "Save table")
+        save = sw.Tooltip(self.save, "Save table", bottom=True)
 
         self.cancel = v.Btn(children=["Cancel"])
-        cancel = sw.Tooltip(self.cancel, "Cancel")
+        cancel = sw.Tooltip(self.cancel, "Cancel", bottom=True)
 
         info = (
             sw.Alert()
@@ -305,11 +293,10 @@ class SaveDialog(v.Dialog):
         self.cancel.on_event("click", self._cancel)
 
     def _save(self, *args):
-        """Write current table on a text file"""
-
+        """Write current table on a text file."""
         file_name = self.w_file_name.v_model
         file_name = file_name.strip()
-        if not ".csv" in file_name:
+        if ".csv" not in file_name:
             file_name = f"{file_name}.csv"
 
         out_file = self.out_path / file_name
@@ -327,6 +314,6 @@ class SaveDialog(v.Dialog):
         self.v_model = False
 
     def _get_lines(self):
-        """Get list of lines from table"""
+        """Get list of lines from table."""
         # Skip the first element: 'id' on table
         return [list(item.values())[1:] for item in self.table.items]

@@ -1,2 +1,2 @@
-from .reclassify_tile import *
 from .datatable import *
+from .reclassify_tile import *

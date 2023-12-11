@@ -1,10 +1,7 @@
-import shutil
-
 from sepal_ui import sepalwidgets as sw
 
-from component.message import cm
 from component import scripts as cs
-from component import parameter as cp
+from component.message import cm
 
 
 class GwbTile(sw.Tile):
@@ -30,7 +27,7 @@ class GwbTile(sw.Tile):
         self.model.update_params_list()
 
         # compute acc process
-        files = cs.run_gwb_process(
+        cs.run_gwb_process(
             process=self.model.process,
             raster=self.model.bin_map,
             params_list=self.model.params_list,

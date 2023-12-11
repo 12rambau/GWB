@@ -4,16 +4,16 @@ from pathlib import Path
 
 import ipyvuetify as v
 
-from component.message import cm
 from component import parameter as cp
+from component.message import cm
 
 
 def run_gwb_process(process, raster, params_list, title, output, offset):
-    """
-    run all the processes of the GWB suit according to the io
+    """Run all the processes of the GWB suit according to the io.
+
     The input and output folder will be created on the fly and deleted right afterward
     The result will be saved in the result_dir of the parameter component
-    The log will be displayed to the end user and then removed
+    The log will be displayed to the end user and then removed.
 
     Args:
         io (GWBIo): any io inheriting from the GWBIo object
@@ -22,7 +22,6 @@ def run_gwb_process(process, raster, params_list, title, output, offset):
         (pathlib.Path) : the path to the final .image
         (pathlib.Path) : the path to the final .csv
     """
-
     # create the tmp directories
     tmp_dir = cp.get_tmp_dir()
     in_dir = tmp_dir / "input"
@@ -63,7 +62,7 @@ def run_gwb_process(process, raster, params_list, title, output, offset):
 
     # file in the output directory
     folder = cp.gwb[process]["folder"]
-    out_log = list(out_dir.glob(f"*.log"))
+    out_log = list(out_dir.glob("*.log"))
 
     # if log is not there, the comutation didn't even started
     # I let the display in its current state and change the color of the output to red
@@ -84,7 +83,7 @@ def run_gwb_process(process, raster, params_list, title, output, offset):
             out_files = [f for f in out_dir.glob("*.*") if not f.stem == ".log"]
         else:
             out_files = next(out_dir.glob(f"{raster.stem}_{folder}*/")).glob("*.*")
-    except:
+    except Exception:
         output.add_live_msg(
             v.Html(tag="pre", class_="error--text d-inline", children=[log]), "error"
         )
