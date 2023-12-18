@@ -1,5 +1,6 @@
 GWB
 ===
+*Suite of various geospatial image analysis tools*
 
 This article provides usage instructions for the image analysis module **GuidosToolbox Workbench (GWB)**, implemented as a Jupyter dashboard on the SEPAL platform (for more information on GWB), see `<https://forest.jrc.ec.europa.eu/en/activities/lpa/gwb/>`_).
 
@@ -1263,13 +1264,4 @@ Here is the result of the computation using SPA2 (two classes) on the :code:`exa
 References
 ----------
 
-Riitters, K., Wickham, J., O'Neill, R., Jones, B. and Smith, E. 2000. Global-Scale Patterns of Forest Fragmentation. *Conservation Ecology*, 4(2): 3. http://www.consecol.org/vol4/iss2/art3 
-
-Soille, P. & Vogt, P. 2009. Morphological segmentation of binary patterns. *Pattern Recognition Letters*, 30(4): 456–459. https://doi.org/10.1016/j.patrec.2008.10.015
-
-Vogt, P. & Riitters, K. 2017. GuidosToolbox: universal digital image object analysis. *European Journal of Remote Sensing*, 50(1): 352–361. https://doi.org/10.1080/22797254.2017.1330650
-
-Vogt, P., Riitters, K., Rambaud, P., d’Annunzio, R., Lindquist, E. & Pekkarinen, A. 2022. GuidosToolbox Workbench: spatial analysis of raster maps for ecological applications. *Ecography*, 2022(3): e05864. https://doi.org/10.1111/ecog.05864
-
-
-.. custom-edit:: https://raw.githubusercontent.com/sepal-contrib/gwb/release/doc/en.rst
+`GuidosToolbox Workbench: Spatial analysis of raster maps for ecological applications <https://doi.org/10.1111/ecog.05864>`_
