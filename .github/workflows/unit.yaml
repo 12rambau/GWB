@@ -22,6 +22,16 @@ jobs:
         run: python -m pip install "git+https://github.com/12rambau/sepal_ui.git@sepal_pre_release"
       - name: Build with sepal_ui venv
         run: module_venv
+      - name: install gwb
+        run: |
+          echo "**********************"
+          echo "*** Installing GWB ***"
+          echo "**********************"
+          # Last update 2021-01-12
+          INSTALLER=gwb_amd64.deb
+          wget https://ies-ows.jrc.ec.europa.eu/gtb/GWB/$INSTALLER
+          apt-get install -y ./$INSTALLER
+          rm -f ./$INSTALLER
       - name: Install nox
         run: python -m pip install nox
       - name: set entry point and run tests
